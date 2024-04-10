@@ -64,7 +64,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     {{-- <script src="https://cdn.tiny.cloud/1/1ugon3r0i7rnpx6jhdz4moygn9knxfai212wbqlixzr9hpi8/tinymce/6/tinymce.min.js"
         referrerpolicy="origin"></script> --}}
-    <script src="{{ assets('vendor/tinymce/js/tinymce.js') }}"></script>
+    <script src="{!! asset('vendor/tinymce/js/tinymce/tinymce.js') !!}"></script>
 @endpush
 @push('page_scripts')
     <script src="{{ asset('js/post.js') }}" referrerpolicy="no-referrer"></script>

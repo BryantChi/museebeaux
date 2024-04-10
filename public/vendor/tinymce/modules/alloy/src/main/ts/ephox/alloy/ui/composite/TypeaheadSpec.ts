@@ -21,10 +21,10 @@ import { CompositeSketchFactory } from '../../api/ui/UiSketcher';
 import { DatasetRepresentingState } from '../../behaviour/representing/RepresentingTypes';
 import * as DropdownUtils from '../../dropdown/DropdownUtils';
 import { CustomEvent, SimulatedEvent } from '../../events/SimulatedEvent';
-import { setCursorAtEnd, setValueFromItem } from '../../ui/typeahead/TypeaheadModel';
-import { NormalItemSpec } from '../../ui/types/ItemTypes';
-import { HighlightOnOpen, TieredData } from '../../ui/types/TieredMenuTypes';
-import { TypeaheadData, TypeaheadDetail, TypeaheadSpec } from '../../ui/types/TypeaheadTypes';
+import { setCursorAtEnd, setValueFromItem } from '../typeahead/TypeaheadModel';
+import { NormalItemSpec } from '../types/ItemTypes';
+import { HighlightOnOpen, TieredData } from '../types/TieredMenuTypes';
+import { TypeaheadData, TypeaheadDetail, TypeaheadSpec } from '../types/TypeaheadTypes';
 import * as InputBase from '../common/InputBase';
 import * as TypeaheadEvents from './TypeaheadEvents';
 

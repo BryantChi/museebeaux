@@ -12,7 +12,7 @@ import { Attribute, EventArgs, SelectorFind } from '@ephox/sugar';
 import { ToolbarGroupOption } from '../../../api/Options';
 import { UiFactoryBackstage, UiFactoryBackstageProviders, UiFactoryBackstageShared } from '../../../backstage/Backstage';
 import * as ReadOnly from '../../../ReadOnly';
-import * as ConvertShortcut from '../../../ui/alien/ConvertShortcut';
+import * as ConvertShortcut from '../../alien/ConvertShortcut';
 import { DisablingConfigs } from '../../alien/DisablingConfigs';
 import { detectSize } from '../../alien/FlatgridAutodetect';
 import { SimpleBehaviours } from '../../alien/SimpleBehaviours';

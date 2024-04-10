@@ -6,7 +6,7 @@ import DOMUtils from '../api/dom/DOMUtils';
 import Editor from '../api/Editor';
 import * as CaretFinder from '../caret/CaretFinder';
 import CaretPosition from '../caret/CaretPosition';
-import * as DeleteUtils from '../delete/DeleteUtils';
+import * as DeleteUtils from './DeleteUtils';
 import * as NodeType from '../dom/NodeType';
 import * as PaddingBr from '../dom/PaddingBr';
 import * as FormatUtils from '../fmt/FormatUtils';

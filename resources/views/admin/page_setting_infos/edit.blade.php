@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($pageSettingInfo, ['route' => ['admin.pageSettingInfos.update', $pageSettingInfo->id], 'method' => 'patch']) !!}
+            {!! Form::model($pageSettingInfo, ['route' => ['admin.pageSettingInfos.update', $pageSettingInfo->id], 'method' => 'patch', 'files' => true]) !!}
 
             <div class="card-body">
                 <div class="row">

@@ -3,8 +3,8 @@ import { SugarText, SugarElement } from '@ephox/sugar';
 
 import DOMUtils from '../../api/dom/DOMUtils';
 import Editor from '../../api/Editor';
-import * as InlinePattern from '../core/InlinePattern';
-import { PatternSet } from '../core/PatternTypes';
+import * as InlinePattern from './InlinePattern';
+import { PatternSet } from './PatternTypes';
 import * as Utils from '../utils/Utils';
 import * as BlockPatternUtils from './BlockPatternUtils';
 import { BlockPattern, BlockPatternMatch, InlinePatternMatch } from './PatternTypes';

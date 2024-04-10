@@ -24,8 +24,8 @@ tinymce.init({
         { title: 'Rwd class', value: 'img-fluid' }
     ],
     table_class_list: [
-        // { title: '無', value: '' },
-        { title: 'Rwd class', value: 'table table-responsive' }
+        { title: '無', value: 'table' },
+        // { title: 'Rwd class', value: 'table table-responsive' }
     ],
     /* 配置圖片和視頻上傳的URL */
     image_title: true,

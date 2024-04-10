@@ -5,9 +5,9 @@
                 <th>網址</th>
                 <th>標題</th>
                 <th>Meta-Title</th>
-                <th>Meta-Description</th>
-                <th>Meta-Keywords</th>
-                <th>Meta-Google-Site-Verification</th>
+                <th>Meta設定</th>
+                <th>Banner</th>
+                <th>Banner_Mobile</th>
                 <th colspan="3">操作</th>
             </tr>
         </thead>
@@ -17,9 +17,33 @@
                     <td>{{ $pageSettingInfo->url }}</td>
                     <td>{{ $pageSettingInfo->title }}</td>
                     <td>{{ $pageSettingInfo->meta_title }}</td>
-                    <td>{{ $pageSettingInfo->meta_description }}</td>
-                    <td>{{ $pageSettingInfo->meta_keywords }}</td>
-                    <td>{{ $pageSettingInfo->meta_google_site_verification }}</td>
+                    <td>
+                        <p>Meta描述：{{ $pageSettingInfo->meta_description }}</p>
+                        <p>Meta關鍵字：{{ $pageSettingInfo->meta_keywords }}</p>
+                        <p>MetaGoogleSiteVerification：{{ $pageSettingInfo->meta_google_site_verification }}</p>
+                    </td>
+                    <td style="max-width: 120px;">
+                        <div class="slick">
+                            @foreach ($pageSettingInfo->banner ?? [] as $i => $image)
+                                <div>
+                                    <a href="{{ env('APP_URLs', 'https://beauty4u-clinic.com'). '/uploads/' . $image }}" data-fancybox="gallery_{{ $pageSettingInfo->id }}">
+                                        <img src="{{ env('APP_URLs', 'https://beauty4u-clinic.com'). '/uploads/' . $image }}" alt="{{ $pageSettingInfo->banner_alt[$i] }}" style="max-width: 120px;">
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </td>
+                    <td style="max-width: 120px;">
+                        <div class="slick">
+                            @foreach ($pageSettingInfo->banner_mob ?? [] as $i => $image)
+                                <div>
+                                    <a href="{{ env('APP_URLs', 'https://beauty4u-clinic.com'). '/uploads/' . $image }}" data-fancybox="gallery_mob_{{ $pageSettingInfo->id }}">
+                                        <img src="{{ env('APP_URLs', 'https://beauty4u-clinic.com'). '/uploads/' . $image }}" alt="{{ $pageSettingInfo->banner_alt[$i] }}" style="max-width: 120px;">
+                                    </a>
+                                </div>
+                            @endforeach
+                        </div>
+                    </td>
                     <td width="120">
                         {!! Form::open(['route' => ['admin.pageSettingInfos.destroy', $pageSettingInfo->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

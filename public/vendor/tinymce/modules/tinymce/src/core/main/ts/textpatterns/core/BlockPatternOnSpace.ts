@@ -1,7 +1,7 @@
 import { Arr, Optional } from '@ephox/katamari';
 
 import Editor from '../../api/Editor';
-import { PatternSet } from '../core/PatternTypes';
+import { PatternSet } from './PatternTypes';
 import * as Utils from '../utils/Utils';
 import * as BlockPatternUtils from './BlockPatternUtils';
 import { BlockPatternMatch } from './PatternTypes';
