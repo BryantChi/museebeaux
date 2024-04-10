@@ -45,6 +45,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('servicesInfos', App\Http\Controllers\Admin\ServicesInfoController::class, ["as" => 'admin']);
         Route::resource('postsInfos', App\Http\Controllers\Admin\PostsInfoController::class, ["as" => 'admin']);
         Route::resource('companyInfos', App\Http\Controllers\Admin\CompanyInfoController::class, ["as" => 'admin']);
+        Route::resource('teamInfos', App\Http\Controllers\Admin\TeamInfoController::class, ["as" => 'admin']);
 
         Route::any('adminUsers', [App\Http\Controllers\Admin\AdminAccountController::class, 'index'])->name('admin.adminUsers.index');
         Route::any('adminUsers/create', [App\Http\Controllers\Admin\AdminAccountController::class, 'create'])->name('admin.adminUsers.create');

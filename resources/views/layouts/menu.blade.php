@@ -67,12 +67,10 @@
 </li>
 
 
-
-
 <li class="nav-item">
     <a href="{{ route('admin.teamInfos.index') }}"
        class="nav-link {{ Request::is('admin/teamInfos*') ? 'active' : '' }}">
-        <p>Team Infos</p>
+        <p>團隊資訊</p>
     </a>
 </li>
 
