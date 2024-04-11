@@ -19,10 +19,25 @@ class TeamInfoRepository extends BaseRepository
     protected $fieldSearchable = [
         'name',
         'role',
+        'facebook',
+        'threads',
+        'line',
+        'instagram',
+        'youtube',
+        'tiktok',
+        'wechat',
+        'x_twitter',
+        'linkedin',
+        'github',
+        'telegram',
         'introduce',
         'degree',
+        'experience',
         'expertise',
-        'certificate_license'
+        'certificate_license',
+        'headshots',
+        'headshots_alt',
+        'certificate_license_photos'
     ];
 
     /**

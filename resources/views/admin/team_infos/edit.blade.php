@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::model($teamInfo, ['route' => ['admin.teamInfos.update', $teamInfo->id], 'method' => 'patch']) !!}
+            {!! Form::model($teamInfo, ['route' => ['admin.teamInfos.update', $teamInfo->id], 'method' => 'patch', 'files' => true]) !!}
 
             <div class="card-body">
                 <div class="row">

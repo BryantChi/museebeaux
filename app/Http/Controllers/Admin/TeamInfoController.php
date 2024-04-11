@@ -9,6 +9,8 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class TeamInfoController extends AppBaseController
 {
@@ -55,6 +57,26 @@ class TeamInfoController extends AppBaseController
     public function store(CreateTeamInfoRequest $request)
     {
         $input = $request->all();
+
+        $image_headshots = $request->file('headshots');
+
+        if ($image_headshots) {
+            $path = public_path('uploads/images/teams/headshots') . '/';
+            $filename = time() . '_' . $image_headshots->getClientOriginalName();
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
+            // 壓縮圖片
+            $image_headshots = Image::make($image_headshots)->orientate()->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->encode('jpg', 75); // 設定 JPG 格式和 75% 品質
+            $image_headshots->save($path.$filename);
+
+            $input['headshots'] = 'images/teams/headshots/' . $filename;
+        } else {
+            $input['headshots'] = '';
+        }
 
         $teamInfo = $this->teamInfoRepository->create($input);
 
@@ -121,7 +143,38 @@ class TeamInfoController extends AppBaseController
             return redirect(route('admin.teamInfos.index'));
         }
 
-        $teamInfo = $this->teamInfoRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        $image_headshots = $request->file('headshots');
+
+        if ($image_headshots) {
+            $path = public_path('uploads/images/teams/headshots/');
+            $filename = time() . '_' . $image_headshots->getClientOriginalName();
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
+
+            if ($teamInfo['headshots'] != null) {
+                // 若已存在，則覆蓋原有圖片
+                if (File::exists(public_path('uploads/' . $teamInfo['headshots']))) {
+                    File::delete(public_path('uploads/' . $teamInfo['headshots']));
+                }
+            }
+            // 壓縮圖片
+            $image_headshots = Image::make($image_headshots)->orientate()->resize(800, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->encode('jpg', 75); // 設定 JPG 格式和 75% 品質
+            $image_headshots->save($path.$filename);
+
+
+
+            $input['headshots'] = 'images/teams/headshots/' . $filename;
+        } else {
+            $input['headshots'] = $teamInfo['headshots'];
+        }
+
+        $teamInfo = $this->teamInfoRepository->update($input, $id);
 
         Flash::success('Team Info updated successfully.');
 

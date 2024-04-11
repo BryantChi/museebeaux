@@ -21,7 +21,12 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    @include('admin.team_infos.show_fields')
+                    <div class="col-md-8 order-md-1 order-2">
+                        @include('admin.team_infos.show_fields')
+                    </div>
+                    <div class="col-md-4 text-end order-md-2 order-1">
+                        <img src="{{ env('APP_URL') . '/uploads/' . $teamInfo->headshots }}" class="img-fluid img-thumbnail" style="max-width: 300px;" alt="">
+                    </div>
                 </div>
             </div>
         </div>
