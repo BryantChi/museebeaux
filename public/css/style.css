@@ -6,22 +6,22 @@ a {
 }
 a:hover,
 a:focus {
-    color: #6f42c1;
+    color: #8e6f65;
     text-decoration: none !important;
 }
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
 .show > .btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #714288 !important;
-    border-color: #6f42c1 !important;
+    background-color: #8e6f65 !important;
+    border-color: #8e6f65 !important;
 }
 .btn-check:focus + .btn-primary,
 .btn-primary:focus {
     color: #fff;
-    background-color: #714288;
-    border-color: #6f42c1;
-    box-shadow: 0 0 0 0.25rem #71428888;
+    background-color: #8e6f65;
+    border-color: #8e6f65;
+    box-shadow: 0 0 0 0.25rem #8e6f6588;
 }
 .login-page {
     background-image: linear-gradient(
@@ -59,7 +59,7 @@ a:focus {
 }
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
 .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
-    background-color: #714288 !important;
+    background-color: #8e6f65 !important;
     color: #fff;
 }
 .dropdown-menu-right {
@@ -67,7 +67,7 @@ a:focus {
     left: auto !important;
 }
 .bg-purple {
-    background-color: #714288 !important;
+    background-color: #8e6f65 !important;
 }
 .select2-selection__rendered {
     line-height: 28px !important;

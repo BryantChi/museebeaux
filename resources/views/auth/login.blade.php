@@ -54,6 +54,11 @@
 
 
     <!-- /.login-logo -->
+    <div class="login-logo">
+        <a href="{{ url('/admin') }}">
+            <img src="{{ asset('images/logo_full.png') }}" class="img-fluid w-50" alt="">
+        </a>
+    </div>
 
     <!-- /.login-box-body -->
     <div class="card" style="border-radius: 20px !important;background: #f4f6f948 !important;">
