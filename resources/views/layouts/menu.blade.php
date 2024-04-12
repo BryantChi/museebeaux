@@ -1,3 +1,10 @@
+<li class="nav-item mb-4">
+    <a href="javascript:void(0)"
+       class="nav-link">
+        <p class="h5"><span><i class="fas fa-external-link-alt"></i></span> 瀏覽網站</p>
+    </a>
+</li>
+
 <li class="nav-item">
     <a href="{{ route('admin.adminUsers.index') }}"
        class="nav-link {{ Request::is('admin/adminUsers*') ? 'active' : '' }}">
