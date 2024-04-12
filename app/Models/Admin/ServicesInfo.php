@@ -54,6 +54,7 @@ class ServicesInfo extends EloquentModel
         'service_cover_front_alt' => 'string',
         'service_icon' => 'json',
         'service_cover_front' => 'json',
+        'service_sub_list' => 'json'
     ];
 
     /**
