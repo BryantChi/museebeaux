@@ -105,11 +105,11 @@
                     // '<span class="btn btn-primary my-2" style="cursor: pointer;"><i class="fas fa-sort"></i></span>' +
                     '<input type="text" name="banner_input[]" class="form-control d-none" id="banner" value="">' +
                     '<div class="custom-file w-100">' +
-                        '<input type="file" class="custom-file-input" id="banner" name="banner[]" accept="image/*" required>' +
+                        '<input type="file" class="custom-file-input banner_pc" id="banner" name="banner[]" accept="image/*" required>' +
                         '<label class="custom-file-label" for="banner">Choose PC Image</label>' +
                     '</div>' +
                     '<div class="custom-file w-100 mt-2">' +
-                        '<input type="file" class="custom-file-input" id="banner_mob" name="banner_mob[]" accept="image/*" required>' +
+                        '<input type="file" class="custom-file-input banner_mob" id="banner_mob" name="banner_mob[]" accept="image/*" required>' +
                         '<label class="custom-file-label" for="banner">Choose Mobile Image</label>' +
                     '</div>' +
                     '<input type="text" name="banner_alt[]" class="form-control w-100 my-2" id="banner_alt" placeholder="圖片說明" required>' +
