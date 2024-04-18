@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-4 text-center" >
             <a href="{{ route('admin.adminUsers.index') }}">
-                <div class="card py-5 text-purple">
+                <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-users-cog"></i></p>
                     <h3>管理員</h3>
                 </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-4 text-center" >
             <a href="{{ route('admin.pageSettingInfos.index') }}">
-                <div class="card py-5 text-purple">
+                <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fab fa-pagelines"></i></p>
                     <h3>頁面設定</h3>
                 </div>
@@ -33,7 +33,7 @@
             }
             ?>
             <a href="{{ $route_about }}">
-                <div class="card py-5 text-purple">
+                <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-hospital-alt"></i></p>
                     <h3>診所資訊</h3>
                 </div>
@@ -41,7 +41,7 @@
         </div>
         <div class="col-md-4 text-center" >
             <a href="{{ route('admin.servicesInfos.index') }}">
-                <div class="card py-5 text-purple">
+                <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-stethoscope"></i></p>
                     <h3>療程項目</h3>
                 </div>
@@ -49,7 +49,7 @@
         </div>
         <div class="col-md-4 text-center" >
             <a href="{{ route('admin.postTypeInfos.index') }}">
-                <div class="card py-5 text-purple">
+                <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-sitemap"></i></p>
                     <h3>文章分類</h3>
                 </div>
@@ -57,7 +57,7 @@
         </div>
         <div class="col-md-4 text-center" >
             <a href="{{ route('admin.postsInfos.index') }}">
-                <div class="card py-5 text-purple">
+                <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-file-alt"></i></p>
                     <h3>文章資訊</h3>
                 </div>
@@ -74,7 +74,7 @@
             }
             ?>
             <a href="{{ $route_company }}">
-                <div class="card py-5 text-purple">
+                <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-building"></i></p>
                     <h3>公司資訊</h3>
                 </div>
@@ -82,7 +82,7 @@
         </div>
         <div class="col-md-4 text-center" >
             <a href="{{ route('admin.teamInfos.index') }}">
-                <div class="card py-5 text-purple">
+                <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-portrait"></i></p>
                     <h3>團隊資訊</h3>
                 </div>
