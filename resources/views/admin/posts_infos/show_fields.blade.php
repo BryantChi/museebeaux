@@ -10,6 +10,12 @@
     <p>{{ $postsInfo->post_title }}</p>
 </div>
 
+<!-- Post Slug Field -->
+<div class="col-sm-12">
+    {!! Form::label('post_slug', '文章自訂網址:') !!}
+    <p>{{ $postsInfo->post_slug }}</p>
+</div>
+
 <!-- Post Content Field -->
 <div class="col-sm-12">
     {!! Form::label('post_content', '文章內容:') !!}

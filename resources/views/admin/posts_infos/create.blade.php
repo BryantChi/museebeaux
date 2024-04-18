@@ -17,7 +17,7 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'admin.postsInfos.store']) !!}
+            {!! Form::open(['route' => 'admin.postsInfos.store', 'files' => true]) !!}
 
             <div class="card-body">
 

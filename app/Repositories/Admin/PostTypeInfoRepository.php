@@ -17,7 +17,9 @@ class PostTypeInfoRepository extends BaseRepository
      * @var array
      */
     protected $fieldSearchable = [
-        'type_name'
+        'type_name',
+        'type_slug',
+        'type_parent_id'
     ];
 
     /**

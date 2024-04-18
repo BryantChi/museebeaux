@@ -28,11 +28,11 @@
             <div class="card-body p-0">
                 @include('admin.post_type_infos.table')
 
-                <div class="card-footer clearfix">
+                {{-- <div class="card-footer clearfix">
                     <div class="float-right">
                         @include('adminlte-templates::common.paginate', ['records' => $postTypeInfos])
                     </div>
-                </div>
+                </div> --}}
             </div>
 
         </div>

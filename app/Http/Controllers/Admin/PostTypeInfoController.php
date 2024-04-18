@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\CreatePostTypeInfoRequest;
 use App\Http\Requests\Admin\UpdatePostTypeInfoRequest;
+use App\Models\Admin\PostTypeInfo;
 use App\Repositories\Admin\PostTypeInfoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Flash;
 use Response;
 
@@ -29,7 +31,10 @@ class PostTypeInfoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $postTypeInfos = $this->postTypeInfoRepository->paginate(10);
+        // $postTypeInfos = $this->postTypeInfoRepository->paginate(10);
+
+        $postTypeInfos = $this->fetchCategories();
+        // dd($postTypeInfos);
 
         return view('admin.post_type_infos.index')
             ->with('postTypeInfos', $postTypeInfos);
@@ -42,7 +47,8 @@ class PostTypeInfoController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.post_type_infos.create');
+        $parentTypes = PostTypeInfo::where('type_parent_id', null)->get()->pluck('type_name', 'id')->toArray();
+        return view('admin.post_type_infos.create')->with('parentTypes', $parentTypes);
     }
 
     /**
@@ -55,6 +61,8 @@ class PostTypeInfoController extends AppBaseController
     public function store(CreatePostTypeInfoRequest $request)
     {
         $input = $request->all();
+
+        $input['type_slug'] = Str::slug($input['type_slug'],language: 'zh_TW');
 
         $postTypeInfo = $this->postTypeInfoRepository->create($input);
 
@@ -100,7 +108,11 @@ class PostTypeInfoController extends AppBaseController
             return redirect(route('admin.postTypeInfos.index'));
         }
 
-        return view('admin.post_type_infos.edit')->with('postTypeInfo', $postTypeInfo);
+        $parentTypes = PostTypeInfo::where('type_parent_id', null)->get()->pluck('type_name', 'id')->toArray();
+
+        return view('admin.post_type_infos.edit')
+            ->with('parentTypes', $parentTypes)
+            ->with('postTypeInfo', $postTypeInfo);
     }
 
     /**
@@ -121,7 +133,13 @@ class PostTypeInfoController extends AppBaseController
             return redirect(route('admin.postTypeInfos.index'));
         }
 
-        $postTypeInfo = $this->postTypeInfoRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        if ($postTypeInfo->type_slug != $input['type_slug']) {
+            $input['type_slug'] = Str::slug($input['type_slug'],language: 'zh_TW');
+        }
+
+        $postTypeInfo = $this->postTypeInfoRepository->update($input, $id);
 
         Flash::success('Post Type Info updated successfully.');
 
@@ -152,5 +170,17 @@ class PostTypeInfoController extends AppBaseController
         Flash::success('Post Type Info deleted successfully.');
 
         return redirect(route('admin.postTypeInfos.index'));
+    }
+
+
+    public function fetchCategories($parentId = null, $prefix = '') {
+        $categories = PostTypeInfo::where('type_parent_id', $parentId)->orderBy('type_name')->get();
+        $result = [];
+        foreach ($categories as $category) {
+            $category->type_name = $prefix . $category->type_name;
+            $result[] = $category;
+            $result = array_merge($result, self::fetchCategories($category->id, $prefix . '&emsp;→&emsp;')); // →
+        }
+        return $result;
     }
 }

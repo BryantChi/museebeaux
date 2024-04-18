@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  *
  * @property \App\Models\Admin\PostTypeInfo $id
  * @property string $post_title
+ * @property string $post_slug
+ * @property string $post_front_cover
  * @property string $post_content
  * @property string $post_type
  * @property boolean $post_seo_setting_customize
@@ -32,6 +34,8 @@ class PostsInfo extends EloquentModel
 
     public $fillable = [
         'post_title',
+        'post_slug',
+        'post_front_cover',
         'post_content',
         'post_type',
         'post_seo_setting_customize',
@@ -49,6 +53,8 @@ class PostsInfo extends EloquentModel
     protected $casts = [
         'id' => 'integer',
         'post_title' => 'string',
+        'post_slug' => 'string',
+        'post_front_cover' => 'json',
         'post_type' => 'string',
         'post_seo_setting_customize' => 'boolean',
         'post_seo_title' => 'string',
@@ -63,6 +69,8 @@ class PostsInfo extends EloquentModel
      */
     public static $rules = [
         'post_title' => 'string',
+        'post_slug' => 'string',
+        'post_front_cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         'post_content' => 'nullable',
         'post_type' => 'nullable',
         'post_seo_setting_customize' => 'boolean',

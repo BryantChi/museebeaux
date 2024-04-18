@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version March 29, 2024, 11:47 pm CST
  *
  * @property string $type_name
+ * @property string $type_slug
+ * @property string $type_parent_id
  */
 class PostTypeInfo extends EloquentModel
 {
@@ -27,7 +29,9 @@ class PostTypeInfo extends EloquentModel
 
 
     public $fillable = [
-        'type_name'
+        'type_name',
+        'type_slug',
+        'type_parent_id'
     ];
 
     /**
@@ -37,7 +41,9 @@ class PostTypeInfo extends EloquentModel
      */
     protected $casts = [
         'id' => 'integer',
-        'type_name' => 'string'
+        'type_name' => 'string',
+        'type_slug' => 'string',
+        'type_parent_id' => 'integer'
     ];
 
     /**
@@ -46,12 +52,28 @@ class PostTypeInfo extends EloquentModel
      * @var array
      */
     public static $rules = [
-        'type_name' => 'required'
+        'type_name' => 'required',
+        'type_slug' => 'required',
+        'type_parent_id' => 'nullable'
     ];
 
     public static $messages = [
-        'type_name.required' => '分類名稱不得為空'
+        'type_name.required' => '分類名稱不得為空',
+        'type_slug.required' => '分類網址不得為空'
     ];
+
+    public static function getCategoriesDropdown($parentId = null, $prefix = '') {
+        $categories = PostTypeInfo::where('type_parent_id', $parentId)->orderBy('type_name')->get();
+        $result = [];
+        foreach ($categories as $category) {
+            $result[$category->id] = $prefix . $category->type_name;
+            $children = self::getCategoriesDropdown($category->id, $prefix . '-- ');
+            foreach ($children as $key => $value) {
+                $result[$key] = $value;
+            }
+        }
+        return $result;
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
