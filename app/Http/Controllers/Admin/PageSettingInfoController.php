@@ -189,7 +189,7 @@ class PageSettingInfoController extends AppBaseController
 
         $input = $request->all();
 
-        $bc = $input['banner_input'];
+        $bc = $input['banner_input'] ?? [];
         $image_banners = $request->file('banner');
 
         $banner = $pageSettingInfo['banner'];
@@ -230,7 +230,7 @@ class PageSettingInfoController extends AppBaseController
         }
 
         // 刪除多餘的圖片
-        if (count($banner) > count($bc)) {
+        if (count($banner ?? []) > count($bc ?? [])) {
             $tempBanner = $banner;
             foreach ($tempBanner as $i => $image) {
                 if (!in_array($image, $bc)) {
@@ -246,7 +246,7 @@ class PageSettingInfoController extends AppBaseController
 
         $input['banner'] = $banner;
 
-        $bc_mob = $input['banner_mob_input'];
+        $bc_mob = $input['banner_mob_input'] ?? [];
         $image_banners_mob = $request->file('banner_mob');
 
         $banner_mob = $pageSettingInfo['banner_mob'];
@@ -287,7 +287,7 @@ class PageSettingInfoController extends AppBaseController
         }
 
         // 刪除多餘的圖片
-        if (count($banner_mob) > count($bc_mob)) {
+        if (count($banner_mob ?? []) > count($bc_mob ?? [])) {
             $tempBanner_mob = $banner_mob;
             foreach ($tempBanner_mob as $i => $image_mob) {
                 if (!in_array($image_mob, $bc_mob)) {
