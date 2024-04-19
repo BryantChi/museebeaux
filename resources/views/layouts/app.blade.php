@@ -194,6 +194,18 @@
             placeholder: '請選擇',
             allowClear: true
         });
+
+        $('.slick').slick({
+            arrows: false,
+            dots: false,
+            speed: 300,
+            autoplay: true,
+            centerPadding: '100px',
+            autoplaySpeed: 2000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            draggable: true
+        });
     </script>
 
     <link rel="stylesheet" href="{{ asset('js/app.js') }}">
