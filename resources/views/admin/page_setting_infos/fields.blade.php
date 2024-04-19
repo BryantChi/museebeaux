@@ -104,7 +104,7 @@
                 $("#dynamicField").append('<div class="mt-2 field-group card p-4 bg-light-subtle">' +
                     // '<span class="btn btn-primary my-2" style="cursor: pointer;"><i class="fas fa-sort"></i></span>' +
                     '<input type="text" name="banner_input[]" class="form-control d-none" id="banner" value="">' +
-                    '<input type="text" name="banner_mob_input[]" class="form-control d-none" id="banner" value="">' +
+                    '<input type="text" name="banner_mob_input[]" class="form-control d-none" id="banner_mob" value="">' +
                     '<div class="custom-file w-100">' +
                         '<input type="file" class="custom-file-input banner_pc" id="banner" name="banner[]" accept="image/*" required>' +
                         '<label class="custom-file-label" for="banner">Choose PC Image</label>' +
