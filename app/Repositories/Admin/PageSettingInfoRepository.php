@@ -27,7 +27,7 @@ class PageSettingInfoRepository extends BaseRepository
         'banner',
         'banner_mob',
         'banner_alt',
-        'banner_link'
+        'banner_link',
     ];
 
     /**
@@ -63,6 +63,11 @@ class PageSettingInfoRepository extends BaseRepository
     public static function getSubBanner($uri)
     {
         $pageInfos = PageSettingInfo::where('url', '=', $uri)->first();
+
+        if (empty($pageInfos)) {
+            $pageInfos = PageSettingInfo::where('url', '=', '/*')->first();
+        }
+
         $pageInfo = new \stdClass();
 
         $count = count($pageInfos->banner ?? []);
@@ -90,11 +95,12 @@ class PageSettingInfoRepository extends BaseRepository
         $pageInfo->banner_link = $pageInfos->banner_link[$random_img_num] ?? '';
         $pageInfo->banner_link_mob = $pageInfos->banner_link[$random_img_mob_num] ?? '';
         $pageInfo->url = $pageInfos->url;
-        $pageInfo->title = $pageInfos->title;
-        $pageInfo->meta_title = $pageInfos->meta_title;
-        $pageInfo->meta_description = $pageInfos->meta_description;
-        $pageInfo->meta_keywords = $pageInfos->meta_keywords;
-        $pageInfo->meta_google_site_verification = $pageInfos->meta_google_site_verification;
+        $pageInfo->title = $pageInfos->title ?? self::getInfo('/*')->title;
+        $pageInfo->meta_title = $pageInfos->meta_title ?? self::getInfo('/*')->meta_title;
+        $pageInfo->meta_description = $pageInfos->meta_description ?? self::getInfo('/*')->meta_description;
+        $pageInfo->meta_keywords = $pageInfos->meta_keywords ?? self::getInfo('/*')->meta_keywords;
+        $pageInfo->meta_google_site_verification = $pageInfos->meta_google_site_verification ?? self::getInfo('/*')->meta_google_site_verification;
+        $pageInfo->header_anlytics_code = $pageInfos->header_anlytics_code ?? self::getInfo('/*')->header_anlytics_code;
 
         return $pageInfo;
     }

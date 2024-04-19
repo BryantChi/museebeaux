@@ -65,8 +65,8 @@ class PageSettingInfo extends Model
         'header_anlytics_code' => 'string',
         'banner' => 'json',
         'banner_mob' => 'json',
-        'banner_alt' => 'string',
-        'banner_link' => 'string'
+        'banner_alt' => 'json',
+        'banner_link' => 'json'
     ];
 
     /**
