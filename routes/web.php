@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
+Route::get('generator_builder', 'App\Http\Controllers\Admin\GeneratorBuilderController@builder')->name('io_generator_builder');
 
 Route::get('field_template', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@fieldTemplate')->name('io_field_template');
 
