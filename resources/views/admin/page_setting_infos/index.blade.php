@@ -7,7 +7,7 @@
                 <div class="col-sm-6">
                     <h1>頁面設定資訊</h1>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-6 {{ Auth::user()->id == 1 ? '' : 'd-none' }}">
                     <a class="btn btn-primary float-right"
                        href="{{ route('admin.pageSettingInfos.create') }}">
                        <i class="fas fa-plus"></i>
