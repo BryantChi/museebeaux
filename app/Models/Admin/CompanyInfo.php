@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @version April 1, 2024, 3:52 am CST
  *
  * @property string $company_name
+ * @property string $company_mail
  * @property string $company_address
  * @property string $company_map_url
  * @property string $company_map_iframe
@@ -39,6 +40,7 @@ class CompanyInfo extends EloquentModel
 
     public $fillable = [
         'company_name',
+        'company_mail',
         'company_address',
         'company_map_url',
         'company_map_iframe',
@@ -60,6 +62,7 @@ class CompanyInfo extends EloquentModel
     protected $casts = [
         'id' => 'integer',
         'company_name' => 'string',
+        'company_mail' => 'string',
         'company_address' => 'string',
         'company_map_url' => 'string',
         'company_phone' => 'string',
@@ -78,6 +81,7 @@ class CompanyInfo extends EloquentModel
      * @var array
      */
     public static $rules = [
+        'company_email' => 'nullable',
         'company_address' => 'nullable',
         'company_map_url' => 'nullable',
         'company_map_iframe' => 'nullable',

@@ -18,6 +18,7 @@ class CompanyInfoRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'company_name',
+        'company_mail',
         'company_address',
         'company_map_url',
         'company_map_iframe',

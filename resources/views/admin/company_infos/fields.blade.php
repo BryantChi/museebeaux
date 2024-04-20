@@ -4,6 +4,12 @@
     {!! Form::text('company_name', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Company Email Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('company_email', '公司 Email:') !!}
+    {!! Form::email('company_email', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Company Address Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('company_address', '公司地址:') !!}
@@ -17,7 +23,7 @@
 </div>
 
 <!-- Company Map Iframe Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-8">
     {!! Form::label('company_map_iframe', '公司 Map Iframe 內嵌:') !!}
     {!! Form::textarea('company_map_iframe', null, ['class' => 'form-control']) !!}
 </div>
