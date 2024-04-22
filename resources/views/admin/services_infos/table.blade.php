@@ -16,11 +16,19 @@
             @foreach ($servicesInfos as $servicesInfo)
                 <tr>
                     <td>{{ $servicesInfo->service_name }}</td>
-                    <td>{{ $servicesInfo->service_icon }}</td>
+                    <td>
+                        <a href="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $servicesInfo->service_icon ?? '' }}" data-fancybox>
+                            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $servicesInfo->service_icon ?? '' }}" class="img-fluid" style="max-width: 100px;" alt="">
+                        </a>
+                    </td>
                     {{-- <td>{{ $servicesInfo->service_icon_alt }}</td> --}}
-                    <td>{{ $servicesInfo->service_cover_front }}</td>
+                    <td>
+                        <a href="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $servicesInfo->service_cover_front ?? '' }}" data-fancybox>
+                            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $servicesInfo->service_cover_front ?? '' }}" class="img-fluid" style="max-width: 100px;" alt="">
+                        </a>
+                    </td>
                     {{-- <td>{{ $servicesInfo->service_cover_front_alt }}</td> --}}
-                    <td>{{ $servicesInfo->service_description }}</td>
+                    <td width="300"><p class="multiline-ellipsis">{{ $servicesInfo->service_description }}</p></td>
                     <td>
                         @foreach ($servicesInfo->service_sub_list ?? [] as $key => $value)
                         <div class="mb-3">

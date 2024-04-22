@@ -13,9 +13,16 @@
     {!! Form::label('service_icon', '療程項目 Icon:') !!}
 
     <div class="custom-file">
-        {!! Form::file('service_icon', null, ['class' => 'custom-file-input']) !!}
-        {{-- <input type="file" class="custom-file-input" id="service_icon" name="service_icon" accept="image/*"> --}}
+        {{-- {!! Form::file('service_icon', null, ['class' => 'custom-file-input']) !!} --}}
+        <input type="file" class="custom-file-input" id="service_icon" name="service_icon" accept="image/*">
         <label class="custom-file-label" for="service_icon">Choose file</label>
+    </div>
+    <div class="img-preview-icon mt-2">
+        <p for="">預覽</p>
+        @if ($servicesInfo->service_icon ?? null)
+            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $servicesInfo->service_icon }}"
+                style="max-width: 200px; max-height: 200px;">
+        @endif
     </div>
 </div>
 
@@ -34,9 +41,16 @@
     {!! Form::label('service_cover_front', '療程項目封面:') !!}
 
     <div class="custom-file">
-        {!! Form::file('service_cover_front', null, ['class' => 'custom-file-input']) !!}
-        {{-- <input type="file" class="custom-file-input" id="service_cover_front" name="service_cover_front" accept="image/*"> --}}
+        {{-- {!! Form::file('service_cover_front', null, ['class' => 'custom-file-input']) !!} --}}
+        <input type="file" class="custom-file-input" id="service_cover_front" name="service_cover_front" accept="image/*">
         <label class="custom-file-label" for="service_cover_front">Choose file</label>
+    </div>
+    <div class="img-preview-cover mt-2">
+        <p for="">預覽</p>
+        @if ($servicesInfo->service_icon ?? null)
+            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $servicesInfo->service_icon }}"
+                style="max-width: 200px; max-height: 200px;">
+        @endif
     </div>
 </div>
 
@@ -185,6 +199,32 @@
             $('#dynamicField').on('click', '.removeButton', function() {
                 count--;
                 $(this).parent('div.field-group').remove();
+            });
+
+
+
+            $(document).on('change', '#service_icon', function () {
+                let fileInput = this;
+                let fileReader = new FileReader();
+
+                fileReader.onload = function(e) {
+                    let previewHtml = `<p for="">預覽</p><img src="${e.target.result}" style="max-width: 200px; max-height: 200px;">`;
+                    $(fileInput).closest('.form-group').find('.img-preview-icon').html(previewHtml);
+                };
+
+                fileReader.readAsDataURL(fileInput.files[0]);
+            });
+
+            $(document).on('change', '#service_cover_front', function () {
+                let fileInput = this;
+                let fileReader = new FileReader();
+
+                fileReader.onload = function(e) {
+                    let previewHtml = `<p for="">預覽</p><img src="${e.target.result}" style="max-width: 200px; max-height: 200px;">`;
+                    $(fileInput).closest('.form-group').find('.img-preview-cover').html(previewHtml);
+                };
+
+                fileReader.readAsDataURL(fileInput.files[0]);
             });
         });
     </script>

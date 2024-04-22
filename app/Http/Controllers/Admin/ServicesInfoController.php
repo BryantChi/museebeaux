@@ -6,6 +6,8 @@ use App\Http\Requests\Admin\CreateServicesInfoRequest;
 use App\Http\Requests\Admin\UpdateServicesInfoRequest;
 use App\Repositories\Admin\ServicesInfoRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Admin\PostsInfo;
+use App\Models\Admin\PostTypeInfo;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
@@ -44,7 +46,12 @@ class ServicesInfoController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.services_infos.create');
+        $postsTypes = PostTypeInfo::getCategoriesDropdown();
+        $posts = PostsInfo::all();
+
+        return view('admin.services_infos.create')
+            ->with('postsTypes', $postsTypes)
+            ->with('posts', $posts);
     }
 
     /**
@@ -144,7 +151,13 @@ class ServicesInfoController extends AppBaseController
             return redirect(route('admin.servicesInfos.index'));
         }
 
-        return view('admin.services_infos.edit')->with('servicesInfo', $servicesInfo);
+        $postsTypes = PostTypeInfo::getCategoriesDropdown();
+        $posts = PostsInfo::all();
+
+        return view('admin.services_infos.edit')
+            ->with('postsTypes', $postsTypes)
+            ->with('posts', $posts)
+            ->with('servicesInfo', $servicesInfo);
     }
 
     /**
@@ -225,7 +238,7 @@ class ServicesInfoController extends AppBaseController
             $input['service_cover_front'] = $servicesInfo['service_cover_front'];
         }
 
-        $servicesInfo = $this->servicesInfoRepository->update($request->all(), $id);
+        $servicesInfo = $this->servicesInfoRepository->update($input, $id);
 
         Flash::success('Services Info updated successfully.');
 
