@@ -2,28 +2,31 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\Admin\CreatePostTypeInfoRequest;
-use App\Http\Requests\Admin\UpdatePostTypeInfoRequest;
-use App\Models\Admin\PostTypeInfo;
-use App\Repositories\Admin\PostTypeInfoRepository;
+use App\Http\Requests\Admin\CreatePostsInfoRequest;
+use App\Http\Requests\Admin\UpdatePostsInfoRequest;
+use App\Repositories\Admin\PostsInfoRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Admin\PostsInfo;
+use App\Models\Admin\PostTypeInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 use Flash;
 use Response;
 
-class PostTypeInfoController extends AppBaseController
+class PostsInfoController extends AppBaseController
 {
-    /** @var PostTypeInfoRepository $postTypeInfoRepository*/
-    private $postTypeInfoRepository;
+    /** @var PostsInfoRepository $postsInfoRepository*/
+    private $postsInfoRepository;
 
-    public function __construct(PostTypeInfoRepository $postTypeInfoRepo)
+    public function __construct(PostsInfoRepository $postsInfoRepo)
     {
-        $this->postTypeInfoRepository = $postTypeInfoRepo;
+        $this->postsInfoRepository = $postsInfoRepo;
     }
 
     /**
-     * Display a listing of the PostTypeInfo.
+     * Display a listing of the PostsInfo.
      *
      * @param Request $request
      *
@@ -31,48 +34,68 @@ class PostTypeInfoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        // $postTypeInfos = $this->postTypeInfoRepository->paginate(10);
+        $postsInfos = $this->postsInfoRepository->all();
 
-        $postTypeInfos = $this->fetchCategories();
-        // dd($postTypeInfos);
-
-        return view('admin.post_type_infos.index')
-            ->with('postTypeInfos', $postTypeInfos);
+        return view('admin.posts_infos.index')
+            ->with('postsInfos', $postsInfos);
     }
 
     /**
-     * Show the form for creating a new PostTypeInfo.
+     * Show the form for creating a new PostsInfo.
      *
      * @return Response
      */
     public function create()
     {
-        $parentTypes = PostTypeInfo::where('type_parent_id', null)->get()->pluck('type_name', 'id')->toArray();
-        return view('admin.post_type_infos.create')->with('parentTypes', $parentTypes);
+        // $postsTypes = PostTypeInfo::get()->pluck('type_name', 'id')->toArray();
+        $postsTypes = PostTypeInfo::getCategoriesDropdown();
+
+        return view('admin.posts_infos.create', compact('postsTypes'));
     }
 
     /**
-     * Store a newly created PostTypeInfo in storage.
+     * Store a newly created PostsInfo in storage.
      *
-     * @param CreatePostTypeInfoRequest $request
+     * @param CreatePostsInfoRequest $request
      *
      * @return Response
      */
-    public function store(CreatePostTypeInfoRequest $request)
+    public function store(CreatePostsInfoRequest $request)
     {
         $input = $request->all();
 
-        $input['type_slug'] = Str::slug($input['type_slug'],language: 'zh_TW');
+        $input['post_slug'] = Str::slug($input['post_slug'],language: 'zh_TW');
 
-        $postTypeInfo = $this->postTypeInfoRepository->create($input);
+        $image_cover_front = $request->file('post_front_cover');
 
-        Flash::success('Post Type Info saved successfully.');
+        if ($image_cover_front) {
+            $path = public_path('uploads/images/post_front_cover') . '/';
+            $filename = time() . '_' . $image_cover_front->getClientOriginalName();
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
+            // 壓縮圖片
+            $image_cover_front = Image::make($image_cover_front)->orientate()->encode('jpg', 75);
+            // ->resize(800, null, function ($constraint) {
+            //     $constraint->aspectRatio();
+            //     $constraint->upsize();
+            // }); // 設定 JPG 格式和 75% 品質
+            $image_cover_front->save($path.$filename);
 
-        return redirect(route('admin.postTypeInfos.index'));
+            $input['post_front_cover'] = 'images/post_front_cover/' . $filename;
+        } else {
+            $input['post_front_cover'] = '';
+        }
+
+        $postsInfo = $this->postsInfoRepository->create($input);
+
+        Flash::success('Posts Info saved successfully.');
+
+        return redirect(route('admin.postsInfos.index'));
     }
 
     /**
-     * Display the specified PostTypeInfo.
+     * Display the specified PostsInfo.
      *
      * @param int $id
      *
@@ -80,19 +103,19 @@ class PostTypeInfoController extends AppBaseController
      */
     public function show($id)
     {
-        $postTypeInfo = $this->postTypeInfoRepository->find($id);
+        $postsInfo = $this->postsInfoRepository->find($id);
 
-        if (empty($postTypeInfo)) {
-            Flash::error('Post Type Info not found');
+        if (empty($postsInfo)) {
+            Flash::error('Posts Info not found');
 
-            return redirect(route('admin.postTypeInfos.index'));
+            return redirect(route('admin.postsInfos.index'));
         }
 
-        return view('admin.post_type_infos.show')->with('postTypeInfo', $postTypeInfo);
+        return view('admin.posts_infos.show')->with('postsInfo', $postsInfo);
     }
 
     /**
-     * Show the form for editing the specified PostTypeInfo.
+     * Show the form for editing the specified PostsInfo.
      *
      * @param int $id
      *
@@ -100,54 +123,86 @@ class PostTypeInfoController extends AppBaseController
      */
     public function edit($id)
     {
-        $postTypeInfo = $this->postTypeInfoRepository->find($id);
+        $postsInfo = $this->postsInfoRepository->find($id);
 
-        if (empty($postTypeInfo)) {
-            Flash::error('Post Type Info not found');
+        // $postsTypes = PostTypeInfo::get()->pluck('type_name', 'id')->toArray();
 
-            return redirect(route('admin.postTypeInfos.index'));
+        $postsTypes = PostTypeInfo::getCategoriesDropdown();
+
+        if (empty($postsInfo)) {
+            Flash::error('Posts Info not found');
+
+            return redirect(route('admin.postsInfos.index'));
         }
 
-        $parentTypes = PostTypeInfo::where('type_parent_id', null)->get()->pluck('type_name', 'id')->toArray();
-
-        return view('admin.post_type_infos.edit')
-            ->with('parentTypes', $parentTypes)
-            ->with('postTypeInfo', $postTypeInfo);
+        return view('admin.posts_infos.edit')
+            ->with('postsInfo', $postsInfo)
+            ->with('postsTypes', $postsTypes);
     }
 
     /**
-     * Update the specified PostTypeInfo in storage.
+     * Update the specified PostsInfo in storage.
      *
      * @param int $id
-     * @param UpdatePostTypeInfoRequest $request
+     * @param UpdatePostsInfoRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdatePostTypeInfoRequest $request)
+    public function update($id, UpdatePostsInfoRequest $request)
     {
-        $postTypeInfo = $this->postTypeInfoRepository->find($id);
+        $postsInfo = $this->postsInfoRepository->find($id);
 
-        if (empty($postTypeInfo)) {
-            Flash::error('Post Type Info not found');
+        if (empty($postsInfo)) {
+            Flash::error('Posts Info not found');
 
-            return redirect(route('admin.postTypeInfos.index'));
+            return redirect(route('admin.postsInfos.index'));
         }
 
         $input = $request->all();
 
-        if ($postTypeInfo->type_slug != $input['type_slug']) {
-            $input['type_slug'] = Str::slug($input['type_slug'],language: 'zh_TW');
+        if ($postsInfo->post_slug != $input['post_slug']) {
+            $input['post_slug'] = Str::slug($input['post_slug'],language: 'zh_TW');
         }
 
-        $postTypeInfo = $this->postTypeInfoRepository->update($input, $id);
+        $image_cover_front = $request->file('post_front_cover');
 
-        Flash::success('Post Type Info updated successfully.');
+        if ($image_cover_front) {
+            $path = public_path('uploads/images/post_front_cover/');
+            $filename = time() . '_' . $image_cover_front->getClientOriginalName();
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
 
-        return redirect(route('admin.postTypeInfos.index'));
+            if ($postsInfo['post_front_cover'] != null) {
+                // 若已存在，則覆蓋原有圖片
+                if (File::exists(public_path('uploads/' . $postsInfo['post_front_cover']))) {
+                    File::delete(public_path('uploads/' . $postsInfo['post_front_cover']));
+                }
+            }
+            // 壓縮圖片
+            $image_cover_front = Image::make($image_cover_front)->orientate()->encode('jpg', 75);
+            // ->resize(800, null, function ($constraint) {
+            //     $constraint->aspectRatio();
+            //     $constraint->upsize();
+            // }); // 設定 JPG 格式和 75% 品質
+            $image_cover_front->save($path.$filename);
+
+
+
+            $input['post_front_cover'] = 'images/post_front_cover/' . $filename;
+        } else {
+            $input['post_front_cover'] = $postsInfo['post_front_cover'];
+        }
+
+        $postsInfo = $this->postsInfoRepository->update($input, $id);
+
+        Flash::success('Posts Info updated successfully.');
+
+        return redirect(route('admin.postsInfos.index'));
     }
 
     /**
-     * Remove the specified PostTypeInfo from storage.
+     * Remove the specified PostsInfo from storage.
      *
      * @param int $id
      *
@@ -157,30 +212,18 @@ class PostTypeInfoController extends AppBaseController
      */
     public function destroy($id)
     {
-        $postTypeInfo = $this->postTypeInfoRepository->find($id);
+        $postsInfo = $this->postsInfoRepository->find($id);
 
-        if (empty($postTypeInfo)) {
-            Flash::error('Post Type Info not found');
+        if (empty($postsInfo)) {
+            Flash::error('Posts Info not found');
 
-            return redirect(route('admin.postTypeInfos.index'));
+            return redirect(route('admin.postsInfos.index'));
         }
 
-        $this->postTypeInfoRepository->delete($id);
+        $this->postsInfoRepository->delete($id);
 
-        Flash::success('Post Type Info deleted successfully.');
+        Flash::success('Posts Info deleted successfully.');
 
-        return redirect(route('admin.postTypeInfos.index'));
-    }
-
-
-    public function fetchCategories($parentId = null, $prefix = '') {
-        $categories = PostTypeInfo::where('type_parent_id', $parentId)->orderBy('type_name')->get();
-        $result = [];
-        foreach ($categories as $category) {
-            $category->type_name = $prefix . $category->type_name;
-            $result[] = $category;
-            $result = array_merge($result, self::fetchCategories($category->id, $prefix . '&emsp;→&emsp;')); // →
-        }
-        return $result;
+        return redirect(route('admin.postsInfos.index'));
     }
 }

@@ -34,7 +34,7 @@ class PostsInfoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $postsInfos = $this->postsInfoRepository->paginate(10);
+        $postsInfos = $this->postsInfoRepository->all();
 
         return view('admin.posts_infos.index')
             ->with('postsInfos', $postsInfos);

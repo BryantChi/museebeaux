@@ -2,7 +2,7 @@
     <table class="table" id="postTypeInfos-table">
         <thead>
         <tr>
-            {{-- <th>ID</th> --}}
+            <th>ID</th>
             <th>分類自訂網址</th>
             <th>分類名稱</th>
             <th colspan="3">操作</th>
@@ -11,7 +11,7 @@
         <tbody>
         @foreach($postTypeInfos as $postTypeInfo)
             <tr>
-                {{-- <td>{{ $postTypeInfo->id }}</td> --}}
+                <td>{{ $postTypeInfo->id }}</td>
                 <td>{{ $postTypeInfo->type_slug ?? null }}</td>
                 <td>{!! $postTypeInfo->type_name !!}</td>
                 {{-- <td>{{ DB::table('post_type_infos')->where('id', $postTypeInfo->type_parent_id)->value('type_name') }}</td> --}}
