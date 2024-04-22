@@ -10,6 +10,7 @@ use App\Models\Admin\PostsInfo;
 use App\Models\Admin\PostTypeInfo;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
