@@ -24,6 +24,7 @@ class PageSettingInfoRepository extends BaseRepository
         'meta_keywords',
         'meta_google_site_verification',
         'header_anlytics_code',
+        'body_anlytics_code',
         'banner',
         'banner_mob',
         'banner_alt',
@@ -101,6 +102,7 @@ class PageSettingInfoRepository extends BaseRepository
         $pageInfo->meta_keywords = $pageInfos->meta_keywords ?? self::getInfo('/*')->meta_keywords;
         $pageInfo->meta_google_site_verification = $pageInfos->meta_google_site_verification ?? self::getInfo('/*')->meta_google_site_verification;
         $pageInfo->header_anlytics_code = $pageInfos->header_anlytics_code ?? self::getInfo('/*')->header_anlytics_code;
+        $pageInfo->body_anlytics_code = $pageInfos->body_anlytics_code ?? self::getInfo('/*')->body_anlytics_code;
 
         return $pageInfo;
     }

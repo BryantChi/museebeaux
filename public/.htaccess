@@ -18,4 +18,8 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # Handle Googlebot...
+    RewriteCond %{REQUEST_URI} ^/admin [NC]
+    RewriteRule .* - [R=403,L]
 </IfModule>

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>服務項目資訊 - 編輯</h1>
+                    <h1>療程項目資訊 - 編輯</h1>
                 </div>
             </div>
         </div>

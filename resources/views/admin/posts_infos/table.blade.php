@@ -14,7 +14,7 @@
                 <th>文章 Meta Description</th>
                 <th>文章 Meta Keywords</th> --}}
                 <th>建立時間</th>
-                <th colspan="3">操作</th>
+                <th width="120">操作</th>
             </tr>
         </thead>
         <tbody>

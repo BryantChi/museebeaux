@@ -44,6 +44,12 @@
     {!! Form::textarea('header_anlytics_code', null, ['class' => 'form-control', 'rows' => 10]) !!}
 </div>
 
+<!-- Body-Anlytics-Code Field -->
+<div class="form-group col-sm-8">
+    {!! Form::label('body_anlytics_code', 'Body分析碼:') !!}
+    {!! Form::textarea('body_anlytics_code', null, ['class' => 'form-control', 'rows' => 10]) !!}
+</div>
+
 <!-- Banner Field -->
 
 <div class="form-group col-sm-12">

@@ -17,13 +17,15 @@
             $required = '';
         }
         ?>
-        <input type="file" class="custom-file-input post_front_cover" id="post_front_cover" name="post_front_cover" accept="image/*" {{ $required }}>
+        <input type="file" class="custom-file-input post_front_cover" id="post_front_cover" name="post_front_cover"
+            accept="image/*" {{ $required }}>
         <label class="custom-file-label" for="post_front_cover">Choose file</label>
     </div>
     <div class="img-preview mt-2">
         <p for="">預覽</p>
         @if ($postsInfo->post_front_cover ?? null)
-        <img src="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . $postsInfo->post_front_cover }}" style="max-width: 200px; max-height: 200px;">
+            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $postsInfo->post_front_cover }}"
+                style="max-width: 200px; max-height: 200px;">
         @endif
     </div>
 </div>
@@ -32,13 +34,16 @@
 <div class="form-group col-sm-12">
     {!! Form::label('post_content', '文章內容:') !!}
     {{-- {!! Form::text('post_content', null, ['class' => 'form-control']) !!} --}}
-    {!! Form::textarea('post_content', null, ['class' => 'form-control', 'id' => 'contents', 'rows' => "20"]) !!}
+    {!! Form::textarea('post_content', null, ['class' => 'form-control', 'id' => 'contents', 'rows' => '20']) !!}
 </div>
 
 <!-- Post Type Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('post_type', '文章分類:') !!}
-    {!! Form::select('post_type', ['' => '請選擇'] + ($postsTypes ?? []), $postsInfo->post_type ?? 1, ['class' => 'form-control', 'required' => true]) !!}
+    {!! Form::select('post_type', ['' => '請選擇'] + ($postsTypes ?? []), $postsInfo->post_type ?? 1, [
+        'class' => 'form-control',
+        'required' => true,
+    ]) !!}
 </div>
 <div class="col-12"></div>
 <!-- Post Slug Field -->
@@ -49,14 +54,23 @@
 
 <!-- Post Seo Setting Customize Field -->
 <div class="form-group col-sm-12">
-    {!! Form::label('post_seo_setting_customize', '文章自訂SEO:', ['class' => 'form-check-label2']) !!}
-    <label class="form-check">
+    {!! Form::label('post_seo_setting_customize', '文章自訂SEO:', ['class' => 'form-check-label2 w-100 mb-2']) !!}
+    {{-- <label class="form-check">
         {!! Form::radio('post_seo_setting_customize', true, null, ['class' => 'form-check-input', 'checked' => true]) !!} 開
     </label>
 
     <label class="form-check">
         {!! Form::radio('post_seo_setting_customize', false, null, ['class' => 'form-check-input']) !!} 關
-    </label>
+    </label> --}}
+
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="post_seo_setting_customize" id="post_seo_setting_customize_true" value="1" {{ ($postsInfo->post_seo_setting_customize ?? true) ? 'checked' : '' }}>
+        <label class="form-check-label" for="post_seo_setting_customize">開</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="post_seo_setting_customize" id="post_seo_setting_customize_false" value="0"  {{ ($postsInfo->post_seo_setting_customize ?? false) ? '' : 'checked' }}>
+        <label class="form-check-label" for="post_seo_setting_customize">關</label>
+    </div>
 
 </div>
 
@@ -101,37 +115,33 @@
 @push('page_scripts')
     <script src="{{ asset('js/post.js') }}" referrerpolicy="no-referrer"></script>
     <script>
-        $(function(){
-            $("input[name=post_seo_setting_customize]").change();
-            $("input[name=post_seo_setting_customize]").change(function(){
-                console.log($("input[name=post_seo_setting_customize]:checked").val());
-                if ($("input[name=post_seo_setting_customize]:checked").val() == 1) {
-                    // $("#post_seo_title").prop("readonly", false);
-                    // $("#post_meta_title").prop("readonly", false);
-                    // $("#post_meta_description").prop("readonly", false);
-                    // $("#post_meta_keywords").prop("readonly", false);
-                    $('.seo-setting').slideDown('1500');
-                } else {
-                    // $("#post_seo_title").prop("readonly", true);
-                    // $("#post_meta_title").prop("readonly", true);
-                    // $("#post_meta_description").prop("readonly", true);
-                    // $("#post_meta_keywords").prop("readonly", true);
-                    $('.seo-setting').slideUp('1500');
-                }
+        $(function() {
+            checkSeoSetting();
+            $("input[name=post_seo_setting_customize]").change(function() {
+                // console.log($("input[name=post_seo_setting_customize]:checked").val());
+                checkSeoSetting();
             });
 
-
-            $(document).on('change', '.post_front_cover', function () {
+            $(document).on('change', '.post_front_cover', function() {
                 let fileInput = this;
                 let fileReader = new FileReader();
 
                 fileReader.onload = function(e) {
-                    let previewHtml = `<p for="">預覽</p><img src="${e.target.result}" style="max-width: 200px; max-height: 200px;">`;
+                    let previewHtml =
+                        `<p for="">預覽</p><img src="${e.target.result}" style="max-width: 200px; max-height: 200px;">`;
                     $(fileInput).closest('.form-group').find('.img-preview').html(previewHtml);
                 };
 
                 fileReader.readAsDataURL(fileInput.files[0]);
             });
         });
+
+        function checkSeoSetting() {
+            if ($("input[name=post_seo_setting_customize]:checked").val() == 1) {
+                $('.seo-setting').slideDown('1500');
+            } else {
+                $('.seo-setting').slideUp('1500');
+            }
+        }
     </script>
 @endpush

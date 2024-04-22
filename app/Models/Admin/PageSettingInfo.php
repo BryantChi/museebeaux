@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $meta_keywords
  * @property string $meta_google_site_verification
  * @property string $header_anlytics_code
+ * @property string $body_anlytics_code
  * @property string $banner
  * @property string $banner_mob
  * @property string $banner_alt
@@ -43,6 +44,7 @@ class PageSettingInfo extends Model
         'meta_keywords',
         'meta_google_site_verification',
         'header_anlytics_code',
+        'body_anlytics_code',
         'banner',
         'banner_mob',
         'banner_alt',
@@ -63,6 +65,7 @@ class PageSettingInfo extends Model
         'meta_keywords' => 'string',
         'meta_google_site_verification' => 'string',
         'header_anlytics_code' => 'string',
+        'body_anlytics_code' => 'string',
         'banner' => 'json',
         'banner_mob' => 'json',
         'banner_alt' => 'json',
