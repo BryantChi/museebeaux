@@ -7,6 +7,7 @@
 <!-- Post Front Cover Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('post_front_cover', '文章封面:') !!}
+    <span class="text-secondary">＊圖片建議尺寸比例為16:9，長方形橫式</span>
 
     <div class="custom-file">
         {{-- {!! Form::file('post_front_cover', null, ['class' => 'custom-file-input post_front_cover', 'required' => true]) !!} --}}
@@ -24,10 +25,16 @@
     <div class="img-preview mt-2">
         <p for="">預覽</p>
         @if ($postsInfo->post_front_cover ?? null)
-            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $postsInfo->post_front_cover }}"
+            <img src="{{ env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $postsInfo->post_front_cover }}"
                 style="max-width: 200px; max-height: 200px;">
         @endif
     </div>
+</div>
+
+<!-- Post Front Cover Alt Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('post_front_cover_alt', '文章封面 Alt:') !!}
+    {!! Form::text('post_front_cover_alt', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Post Content Field -->
@@ -103,6 +110,12 @@
 
 </div>
 
+<!-- Create At Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('created_at', '建立時間:') !!}
+    {!! Form::datetimelocal('created_at', $postsInfo->created_at ?? \Carbon\Carbon::now(), ['class' => 'form-control']) !!}
+    {{-- <input type="datetime-local" class="form-control" name="created_at" id="created_at" value="{{ $postsInfo->created_at ?? \Carbon\Carbon::now() }}"> --}}
+</div>
 
 
 @push('third_party_scripts')

@@ -17,14 +17,14 @@
                 <tr>
                     <td>{{ $servicesInfo->service_name }}</td>
                     <td>
-                        <a href="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $servicesInfo->service_icon ?? '' }}" data-fancybox>
-                            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $servicesInfo->service_icon ?? '' }}" class="img-fluid" style="max-width: 100px;" alt="">
+                        <a href="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . $servicesInfo->service_icon ?? '' }}" data-fancybox>
+                            <img src="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . $servicesInfo->service_icon ?? '' }}" class="img-fluid" style="max-width: 100px;" alt="">
                         </a>
                     </td>
                     {{-- <td>{{ $servicesInfo->service_icon_alt }}</td> --}}
                     <td>
-                        <a href="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $servicesInfo->service_cover_front ?? '' }}" data-fancybox>
-                            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $servicesInfo->service_cover_front ?? '' }}" class="img-fluid" style="max-width: 100px;" alt="">
+                        <a href="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . $servicesInfo->service_cover_front ?? '' }}" data-fancybox>
+                            <img src="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . $servicesInfo->service_cover_front ?? '' }}" class="img-fluid" style="max-width: 100px;" alt="">
                         </a>
                     </td>
                     {{-- <td>{{ $servicesInfo->service_cover_front_alt }}</td> --}}

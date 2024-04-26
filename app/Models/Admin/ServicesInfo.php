@@ -64,9 +64,9 @@ class ServicesInfo extends EloquentModel
      */
     public static $rules = [
         'service_name' => 'required',
-        'service_icon' => 'nullable|image',
+        'service_icon' => 'nullable|image|max:2048',
         'service_icon_alt' => 'nullable',
-        'service_cover_front' => 'nullable|image',
+        'service_cover_front' => 'nullable|image|max:2048',
         'service_cover_front_alt' => 'nullable',
         'service_description' => 'nullable',
         'service_sub_list' => 'nullable'

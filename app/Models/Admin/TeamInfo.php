@@ -3,14 +3,14 @@
 namespace App\Models\Admin;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 /**
  * Class TeamInfo
- * @package App\Models\Admin
- * @version April 10, 2024, 4:35 pm CST
+ * @package App\Models
+ * @version April 10, 2024, 5:29 pm CST
  *
  * @property string $name
  * @property string $role
@@ -38,6 +38,7 @@ class TeamInfo extends EloquentModel
 {
     use SoftDeletes;
 
+    use HasFactory;
 
     public $table = 'team_infos';
 
@@ -49,6 +50,17 @@ class TeamInfo extends EloquentModel
     public $fillable = [
         'name',
         'role',
+        'facebook',
+        'threads',
+        'line',
+        'instagram',
+        'youtube',
+        'tiktok',
+        'wechat',
+        'x_twitter',
+        'linkedin',
+        'github',
+        'telegram',
         'introduce',
         'degree',
         'experience',
@@ -115,5 +127,6 @@ class TeamInfo extends EloquentModel
         'headshots_alt' => 'nullable|string',
         'certificate_license_photos' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
     ];
+
 
 }

@@ -26,8 +26,8 @@
                         <div class="slick">
                             @foreach ($pageSettingInfo->banner ?? [] as $i => $image)
                                 <div>
-                                    <a href="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $image }}" data-fancybox="gallery_{{ $pageSettingInfo->id }}">
-                                        <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $image }}" alt="{{ $pageSettingInfo->banner_alt[$i] }}" style="max-width: 120px;">
+                                    <a href="{{ env('APP_URLs', 'https://beauty4u-clinic.com'). '/uploads/' . $image }}" data-fancybox="gallery_{{ $pageSettingInfo->id }}">
+                                        <img src="{{ env('APP_URLs', 'https://beauty4u-clinic.com'). '/uploads/' . $image }}" alt="{{ $pageSettingInfo->banner_alt[$i] }}" style="max-width: 120px;">
                                     </a>
                                 </div>
                             @endforeach
@@ -37,8 +37,8 @@
                         <div class="slick">
                             @foreach ($pageSettingInfo->banner_mob ?? [] as $i => $image)
                                 <div>
-                                    <a href="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $image }}" data-fancybox="gallery_mob_{{ $pageSettingInfo->id }}">
-                                        <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $image }}" alt="{{ $pageSettingInfo->banner_alt[$i] }}" style="max-width: 120px;">
+                                    <a href="{{ env('APP_URLs', 'https://beauty4u-clinic.com'). '/uploads/' . $image }}" data-fancybox="gallery_mob_{{ $pageSettingInfo->id }}">
+                                        <img src="{{ env('APP_URLs', 'https://beauty4u-clinic.com'). '/uploads/' . $image }}" alt="{{ $pageSettingInfo->banner_alt[$i] }}" style="max-width: 120px;">
                                     </a>
                                 </div>
                             @endforeach

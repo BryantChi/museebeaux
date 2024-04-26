@@ -40,7 +40,7 @@
 
     <div class="custom-file">
         {{-- {!! Form::file('headshots', null, ['class' => 'custom-file-input', 'id' => 'headshots', 'required' => true, 'accept' => 'image/*']) !!} --}}
-        <input type="file" class="custom-file-input" id="headshots" name="headshots" accept="image/*" required>
+        <input type="file" class="custom-file-input" id="headshots" name="headshots" accept="image/*" {{ Request::is('/admin/teamInfos/*/edit') || ($teamInfo->headshots ?? null) != null ? '' : 'required' }}>
         <label class="custom-file-label" for="headshots">Choose Image</label>
     </div>
     <div class="img-preview-headshots mt-2">
@@ -99,7 +99,7 @@
 
 <!-- Experience Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('experience', '經歷:') !!}
+    {!! Form::label('experience', '經歷/資格:') !!}
     <div id="dynamicField" class="dynamicField">
         @foreach ($teamInfo->experience ?? [] as $i => $experience)
             <div class="input-group mb-3">
@@ -166,7 +166,7 @@
 </div>
 
 <!-- Certificate License Field -->
-<div class="form-group col-sm-6">
+{{-- <div class="form-group col-sm-6">
     {!! Form::label('certificate_license', '證照/資格:') !!}
     <div id="dynamicField" class="dynamicField">
         @foreach ($teamInfo->certificate_license ?? [] as $i => $certificate_license)
@@ -175,7 +175,7 @@
                 <span class="btn btn-danger removeButton d-flex ml-auto align-items-center" style="width: max-content;"><i class="fas fa-minus"></i></span>
             </div>
             @endforeach
-        {{-- @if (Request::is('admin/teamInfos/*/edit*'))
+        @if (Request::is('admin/teamInfos/*/edit*'))
             @if (count($teamInfo->certificate_license) == 0)
                 <div class="input-group mb-3">
                     <input type="text" name="certificate_license[]" class="form-control" id="certificate_license">
@@ -191,13 +191,13 @@
         <div class="input-group mb-3">
             <input type="text" name="certificate_license[]" class="form-control" id="certificate_license">
         </div>
-        @endif --}}
+        @endif
     </div>
 
     <div class="d-flex justify-content-end w-100">
         <span class="btn btn-primary my-1" id="addCertificateLicenseBtn"><i class="fas fa-plus"></i></span>
     </div>
-</div>
+</div> --}}
 
 <!-- Certificate License Photos Field -->
 <div class="form-group col-sm-6 d-none">

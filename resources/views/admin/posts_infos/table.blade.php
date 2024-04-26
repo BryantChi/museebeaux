@@ -1,4 +1,4 @@
-<div class="table-responsive">
+<div class="table-responsive p-3">
     <table class="table" id="postsInfos-table">
         <thead>
             <tr>
@@ -23,8 +23,8 @@
                     <td>{{ $postsInfo->id }}</td>
                     <td>
                         @if ($postsInfo->post_front_cover)
-                        <a href="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $postsInfo->post_front_cover }}" data-fancybox>
-                            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $postsInfo->post_front_cover }}" class="img-fluid" style="max-width: 200px;" alt="">
+                        <a href="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . $postsInfo->post_front_cover }}" data-fancybox>
+                            <img src="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . $postsInfo->post_front_cover }}" class="img-fluid" style="max-width: 200px;" alt="">
                         </a>
                         @endif
                     </td>
@@ -33,7 +33,7 @@
                     {{-- <td>
                         <div class="multiline-ellipsis">{!! $postsInfo->post_content !!}</div>
                     </td> --}}
-                    <td>{{ DB::table('post_type_infos')->where('id', $postsInfo->post_type)->value('type_name') }}</td>
+                    <td>{{ DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $postsInfo->post_type)->value('type_name') }}</td>
                     {{-- <td>{{ $postsInfo->post_seo_setting_customize ? '是' : '否' }}</td> --}}
                     {{-- <td>{{ $postsInfo->post_seo_title }}</td>
                     <td>{{ $postsInfo->post_meta_title }}</td>

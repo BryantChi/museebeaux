@@ -20,13 +20,15 @@ class PostsInfoRepository extends BaseRepository
         'post_title',
         'post_slug',
         'post_front_cover',
+        'post_front_cover_alt',
         'post_content',
         'post_type',
         'post_seo_setting_customize',
         'post_seo_title',
         'post_meta_title',
         'post_meta_description',
-        'post_meta_keywords'
+        'post_meta_keywords',
+        'created_at'
     ];
 
     /**

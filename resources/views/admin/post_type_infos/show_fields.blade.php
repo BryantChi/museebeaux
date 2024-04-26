@@ -19,7 +19,7 @@
 <!-- Type Parent Id Field -->
 <div class="col-sm-12">
     {!! Form::label('type_parent_id', '上級分類:') !!}
-    <p>{{ DB::table('post_type_infos')->where('id', $postTypeInfo->type_parent_id)->value('type_name') ?? '無' }}</p>
+    <p>{{ DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $postTypeInfo->type_parent_id)->value('type_name') ?? '無' }}</p>
 </div>
 
 <!-- Created At Field -->

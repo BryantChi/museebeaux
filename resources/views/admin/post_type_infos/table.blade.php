@@ -14,7 +14,7 @@
                 <td>{{ $postTypeInfo->id }}</td>
                 <td>{{ $postTypeInfo->type_slug ?? null }}</td>
                 <td>{!! $postTypeInfo->type_name !!}</td>
-                {{-- <td>{{ DB::table('post_type_infos')->where('id', $postTypeInfo->type_parent_id)->value('type_name') }}</td> --}}
+                {{-- <td>{{ DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $postTypeInfo->type_parent_id)->value('type_name') }}</td> --}}
                 <td width="120">
                     {!! Form::open(['route' => ['admin.postTypeInfos.destroy', $postTypeInfo->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

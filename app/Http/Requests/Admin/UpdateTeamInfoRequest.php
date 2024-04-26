@@ -25,7 +25,7 @@ class UpdateTeamInfoRequest extends FormRequest
     public function rules()
     {
         $rules = TeamInfo::$rules;
-        
+
         return $rules;
     }
 }

@@ -72,7 +72,7 @@
 
 <!-- Experience Field -->
 <div class="col-sm-12">
-    {!! Form::label('experience', '經歷:') !!}
+    {!! Form::label('experience', '經歷/資格:') !!}
     <ul>
         @foreach ($teamInfo->experience ?? [] as $experience)
             <li>{{ $experience }}</li>

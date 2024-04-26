@@ -7,8 +7,8 @@ use App\Repositories\BaseRepository;
 
 /**
  * Class TeamInfoRepository
- * @package App\Repositories\Admin
- * @version April 10, 2024, 4:35 pm CST
+ * @package App\Repositories
+ * @version April 10, 2024, 5:29 pm CST
 */
 
 class TeamInfoRepository extends BaseRepository

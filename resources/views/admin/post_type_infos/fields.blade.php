@@ -12,7 +12,7 @@
 
 <!-- Type Parent Id Field -->
 @php
-    if (DB::table('post_type_infos')->where('type_parent_id', $postTypeInfo->id ?? null)->count() > 0 && Request::is('admin/postTypeInfos/*/edit*')) {
+    if (DB::table('post_type_infos')->whereNull('deleted_at')->where('type_parent_id', $postTypeInfo->id ?? null)->count() > 0 && Request::is('admin/postTypeInfos/*/edit*')) {
         $disabled = true;
     } else {
         $disabled = false;

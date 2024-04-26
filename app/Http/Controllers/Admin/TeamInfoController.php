@@ -7,10 +7,11 @@ use App\Http\Requests\Admin\UpdateTeamInfoRequest;
 use App\Repositories\Admin\TeamInfoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
-use Response;
-use Illuminate\Support\Facades\File;
+use App\Models\Admin\TeamInfo;
 use Intervention\Image\Facades\Image;
+use Flash;
+use Illuminate\Support\Facades\File;
+use Response;
 
 class TeamInfoController extends AppBaseController
 {

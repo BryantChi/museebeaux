@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $post_title
  * @property string $post_slug
  * @property string $post_front_cover
+ * @property string $post_front_cover_alt
  * @property string $post_content
  * @property string $post_type
  * @property boolean $post_seo_setting_customize
@@ -22,6 +23,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $post_meta_title
  * @property string $post_meta_description
  * @property string $post_meta_keywords
+ * @property string $created_at
  */
 class PostsInfo extends EloquentModel
 {
@@ -36,13 +38,15 @@ class PostsInfo extends EloquentModel
         'post_title',
         'post_slug',
         'post_front_cover',
+        'post_front_cover_alt',
         'post_content',
         'post_type',
         'post_seo_setting_customize',
         'post_seo_title',
         'post_meta_title',
         'post_meta_description',
-        'post_meta_keywords'
+        'post_meta_keywords',
+        'created_at',
     ];
 
     /**
@@ -55,11 +59,13 @@ class PostsInfo extends EloquentModel
         'post_title' => 'string',
         'post_slug' => 'string',
         'post_front_cover' => 'json',
+        'post_front_cover_alt' => 'string',
         'post_type' => 'string',
         'post_seo_setting_customize' => 'boolean',
         'post_seo_title' => 'string',
         'post_meta_title' => 'string',
-        'post_meta_keywords' => 'string'
+        'post_meta_keywords' => 'string',
+        'created_at' => 'datetime',
     ];
 
     /**
@@ -71,6 +77,7 @@ class PostsInfo extends EloquentModel
         'post_title' => 'string',
         'post_slug' => 'string',
         'post_front_cover' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'post_front_cover_alt' => 'nullable',
         'post_content' => 'nullable',
         'post_type' => 'nullable',
         'post_seo_setting_customize' => 'boolean',
