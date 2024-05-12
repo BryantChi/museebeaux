@@ -1,5 +1,5 @@
 <li class="nav-item mb-4">
-    <a href="javascript:void(0)" target="_blank" class="nav-link">
+    <a href="{{ route('index') }}" target="_blank" class="nav-link">
         <span class="h5 mr-2 brand-image"><i class="fas fa-external-link-alt"></i></span>
         <p class="h5"> 瀏覽網站</p>
     </a>
