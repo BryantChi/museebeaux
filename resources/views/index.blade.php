@@ -166,7 +166,7 @@
                             allow="autoplay"></iframe> --}}
                         <video class="lazy embed-responsive-item vid" controls muted playsinline>
                             <source
-                                data-src="{{ asset('images/臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰 詹東峻 斯棋  Angela 亞梅.mov') }}">
+                                data-src="{{ asset('images/臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰 詹東峻 斯棋  Angela 亞梅.mp4') }}">
                         </video>
                     </div>
                 </div>
