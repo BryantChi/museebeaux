@@ -1,7 +1,7 @@
 @extends('layouts_main.master')
 
 @section('content')
-    @include('layouts_main.sub_hero', ['bradcam_title' => '聯絡我們 / <br class="d-block d-md-none">Contact Us', 'bradcam' => 'contact'])
+    @include('layouts_main.sub_hero', ['bradcam_title' => '聯絡資訊 / <br class="d-block d-md-none">Contact Us', 'bradcam' => 'contact'])
 
     <!-- Contact Start -->
     <div class="container-xxl contact py-5">
@@ -29,15 +29,15 @@
                     <div class="btn-square mx-auto mb-3">
                         <i class="fa fa-map-marker-alt fa-2x text-white"></i>
                     </div>
-                    <p class="mb-2">123 Street</p>
-                    <p class="mb-0">New York, USA</p>
+                    <p class="mb-2"><a href="https://maps.app.goo.gl/B7Ur51ZfviEWsW2N8">新北市板橋區文化路一段145號3樓</a></p>
+                    <p class="mb-0"></p>
                 </div>
             </div>
             <div class="row g-5 justify-content-center">
                 <div class="col-lg-10 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
                         <iframe class="w-100 rounded"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14462.153833340966!2d121.462314!3d25.0157944!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9efc216ff6b%3A0xd0020ca776b7ac6d!2z5bCa5rC0576O5Y2aIE11c8OpZUJlYXV4Q2xpbmlj!5e0!3m2!1szh-TW!2stw!4v1715527444225!5m2!1szh-TW!2stw"
                             frameborder="0" style="height: 100%; min-height: 300px; border:0;" allowfullscreen=""
                             aria-hidden="false" tabindex="0"></iframe>
                     </div>

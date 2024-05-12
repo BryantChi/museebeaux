@@ -6,6 +6,14 @@
     --dark: #252C30;
 }
 
+a {
+    color: var(--primary);
+}
+
+a:hover {
+    color: #bfa197;
+}
+
 .back-to-top {
     position: fixed;
     display: none;
