@@ -12,7 +12,7 @@
         </div>
         {{-- <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div> --}}
-        <div class="swiper-pagination"></div>
+        {{-- <div class="swiper-pagination"></div> --}}
     </div>
     <div class="swiper heroSwiper d-md-none d-block">
         <div class="swiper-wrapper">
@@ -26,14 +26,34 @@
         </div>
         {{-- <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div> --}}
-        <div class="swiper-pagination"></div>
+        {{-- <div class="swiper-pagination"></div> --}}
     </div>
 
     <div class="hero-content-text">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="d-none">{{ $pageSettings->title }}</h1>
+                    <div class="text-center mb-4">
+                        <img src="{{ asset('images/logo3.png') }}" class="img-fluid" alt="">
+                    </div>
+                    <p>
+                        經驗與技術，是我們給您的保證<br>
 
+                        用心與真誠，是我們給您的承諾。<br>
+
+                        在這裡，您就是我們最自豪的鎮館之寶
+                    </p>
+
+                    <div class="hero-line"></div>
+
+                    <a href="javascript:void(0);" class="btn btn-primary btn-lg hero-btn-reservation">預約諮詢</a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="overlay-hero-bottom"></div>
+    {{-- <div class="overlay-hero-bottom"></div> --}}
 
 </div>
 <!-- slider_area_end -->
@@ -43,7 +63,7 @@
 @push('custom_css')
     <style>
         .slider_area{
-            height: 80vh;
+            height: 100vh;
         }
         .heroSwiper {
             width: 100%;
@@ -87,9 +107,41 @@
             object-position: center;
         }
 
+        .hero-line {
+            width: 100%;
+            height: 3px;
+            background-color: white;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .hero-btn-reservation {
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .hero-content-text {
+            width: 50vw;
+            position: absolute;
+            z-index: 3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content-text img {
+            width: 45% !important;
+        }
+
+        .hero-content-text p {
+            line-height: 2.5rem !important;
+        }
+
         @media (max-width: 768px) {
             .slider_area{
-                height: 80vh;
+                height: 100vh;
             }
             .heroSwiper {
                 height: 100%;
@@ -98,6 +150,17 @@
             /* .heroSwiper .swiper-button-next, .heroSwiper .swiper-button-prev {
                 display: none;
             } */
+
+            .hero-content-text {
+                width: 100vw;
+            }
+            .hero-content-text img {
+                width: 45% !important;
+            }
+
+            .hero-content-text p {
+                line-height: 1.5rem !important;
+            }
         }
     </style>
 @endpush
@@ -109,7 +172,7 @@
         var swiper = new Swiper(".heroSwiper", {
             loop: true,
             autoplay: true,
-            speed: 2500,
+            speed: 3000,
             autoheight: true,
             centeredSlides: true,
             slidesPerView: 1,
@@ -119,10 +182,10 @@
             //     nextEl: ".swiper-button-next",
             //     prevEl: ".swiper-button-prev",
             // },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
+            // pagination: {
+            //     el: ".swiper-pagination",
+            //     clickable: true,
+            // },
         });
     </script>
 @endpush
