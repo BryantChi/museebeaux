@@ -5,7 +5,11 @@
     <div class="overlay2 sub-hero-overlay"></div>
 
     <div class="container text-center py-5 position-absolute top-50 start-50 translate-middle z-3">
+        @if (($seoBradcamTitleType ?? 'h1') == 'h1')
+        <h1 class="display-62 h3 text-primary mb-4 animated slideInDown">{!! $bradcam_title !!}</h1>
+        @else
         <h2 class="display-62 h3 text-primary mb-4 animated slideInDown">{!! $bradcam_title !!}</h2>
+        @endif
         <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>

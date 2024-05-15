@@ -1,7 +1,7 @@
 @extends('layouts_main.master')
 
 @section('content')
-    @include('layouts_main.sub_hero', ['bradcam_title' => '聯絡資訊 / <br class="d-block d-md-none">Contact Us', 'bradcam' => 'contact'])
+    @include('layouts_main.sub_hero', ['bradcam_title' => '聯絡資訊 / <br class="d-block d-md-none">Contact Us', 'bradcam' => 'Contact'])
 
     <!-- Contact Start -->
     <div class="container-xxl contact py-5">

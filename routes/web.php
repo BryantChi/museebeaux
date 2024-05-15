@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +22,15 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
+// Route::get('/teams', [TeamsController::class, 'index'])->name('teams');
+Route::get('/blog/{type?}', [PostsController::class, 'blog'])->name('blog');
+Route::get('/blog/{type}/{slug}', [PostsController::class, 'blogShow'])->name('blog.show');
+Route::get('/case', [PostsController::class, 'case'])->name('case');
+Route::get('/case/{slug}', [PostsController::class, 'caseShow'])->name('case.show');
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/services', [ServicesController::class, 'index'])->name('services');
+Route::get('/services/{type?}', [ServicesController::class, 'services'])->name('services.items');
+Route::get('/services/{type}/{slug}', [ServicesController::class, 'servicesShow'])->name('services.items.show');
 
 Route::any('/clear-cache', function () {
     \Artisan::call('optimize:clear');
