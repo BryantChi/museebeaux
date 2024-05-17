@@ -85,6 +85,10 @@
 @endsection
 @push('third_party_css')
     <style>
+        .blog_details .contents * {
+            all: unset;
+            all: revert;
+        }
         .blog_details img {
             max-width: 100% !important;
         }
@@ -94,14 +98,14 @@
             height: 25rem;
         }
 
-        .blog_details .contents ul {
+        /* .blog_details .contents ul {
             list-style: disc !important;
             padding-left: 30px !important;
         }
 
         .blog_details .contents ul li {
             list-style: disc !important;
-        }
+        } */
 
         @media (max-width: 768px) {
             .blog_details img {
