@@ -1,7 +1,7 @@
 @extends('layouts_main.master')
 
 @section('content')
-    @include('layouts_main.sub_hero_h2', ['bradcam_title' => '美麗見證 / Case', 'bradcam' => 'Case', 'seoBradcamTitleType' => 'h2'])
+    @include('layouts_main.sub_hero', ['bradcam_title' => '美麗見證 / Case', 'bradcam' => 'Case', 'seoBradcamTitleType' => 'h2'])
 
     <section class="blog_area single-post-area section-padding">
         <div class="container">
