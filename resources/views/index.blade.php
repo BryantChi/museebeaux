@@ -5,68 +5,14 @@
     @include('layouts_main.hero')
     <!-- Carousel End -->
 
-
-    <!-- About Start -->
-    <div class="container-xxl py-5" id="about">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6">
-                    <div class="row g-3">
-                        <div class="col-6 text-end">
-                            <img class="img-fluid about-img bg-white w-100 mb-3 wow fadeIn" data-wow-delay="0.1s"
-                                src="{{ asset('images/about/brand1.jpg') }}" alt="">
-                            <img class="img-fluid about-img2 bg-white w-50 wow fadeIn" data-wow-delay="0.2s"
-                                src="{{ asset('images/about/brand3.jpg') }}" alt="">
-                        </div>
-                        <div class="col-6">
-                            <img class="img-fluid about-img2 bg-white w-50 mb-3 wow fadeIn" data-wow-delay="0.3s"
-                                src="{{ asset('images/about/brand4.jpg') }}" alt="">
-                            <img class="img-fluid about-img bg-white w-100 wow fadeIn" data-wow-delay="0.4s"
-                                src="{{ asset('images/about/brand2.jpg') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                    <div class="section-title">
-                        <p class="fs-5 fw-medium fst-italic text-primary">About Us</p>
-                        <h3 class="display-6">品牌理念</h3>
-                    </div>
-                    <div class="row g-3 mb-4">
-                        <div class="col-sm-4">
-                            <img class="img-fluid bg-white w-100" src="{{ asset('images/about/brand5.jpg') }}"
-                                alt="">
-                        </div>
-                        <div class="col-sm-8">
-                            <h5>Our tea is one of the most popular drinks in the world</h5>
-                            <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                                diam et eos. Clita erat ipsum et lorem et sit</p>
-                        </div>
-                    </div>
-                    <div class="border-top mb-4"></div>
-                    <div class="row g-3">
-                        <div class="col-sm-8">
-                            <h5>Daily use of a cup of tea is good for your health</h5>
-                            <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet
-                                diam et eos. Clita erat ipsum et lorem et sit</p>
-                        </div>
-                        <div class="col-sm-4">
-                            <img class="img-fluid bg-white w-100" src="{{ asset('images/about/brand6.jpg') }}"
-                                alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
+    @include('about')
 
     <!-- Services Start -->
     <div class="container-fluid services py-5 mt-5">
         <div class="container py-5">
             <div class="section-title2 text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-medium fst-italic text-white-50">Services</p>
-                <h3 class="display-6 text-white">療程介紹</h3>
+                <h3 class="display-62 text-white">療程介紹</h3>
             </div>
             <div class="owl-carousel product-carousel wow fadeInUp" data-wow-delay="0.5s">
                 <a href="javascript:void(0)" class="d-block service-item rounded">
@@ -131,7 +77,7 @@
             <div class="row g-0">
                 <div class="col-lg-6 py-5">
                     <div class="py-5">
-                        <h3 class="display-7 h2 mb-4 text-white wow fadeIn" data-wow-delay="0.1s">資訊分享</h3>
+                        <h3 class="display-72 mb-4 text-white wow fadeIn" data-wow-delay="0.1s">資訊分享</h3>
                         <h5 class="fw-normal lh-base fst-italic text-white mb-5 wow fadeIn" data-wow-delay="0.3s">臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰
                             詹東峻 斯棋 Angela 亞梅</h5>
                         <a class="btn btn-light rounded-pill py-3 px-5 wow zoomInUp" data-wow-delay="0.5s" href="">Explore More</a>
@@ -156,7 +102,7 @@
         <div class="modal-dialog">
             <div class="modal-content rounded">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰 詹東峻 斯棋 Angela
+                    <h3 class="modal-title h5" id="exampleModalLabel">臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰 詹東峻 斯棋 Angela
                         亞梅</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -179,7 +125,7 @@
         <div class="ev-title">
             <div class="section-title2 text-start mr-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-medium fst-italic text-white-50">Environment</p>
-                <h3 class="display-6 text-white">環境介紹</h3>
+                <h3 class="display-62 text-white">環境介紹</h3>
             </div>
         </div>
         <div class="swiper evSwiper wow fadeIn" data-wow-delay="0.5s">
@@ -204,6 +150,15 @@
 
 @push('custom_css')
     <style>
+        h2 {
+            font-size: 2.3rem !important;
+        }
+        h3 {
+            font-size: 1.8rem !important;
+        }
+        span, p {
+            font-size: 0.9rem !important;
+        }
         .ev {
             height: 56vh;
         }

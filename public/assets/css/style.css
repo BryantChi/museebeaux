@@ -1,9 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Noto Sans TC");
 /********** Template CSS **********/
 :root {
     --primary: #8e6f65;
     --secondary: #FB9F38;
     --light: #F5F8F2;
     --dark: #252C30;
+}
+
+body * {
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif !important;
 }
 
 a {
@@ -573,7 +578,8 @@ a:hover {
 /*** Footer ***/
 .footer {
     color: var(--light);
-    background-color: #D4AD90;
+    /* background-color: #D4AD90; */
+    background-color: #bfa197;
 }
 
 .footer .btn.btn-link {
