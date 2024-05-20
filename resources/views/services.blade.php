@@ -29,7 +29,7 @@
                 <div class="tab-content" id="pills-tabContent">
                     @foreach ($servicesInfo as $i => $service)
                     <div class="tab-pane fade {{ $i == 0 ? 'show active' : '' }}" id="pills-{{ $service->id }}" role="tabpanel" aria-labelledby="pills-{{ $service->id }}-tab">
-                        <div class="row justify-content-center p-0">
+                        <div class="row justify-content-between p-0">
                             <div class="col-lg-5 align-self-center">
                                 <div class="single_dream text-center">
                                     <div class="thumb position-relative px-2">
