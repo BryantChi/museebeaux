@@ -1139,3 +1139,8 @@ a:hover {
         padding-bottom: 0px;
     }
 }
+
+.rounded-top-circle {
+    border-top-left-radius: 50% !important;
+    border-top-right-radius: 50% !important;
+}
