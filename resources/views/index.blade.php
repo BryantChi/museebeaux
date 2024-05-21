@@ -45,7 +45,7 @@
                         <h3 class="display-72 mb-4 text-white wow fadeIn" data-wow-delay="0.1s">資訊分享</h3>
                         <h5 class="fw-normal lh-base fst-italic text-white mb-5 wow fadeIn" data-wow-delay="0.3s">臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰
                             詹東峻 斯棋 Angela 亞梅</h5>
-                        <a class="btn btn-light rounded-pill py-3 px-5 wow zoomInUp" data-wow-delay="0.5s" href="">Explore More</a>
+                        <a class="btn btn-light rounded-pill py-3 px-5 wow zoomInUp" data-wow-delay="0.5s" href="{{ route('blog') }}">Explore More</a>
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">

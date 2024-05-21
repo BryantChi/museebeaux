@@ -46,8 +46,10 @@
                     </p>
 
                     <div class="hero-line"></div>
-
-                    <a href="javascript:void(0);" class="btn btn-primary btn-lg hero-btn-reservation">預約諮詢</a>
+                    @php
+                        $contact = App\Models\Admin\CompanyInfo::first();
+                    @endphp
+                    <a href="{{ $contact->company_line }}" class="btn btn-primary btn-lg hero-btn-reservation">預約諮詢</a>
                 </div>
             </div>
         </div>
