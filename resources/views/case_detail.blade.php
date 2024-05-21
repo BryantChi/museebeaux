@@ -9,7 +9,7 @@
                 <div class="col-lg-12 posts-list">
                     <div class="single-post">
                         <div class="feature-img">
-                            <img class="img-fluid" src="{{ $postInfo->post_front_cover ?? null ? env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $postInfo->post_front_cover : asset('images/about/about-05.jpg') }}" alt="{{ $postInfo->post_front_cover_alt ?? $postInfo->post_title }}" />
+                            <img class="img-fluid" src="{{ $postInfo->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $postInfo->post_front_cover : asset('images/about/about-05.jpg') }}" alt="{{ $postInfo->post_front_cover_alt ?? $postInfo->post_title }}" />
                         </div>
                         <div class="blog_details">
                             <h1>

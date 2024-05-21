@@ -66,7 +66,7 @@
                     <div class="col-xl-4 col-md-4 my-5 serives-items">
                         <div class="single_dream text-center">
                             <div class="thumb position-relative">
-                                <img src="{{ $service->service_cover_front ?? null ? env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $service->service_cover_front : asset('images/services/services-01.webp') }}"
+                                <img src="{{ $service->service_cover_front ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $service->service_cover_front : asset('images/services/services-01.webp') }}"
                                     class="img-fluid w-75 mx-auto img-services"
                                     alt="{{ $service->service_cover_front_alt ?? '尚水美博 - ' . $service->service_name }}">
                                 <div class="imgbg"></div>

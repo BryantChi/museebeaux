@@ -71,11 +71,11 @@
             <input type="text" name="banner_link[]" class="form-control" id="banner_link" value="{{ $pageSettingInfo->banner_link[$i] }}">
             <div class="img-preview mt-2">
                 <p for="">PC</p>
-                <img src="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . $banner }}" style="max-width: 200px; max-height: 200px;">
+                <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . $banner }}" style="max-width: 200px; max-height: 200px;">
             </div>
             <div class="img-preview-mob mt-2">
                 <p for="">Mobile</p>
-                <img src="{{ env('APP_URL', 'https://beauty4u-clinic.com'). '/uploads/' . ($pageSettingInfo->banner_mob[$i] ?? '') }}"
+                <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw'). '/uploads/' . ($pageSettingInfo->banner_mob[$i] ?? '') }}"
                 class="{{ ($pageSettingInfo->banner_mob[$i] ?? '') ? 'd-block' : 'd-none' }}" style="max-width: 200px; max-height: 200px;">
             </div>
 
