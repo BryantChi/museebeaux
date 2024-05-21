@@ -33,7 +33,7 @@
                                     </a>
                                     <p class="multiline-ellipsis">
                                         {{ str_replace(["\r\n", "\r", "\n"], '', strip_tags($post->post_content)) }}</p>
-                                    <ul class="blog-info-link mt-3 mb-4 ml-auto">
+                                    <ul class="blog-info-link mt-3 mb-4 ml-auto list-unstyled">
                                         <li><a href="javascript:void(0)"><i class="fas fa-flag"></i>
                                                 {{ DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $post->post_type)->value('type_name') }}</a>
                                         </li>
@@ -42,8 +42,8 @@
                                         </li>
                                     </ul>
 
-                                    <div class="w-100 text-right">
-                                        <a class="btn btn-purple" href="{{ route('case.show', $post->post_slug) }}">繼續閱讀
+                                    <div class="w-100 text-end">
+                                        <a class="btn text-primary" href="{{ route('case.show', $post->post_slug) }}">繼續閱讀
                                             》</a>
                                     </div>
                                 </div>

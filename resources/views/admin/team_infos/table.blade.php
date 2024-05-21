@@ -10,7 +10,7 @@
                 <th>學歷</th>
                 <th>經歷/資格</th>
                 <th>專長</th>
-                <th>證照/資格</th>
+                {{-- <th>證照/資格</th> --}}
                 <th colspan="3">操作</th>
             </tr>
         </thead>
@@ -54,13 +54,13 @@
                             @endforeach
                         </ul>
                     </td>
-                    <td>
+                    {{-- <td>
                         <ul class="{{ count($teamInfo->certificate_license ?? []) == 0 ? 'd-none' : '' }}">
                             @foreach ($teamInfo->certificate_license ?? [] as $certificate_license)
                                 <li>{{ $certificate_license }}</li>
                             @endforeach
                         </ul>
-                    </td>
+                    </td> --}}
                     <td width="120">
                         {!! Form::open(['route' => ['admin.teamInfos.destroy', $teamInfo->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

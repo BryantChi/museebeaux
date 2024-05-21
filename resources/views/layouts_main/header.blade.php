@@ -13,14 +13,14 @@
                 <div class="navbar-nav ms-auto" id="navigation">
                     <a href="{{ route('index') }}#about"
                         class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }} scrollto">品牌理念</a>
-                    {{-- <a href="javascript:void(0)" onclick="building();" class="nav-item nav-link">醫療團隊</a> --}}
-                    <div class="nav-item dropdown">
+                    <a href="{{ route('teams') }}" class="nav-item nav-link {{ Request::is('teams*') ? 'active' : '' }}">醫療團隊</a>
+                    {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">醫療團隊</a>
                         <div class="dropdown-menu bg-light rounded-0 m-0">
                             <a href="javascript:void(0)" onclick="building();" class="dropdown-item">Ａ醫療團隊</a>
                             <a href="javascript:void(0)" onclick="building();" class="dropdown-item">Ｂ醫療團隊</a>
                         </div>
-                    </div>
+                    </div> --}}
                     <a href="{{ route('services') }}" class="nav-item nav-link {{ Request::is('services*') ? 'active' : '' }}">療程介紹</a>
                     <a href="{{ route('case') }}" class="nav-item nav-link {{ Request::is('case*') ? 'active' : '' }}">美麗見證</a>
                     <a href="{{ route('blog') }}" class="nav-item nav-link {{ Request::is('blog*') ? 'active' : '' }}">醫師專欄</a>

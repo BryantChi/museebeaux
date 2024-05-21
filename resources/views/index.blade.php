@@ -7,6 +7,9 @@
 
     @include('about')
 
+    @php
+        $services = \App\Models\Admin\ServicesInfo::all();
+    @endphp
     <!-- Services Start -->
     <div class="container-fluid services py-5 mt-5">
         <div class="container py-5">
@@ -15,56 +18,18 @@
                 <h3 class="display-62 text-white">療程介紹</h3>
             </div>
             <div class="owl-carousel product-carousel wow fadeInUp" data-wow-delay="0.5s">
-                <a href="javascript:void(0)" class="d-block service-item rounded">
+                @foreach ($services as $service)
+                <a href="{{ route('services.items', DB::table('post_type_infos')->whereNull('deleted_at')->where('type_name', 'like', '%' . $service->service_name . '%')->value('type_slug')) }}" class="d-block service-item rounded">
                     <div class="">
-                        <img src="{{ asset('images/service/service1.png') }}" class="img-fluid service-img-icon mx-auto"
-                            alt="">
+                        <img src="{{ $service->service_icon }}" class="img-fluid service-img-icon mx-auto"
+                            alt="{{ $service->service_icon_alt ?? '尚水美博 - ' . $service->service_name }}">
                     </div>
                     <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
-                        <h4 class="text-white">眼部精緻</h4>
-                        <span class="text-light mt-3">藉由雙眼皮再造，眼袋移除，淚溝填補，提眼瞼肌拉提，讓容易洩漏實際年齡的眼周重新回到年輕自然的狀態。</span>
+                        <h4 class="text-white">{{ $service->service_name }}</h4>
+                        <span class="text-light mt-3">{{ $service->service_description }}</span>
                     </div>
                 </a>
-                <a href="javascript:void(0)" class="d-block service-item rounded">
-                    <div class="">
-                        <img src="{{ asset('images/service/service2.png') }}" class="img-fluid service-img-icon mx-auto"
-                            alt="">
-                    </div>
-                    <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
-                        <h4 class="text-white">緊緻拉提</h4>
-                        <span class="text-light mt-3">完美雕塑俐落輪廓，不讓給隨著時間流逝，有趕緊至拉提，堅守青春無痕。</span>
-                    </div>
-                </a>
-                <a href="javascript:void(0)" class="d-block service-item rounded">
-                    <div class="">
-                        <img src="{{ asset('images/service/service3.png') }}" class="img-fluid service-img-icon mx-auto"
-                            alt="">
-                    </div>
-                    <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
-                        <h4 class="text-white">再造美顏</h4>
-                        <span class="text-light mt-3">藉由醫師評估，用專業的增減法，重塑臉部輪廓及肌膚狀態，用細微的改變，無限放大屬於您自己的美麗。</span>
-                    </div>
-                </a>
-                <a href="javascript:void(0)" class="d-block service-item rounded">
-                    <div class="">
-                        <img src="{{ asset('images/service/service4.png') }}" class="img-fluid service-img-icon mx-auto"
-                            alt="">
-                    </div>
-                    <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
-                        <h4 class="text-white">肌膚管理</h4>
-                        <span class="text-light mt-3">專業醫師親診，搭配專業儀器診療及美容護膚療程，打造屬於自己的肌膚管理療程，讓肌膚停在完美的狀態。</span>
-                    </div>
-                </a>
-                <a href="javascript:void(0)" class="d-block service-item rounded border-left">
-                    <div class="">
-                        <img src="{{ asset('images/service/service5.png') }}" class="img-fluid service-img-icon mx-auto"
-                            alt="">
-                    </div>
-                    <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
-                        <h4 class="text-white">體態雕塑</h4>
-                        <span class="text-light mt-3">針對體態給予全面治療，找到對的方式優雅塑身，重拾緊實有致，成就對曲線的完美想像。</span>
-                    </div>
-                </a>
+                @endforeach
             </div>
         </div>
     </div>
@@ -102,7 +67,7 @@
         <div class="modal-dialog">
             <div class="modal-content rounded">
                 <div class="modal-header">
-                    <h3 class="modal-title h5" id="exampleModalLabel">臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰 詹東峻 斯棋 Angela
+                    <h3 class="modal-title h6" id="exampleModalLabel">臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰 詹東峻 斯棋 Angela
                         亞梅</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

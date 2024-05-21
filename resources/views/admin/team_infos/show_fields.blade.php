@@ -91,14 +91,14 @@
 </div>
 
 <!-- Certificate License Field -->
-<div class="col-sm-12">
+{{-- <div class="col-sm-12">
     {!! Form::label('certificate_license', '證照/資格:') !!}
     <ul>
         @foreach ($teamInfo->certificate_license ?? [] as $certificate_license)
             <li>{{ $certificate_license }}</li>
         @endforeach
     </ul>
-</div>
+</div> --}}
 
 <!-- Created At Field -->
 <div class="col-sm-12">

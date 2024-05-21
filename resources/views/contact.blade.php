@@ -10,36 +10,58 @@
                 <p class="fs-5 fw-medium fst-italic text-primary">Contact Us</p>
                 <h1 class="display-6">聯絡資訊</h1>
             </div>
-            <div class="row g-5 mb-5">
-                <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="btn-square mx-auto mb-3">
-                        <i class="fa fa-envelope fa-2x text-white"></i>
-                    </div>
-                    <p class="mb-2">info@example.com</p>
-                    <p class="mb-0">support@example.com</p>
-                </div>
-                <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.4s">
-                    <div class="btn-square mx-auto mb-3">
-                        <i class="fa fa-phone fa-2x text-white"></i>
-                    </div>
-                    <p class="mb-2">+012 345 67890</p>
-                    <p class="mb-0">+012 345 67890</p>
-                </div>
+            <div class="row g-5 mb-5 justify-content-center">
                 <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.5s">
+                    <a href="{{ $companyInfo->company_map_url }}">
                     <div class="btn-square mx-auto mb-3">
                         <i class="fa fa-map-marker-alt fa-2x text-white"></i>
                     </div>
-                    <p class="mb-2"><a href="https://maps.app.goo.gl/B7Ur51ZfviEWsW2N8">新北市板橋區文化路一段145號3樓</a></p>
+                    </a>
+                    <p class="mb-2"><a href="{{ $companyInfo->company_map_url }}">{{ $companyInfo->company_address }}</a></p>
+                    <p class="mb-0"></p>
+                </div>
+                <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.4s">
+                    <a href="tel:{{ $companyInfo->company_phone }}">
+                    <div class="btn-square mx-auto mb-3">
+                        <i class="fa fa-phone fa-2x text-white"></i>
+                    </div>
+                    </a>
+                    <p class="mb-2"><a href="tel:{{ $companyInfo->company_phone }}">{{ $companyInfo->company_phone }}</a></p>
+                    <p class="mb-0"></p>
+                </div>
+                <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.3s">
+                    <a href="{{ $companyInfo->company_facebook }}" target="_blank">
+                    <div class="btn-square mx-auto mb-3">
+                        <i class="fab fa-facebook-f fa-2x text-white"></i>
+                    </div>
+                    </a>
+                    <p class="mb-2"><a href="{{ $companyInfo->company_facebook }}" target="_blank">{{ $companyInfo->company_name }}</a></p>
+                    <p class="mb-0"></p>
+                </div>
+                <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.3s">
+                    <a href="{{ $companyInfo->company_instagram }}" target="_blank">
+                    <div class="btn-square mx-auto mb-3">
+                        <i class="fab fa-instagram fa-2x text-white"></i>
+                    </div>
+                    </a>
+                    <p class="mb-2"><a href="{{ $companyInfo->company_instagram }}" target="_blank">{{ $companyInfo->company_name }}</a></p>
+                    <p class="mb-0"></p>
+                </div>
+                <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="0.3s">
+                    <a href="{{ $companyInfo->company_line }}" target="_blank">
+                    <div class="btn-square mx-auto mb-3">
+                        <i class="fab fa-line fa-2x text-white"></i>
+                    </div>
+                    </a>
+                    <p class="mb-2"><a href="{{ $companyInfo->company_line }}" target="_blank">{{ $companyInfo->company_name }}</a></p>
                     <p class="mb-0"></p>
                 </div>
             </div>
             <div class="row g-5 justify-content-center">
                 <div class="col-lg-10 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="h-100">
-                        <iframe class="w-100 rounded"
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14462.153833340966!2d121.462314!3d25.0157944!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9efc216ff6b%3A0xd0020ca776b7ac6d!2z5bCa5rC0576O5Y2aIE11c8OpZUJlYXV4Q2xpbmlj!5e0!3m2!1szh-TW!2stw!4v1715527444225!5m2!1szh-TW!2stw"
-                            frameborder="0" style="height: 100%; min-height: 300px; border:0;" allowfullscreen=""
-                            aria-hidden="false" tabindex="0"></iframe>
+                    <div id="map" style="height: 400px; position: relative; overflow: hidden;">
+
+                        {!! $companyInfo->company_map_iframe !!}
                     </div>
                 </div>
             </div>
@@ -47,3 +69,37 @@
     </div>
     <!-- Contact End -->
 @endsection
+
+@push('custom_css')
+    <style>
+        /* .contact_area {
+            background-image: url("../../images/about/about-bg2.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        } */
+
+        #map iframe {
+            border: 0;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .media-body a:hover {
+            color: #bfa197 !important;
+        }
+
+        .media-body p {
+            margin-bottom: 0 !important;
+        }
+
+        @media (max-width: 767px) {
+            /* .contact_area {
+                background-image: url("../../images/about/about-bg-mob2.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+            } */
+        }
+    </style>
+@endpush

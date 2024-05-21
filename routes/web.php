@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\TeamsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
-// Route::get('/teams', [TeamsController::class, 'index'])->name('teams');
+Route::get('/teams', [TeamsController::class, 'index'])->name('teams');
 Route::get('/blog/{type?}', [PostsController::class, 'blog'])->name('blog');
 Route::get('/blog/{type}/{slug}', [PostsController::class, 'blogShow'])->name('blog.show');
 Route::get('/case', [PostsController::class, 'case'])->name('case');

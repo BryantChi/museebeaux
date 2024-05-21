@@ -35,7 +35,7 @@
                                     <div class="thumb position-relative px-2">
                                         <img src="{{ $service->service_cover_front ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $service->service_cover_front : asset('images/services/services-01.webp') }}"
                                             class="img-fluid w-75 mx-auto img-services rounded-top-circle"
-                                            alt="{{ $service->service_cover_front_alt ?? '美美上美 - ' . $service->service_name }}">
+                                            alt="{{ $service->service_cover_front_alt ?? '尚水美博 - ' . $service->service_name }}">
                                         <div class="imgbg"></div>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                             <div class="thumb position-relative">
                                 <img src="{{ $service->service_cover_front ?? null ? env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $service->service_cover_front : asset('images/services/services-01.webp') }}"
                                     class="img-fluid w-75 mx-auto img-services"
-                                    alt="{{ $service->service_cover_front_alt ?? '美美上美 - ' . $service->service_name }}">
+                                    alt="{{ $service->service_cover_front_alt ?? '尚水美博 - ' . $service->service_name }}">
                                 <div class="imgbg"></div>
                             </div>
                             <h2>{{ $service->service_name }}</h2>

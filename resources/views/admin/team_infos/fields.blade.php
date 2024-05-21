@@ -200,15 +200,15 @@
 </div> --}}
 
 <!-- Certificate License Photos Field -->
-<div class="form-group col-sm-6 d-none">
+{{-- <div class="form-group col-sm-6 d-none">
     {!! Form::label('certificate_license_photos', '證照/資格照片:') !!}
 
     <div class="custom-file">
-        {{-- {!! Form::file('certificate_license_photos', null, ['class' => 'custom-file-input', 'required' => true, 'accept' => 'image/*', 'multiple' => true]) !!} --}}
+        {!! Form::file('certificate_license_photos', null, ['class' => 'custom-file-input', 'required' => true, 'accept' => 'image/*', 'multiple' => true]) !!}
         <input type="file" class="custom-file-input" id="certificate_license_photos" name="certificate_license_photos" accept="image/*" multiple>
         <label class="custom-file-label" for="certificate_license_photos">Choose Image</label>
     </div>
-</div>
+</div> --}}
 @push('third_party_scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"
         integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ=="
@@ -246,14 +246,14 @@
                     '</div>'
                 );
             });
-            $("#addCertificateLicenseBtn").click(function() {
-                $(this).parent().parent().find(".dynamicField").append(
-                    '<div class="input-group mb-3">' +
-                    '<input type="text" name="certificate_license[]" class="form-control" id="certificate_license" placeholder="請輸入證照/資格" required>' +
-                    '<span class="btn btn-danger removeButton d-flex ml-auto align-items-center" style="width: max-content;"><i class="fas fa-minus"></i></span>' +
-                    '</div>'
-                );
-            });
+            // $("#addCertificateLicenseBtn").click(function() {
+            //     $(this).parent().parent().find(".dynamicField").append(
+            //         '<div class="input-group mb-3">' +
+            //         '<input type="text" name="certificate_license[]" class="form-control" id="certificate_license" placeholder="請輸入證照/資格" required>' +
+            //         '<span class="btn btn-danger removeButton d-flex ml-auto align-items-center" style="width: max-content;"><i class="fas fa-minus"></i></span>' +
+            //         '</div>'
+            //     );
+            // });
 
             $('.dynamicField').on('click', '.removeButton', function () {
                 $(this).parent('div').remove();
