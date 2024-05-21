@@ -51,8 +51,7 @@
                 <div class="border-top mb-4"></div>
                 <div class="row g-3">
                     <div class="col-sm-4 align-self-center">
-                        <img class="img-fluid bg-white w-100" src="{{ asset('images/ev/img_1.jpg') }}"
-                            style="width: 100%; height: 8rem;object-fit: cover;object-position: center;"
+                        <img class="img-fluid bg-white w-100 about-img3" src="{{ asset('images/ev/img_1.jpg') }}"
                             alt="">
                     </div>
                     <div class="col-sm-8">
