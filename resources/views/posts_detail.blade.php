@@ -118,6 +118,7 @@
             .ct_fixed {
                 position: fixed;
                 width: inherit;
+                max-width: 23rem;
                 max-height: 450px;
                 overflow-y: scroll;
                 scrollbar-width: none;

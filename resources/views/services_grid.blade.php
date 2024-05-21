@@ -152,6 +152,7 @@
             .ct_fixed {
                 position: fixed;
                 width: inherit;
+                max-width: 23rem;
                 max-height: 450px;
                 overflow-y: scroll;
                 scrollbar-width: none;
@@ -169,7 +170,7 @@
 
             $(window).on('scroll', function() {
                 var scrollPosition = $(window).scrollTop();
-                var targetOffsetTop = $('.posts-list').offset().top + 300;
+                var targetOffsetTop = $('.blog_left_sidebar').offset().top + 300;
 
                 if (scrollPosition >= targetOffsetTop) {
                     $('.blog_right_sidebar').addClass('ct_fixed');
