@@ -130,7 +130,7 @@ a:hover {
     margin-right: 35px;
     padding: 25px 0;
     color: var(--dark);
-    font-weight: 600;
+    /* font-weight: 600; */
     text-transform: uppercase;
     outline: none;
 }
