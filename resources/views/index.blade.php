@@ -94,10 +94,10 @@
         </div>
         <div class="swiper evSwiper wow fadeIn" data-wow-delay="0.5s">
             <div class="swiper-wrapper">
-                @for ($i = 2; $i <= 9; $i++)
+                @for ($i = 1; $i <= 11; $i++)
                 <div class="swiper-slide">
-                    <a href="{{ asset('images/ev/img_'.$i.'.jpg') }}" class="w-100 h-100" data-fancybox="_ev">
-                        <img data-src="{{ asset('images/ev/img_'.$i.'.jpg') }}" src="{{ asset('images/ev/img_'.$i.'.jpg') }}" class="img-fluid hero-img lazy" style="background-color: #cecece;" alt="{{ $pageSettings->title ?? '' }}">
+                    <a href="{{ asset('images/ev/new/img_'.$i.'.jpg') }}" class="w-100 h-100" data-fancybox="_ev">
+                        <img data-src="{{ asset('images/ev/new/img_'.$i.'.jpg') }}" src="{{ asset('images/ev/new/img_'.$i.'.jpg') }}" class="img-fluid hero-img lazy" style="background-color: #cecece;" alt="{{ $pageSettings->title ?? '' }}">
                     </a>
                 </div>
                 @endfor
