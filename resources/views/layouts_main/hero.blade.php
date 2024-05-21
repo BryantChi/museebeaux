@@ -5,7 +5,7 @@
             @foreach ($pageSettings->banner as $i => $banner)
             <div class="swiper-slide">
                 <a href="{{ ($pageSettings->banner_link[$i] ?? '-') == '-' ? 'javascript:void(0);' : $pageSettings->banner_link[$i] }}" class="w-100 h-100">
-                    <img src="{{ env('APP_URLs', 'http://museebeaux.powerchi.com.tw') . '/uploads/' . $banner }}" class="img-fluid hero-img" style="background-color: #cecece;" alt="{{ $pageSettings->banner_alt[$i] ?? '' }}">
+                    <img data-src="{{ env('APP_URLs', 'http://museebeaux.powerchi.com.tw') . '/uploads/' . $banner }}" class="img-fluid hero-img lazy" style="background-color: #cecece;" alt="{{ $pageSettings->banner_alt[$i] ?? '' }}">
                 </a>
             </div>
             @endforeach
@@ -19,7 +19,7 @@
             @foreach ($pageSettings->banner_mob ?? $pageSettings->banner as $i => $banner)
             <div class="swiper-slide">
                 <a href="{{ ($pageSettings->banner_link[$i] ?? '-') == '-' ? 'javascript:void(0);' : $pageSettings->banner_link[$i] }}" class="w-100 h-100">
-                    <img src="{{ env('APP_URLs', 'http://museebeaux.powerchi.com.tw') . '/uploads/' . $banner }}" class="img-fluid hero-img" style="background-color: #cecece;" alt="{{ $pageSettings->banner_alt[$i] ?? '' }}">
+                    <img data-src="{{ env('APP_URLs', 'http://museebeaux.powerchi.com.tw') . '/uploads/' . $banner }}" class="img-fluid hero-img lazy" style="background-color: #cecece;" alt="{{ $pageSettings->banner_alt[$i] ?? '' }}">
                 </a>
             </div>
             @endforeach
@@ -35,7 +35,7 @@
                 <div class="col-lg-8">
                     <h1 class="d-none">{{ $pageSettings->title }}</h1>
                     <div class="text-center mb-4">
-                        <img src="{{ asset('images/logo3.png') }}" class="img-fluid" alt="">
+                        <img data-src="{{ asset('images/logo3.png') }}" class="img-fluid lazy" alt="">
                     </div>
                     <p>
                         經驗與技術，是我們給您的保證<br>

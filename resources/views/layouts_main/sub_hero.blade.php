@@ -1,7 +1,7 @@
 <!-- Page Header Start -->
 <div class="container-fluid page-header px-0 mb-5 wow fadeIn position-relative" data-wow-delay="0.1s">
-    <img src="{{ $pageSettings->banner == '' ? asset('images/hero-sub-default.jpg') : $pageSettings->banner }}" class="img-fluid d-none d-md-block sub-hero-img" alt="{{ $pageSettings->banner_alt ?? '' }}">
-    <img src="{{ $pageSettings->banner_mob == '' ? asset('images/hero-sub-default.jpg') : $pageSettings->banner_mob }}" class="img-fluid d-block d-md-none sub-hero-img" alt="{{ $pageSettings->banner_alt_mob ?? '' }}">
+    <img data-src="{{ $pageSettings->banner == '' ? asset('images/hero-sub-default.jpg') : $pageSettings->banner }}" class="img-fluid d-none d-md-block sub-hero-img lazy" alt="{{ $pageSettings->banner_alt ?? '' }}">
+    <img data-src="{{ $pageSettings->banner_mob == '' ? asset('images/hero-sub-default.jpg') : $pageSettings->banner_mob }}" class="img-fluid d-block d-md-none sub-hero-img lazy" alt="{{ $pageSettings->banner_alt_mob ?? '' }}">
     <div class="overlay2 sub-hero-overlay"></div>
 
     <div class="container text-center py-5 position-absolute top-50 start-50 translate-middle z-3">
