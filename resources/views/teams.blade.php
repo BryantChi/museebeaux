@@ -5,7 +5,7 @@
 
     <div class="team_area py-5">
 
-        <div class="container-fluid">
+        <div class="container">
 
             <div class="row my-5 pb-5 justify-content-center">
                 <ul class="nav nav-pills mb-3 mx-auto px-3 text-center" style="width: max-content;" id="pills-tab" role="tablist">
@@ -22,19 +22,19 @@
                 <div class="tab-content" id="pills-tabContent">
                     @foreach ($teamsInfo as $i => $team)
                     <div class="tab-pane fade {{ $i == 0 ? 'show active' : '' }}" id="pills-{{ $team->id }}" role="tabpanel" aria-labelledby="pills-{{ $team->id }}-tab">
-                        <div class="row justify-content-center p-0 m-0">
+                        <div class="row justify-content-around p-0 m-0 g-0">
                             <div class="col-xl-3 col-md-6 col-lg-3  mb-5">
                                 {{-- {{ ($i % 2) == 0 ? '' : 'order-md-2 order-1' }} --}}
-                                <div class="single_team text-center">
-                                    <div class="team_thumb"
+                                <div class="single_team text-center position-relative">
+                                    <div class="team_thumb position-relative z-2"
                                         style="background-color: #9b745700;box-shadow: 0px 0px 30px rgba(0, 0, 0, 0);opacity: 1;border-radius: 10rem;">
-                                        <img src="{{ env('APP_URL') . '/uploads/' . $team->headshots }}" class="img-fluid w-d-75"
+                                        <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $team->headshots }}" class="img-fluid w-d-75"
                                             alt="{{ $team->headshots_alt }}">
                                     </div>
-
+                                    <div class="position-absolute w-100 h-100 bg-brown z-1" style="top: -30px;left: -30px;opacity: 0.35;"></div>
                                 </div>
                             </div>
-                            <div class="col-xl-8 col-md-6 col-lg-8 team_content mb-5">
+                            <div class="col-xl-8 col-md-6 col-lg-8 team_content mb-5 px-md-0 mx-md-0">
                                 {{-- {{ ($i % 2) == 0 ? '' : 'order-md-1 order-2' }} --}}
                                 <div class="mb-4">
                                     <div class="team_title d-flex align-items-end">
@@ -47,7 +47,7 @@
                                     <p class="text-justify">{{ $team->introduce }}</p>
                                 </div>
 
-                                <div class="row">
+                                <div class="row g-2">
                                     <div class="col-lg-4 mb-3 {{ count($team->degree ?? []) == 0 || count($team->degree ?? []) == null ? 'd-none' : '' }}">
                                         <h4 class="mb-3 text-primary">學歷</h4>
                                         <ul class="list-unstyled">
