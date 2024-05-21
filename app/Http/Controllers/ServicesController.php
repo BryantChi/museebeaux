@@ -25,9 +25,9 @@ class ServicesController extends Controller
         $typeSlug = $type;
         $postType = PostTypeInfo::where(function($query) {
             $query->whereNotNull('type_parent_id')
-                ->whereIn('type_parent_id',[13]);
+                ->whereIn('type_parent_id',[4]);
         })->orWhere(function($query) {
-            $query->whereIn('id', [13]);
+            $query->whereIn('id', [4]);
         });
 
         if ($type == null) {
@@ -82,9 +82,9 @@ class ServicesController extends Controller
 
         $postType = PostTypeInfo::where(function($query) {
             $query->whereNotNull('type_parent_id')
-                ->whereIn('type_parent_id',[13]);
+                ->whereIn('type_parent_id',[4]);
         })->orWhere(function($query) {
-            $query->whereIn('id', [13]);
+            $query->whereIn('id', [4]);
         });
 
         $typeInfo = array();

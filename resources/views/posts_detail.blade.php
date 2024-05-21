@@ -114,6 +114,18 @@
             list-style: disc !important;
         } */
 
+        @media (min-width: 768px) {
+            .ct_fixed {
+                position: fixed;
+                width: inherit;
+                max-height: 450px;
+                overflow-y: scroll;
+                scrollbar-width: none;
+                top: 100px !important;
+            }
+
+        }
+
         @media (max-width: 768px) {
             .blog_details img {
                 max-width: 100% !important;
@@ -126,4 +138,23 @@
             }
         }
     </style>
+@endpush
+@push('custom_scripts')
+    <script>
+        $(function() {
+
+            $(window).on('scroll', function() {
+                var scrollPosition = $(window).scrollTop();
+                var targetOffsetTop = $('.posts-list').offset().top + 300;
+
+                if (scrollPosition >= targetOffsetTop) {
+                    $('.blog_right_sidebar').addClass('ct_fixed');
+                } else {
+                    $('.blog_right_sidebar').removeClass('ct_fixed');
+                }
+            })
+
+
+        })
+    </script>
 @endpush
