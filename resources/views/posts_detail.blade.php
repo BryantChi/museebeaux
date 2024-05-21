@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 position-sticky">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget post_category_widget">
                             <div class="widget_title">Category</div>

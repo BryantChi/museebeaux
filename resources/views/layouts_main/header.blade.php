@@ -1,7 +1,7 @@
 <!-- Navbar Start -->
 <div class="container-fluid bg-white sticky-top" id="sticky-header">
     <div class="container">
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
+        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
             <a href="{{ route('index') }}" class="navbar-brand">
                 <img class="img-fluid mt-2" src="{{ asset('images/logo_full.png') }}" alt="Logo">
             </a>

@@ -161,7 +161,7 @@ a:hover {
     }
 
     .navbar .navbar-nav {
-        margin-top: 35px;
+        margin-top: 23px;
         border-top: 1px solid #EEEEEE;
     }
 }
@@ -1221,4 +1221,8 @@ a:hover {
         object-fit: cover;
         object-position: center;
     }
+}
+
+.footer h2 {
+    font-size: 1.5rem !important;
 }

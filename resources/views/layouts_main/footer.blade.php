@@ -5,19 +5,12 @@
 <!-- Footer Start -->
 <div class="container-fluid footer py-md-3 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
-        <div class="row g-5">
+        <div class="row g-5 justify-content-around">
             <div class="col-lg-3 col-md-6 align-self-center">
                 <a href="{{ route('index') }}">
                     <img data-src="{{ asset('images/logo_full_white.png') }}" src="{{ asset('images/logo_full_white.png') }}" class="lazy" alt="">
                 </a>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-4">Our Office</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i><a class="text-light" href="{{ $contact->company_map_url }}" target="_blank">{{ $contact->company_address}}</a>
-                </p>
-                <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i><a class="text-light" href="tel:{{ $contact->company_phone }}">{{ $contact->company_phone }}</a></p>
-                {{-- <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p> --}}
-                <div class="d-flex pt-3">
+                <div class="d-flex pt-3 mb-3">
                     <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $contact->company_line }}" target="_blank"><i
                             class="fab fa-line"></i></a>
                     <a class="btn btn-square btn-primary rounded-circle me-2" href="{{ $contact->company_facebook }}" target="_blank"><i
@@ -28,22 +21,29 @@
                             class="fab fa-instagram"></i></a>
                 </div>
             </div>
+            <div class="col-lg-4 col-md-6">
+                <h2 class="text-white mb-4">診所資訊</h2>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i><a class="text-light" href="{{ $contact->company_map_url }}" target="_blank">{{ $contact->company_address}}</a>
+                </p>
+                <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i><a class="text-light" href="tel:{{ $contact->company_phone }}">{{ $contact->company_phone }}</a></p>
+                {{-- <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p> --}}
+
+
+                <h5 class="text-white mb-2 mt-3">營業時間</h5>
+                <p class="mb-1">每週二至每週六 中午12:00至傍晚18:00</p>
+
+                <p class="mb-1">每週五加長營業時間 早上09:00至晚上09:00</p>
+
+                <p class="mb-1">每周日、一 休息</p>
+
+            </div>
             <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-4">Quick Links</h4>
+                <h2 class="text-white mb-4">導覽列</h2>
                 <a class="btn btn-link scrollto" href="{{ route('index') }}#about">品牌理念</a>
                 <a class="btn btn-link" href="{{ route('teams') }}">醫療團隊</a>
                 <a class="btn btn-link" href="{{ route('services') }}">療程介紹</a>
                 <a class="btn btn-link" href="{{ route('case') }}">美麗見證</a>
                 <a class="btn btn-link" href="{{ route('blog') }}">醫師專欄</a>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h4 class="text-white mb-4">營業時間</h4>
-                <p class="mb-1">每週二至每週六</p>
-                <h6 class="text-light">中午12:00至傍晚18:00</h6>
-                <p class="mb-1">每週五加長營業時間</p>
-                <h6 class="text-light">早上09:00至晚上09:00</h6>
-                <p class="mb-1">週一</p>
-                <h6 class="text-light">Closed</h6>
             </div>
         </div>
     </div>

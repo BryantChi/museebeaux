@@ -15,7 +15,7 @@
         <div class="container py-5">
             <div class="section-title2 text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-medium fst-italic text-white-50">Services</p>
-                <h3 class="display-62 text-white">療程介紹</h3>
+                <h2 class="display-62 text-white">療程介紹</h2>
             </div>
             <div class="owl-carousel product-carousel wow fadeInUp" data-wow-delay="0.5s">
                 @foreach ($services as $service)
@@ -38,7 +38,7 @@
 
 
     <!-- Video Start -->
-    <div class="container-fluid video py-5">
+    {{-- <div class="container-fluid video py-5">
         <div class="container">
             <div class="row g-0">
                 <div class="col-lg-6 py-5">
@@ -58,12 +58,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Video End -->
 
 
     <!-- Video Modal Start -->
-    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    {{-- <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded">
@@ -74,8 +74,6 @@
                 </div>
                 <div class="modal-body">
                     <div class="ratio ratio-16x9">
-                        {{-- <iframe class="embed-responsive-item" src="{{ asset('images/臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰 詹東峻 斯棋  Angela 亞梅.mov') }}" id="video" allowfullscreen allowscriptaccess="always"
-                            allow="autoplay"></iframe> --}}
                         <video class="lazy embed-responsive-item vid" controls muted playsinline>
                             <source
                                 data-src="{{ asset('images/臥蠶、眼袋、淚溝、印地安紋 傻傻分不清？【57健康同學會】精華篇｜張予馨 謝牧翰 詹東峻 斯棋  Angela 亞梅.mp4') }}">
@@ -84,14 +82,14 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Video Modal End -->
 
     <div class="container-fluid ev position-relative p-0">
         <div class="ev-title">
             <div class="section-title2 text-start mr-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="fs-5 fw-medium fst-italic text-white-50">Environment</p>
-                <h3 class="display-62 text-white">環境介紹</h3>
+                <h2 class="display-62 text-white">環境介紹</h2>
             </div>
         </div>
         <div class="swiper evSwiper wow fadeIn" data-wow-delay="0.5s">
@@ -117,7 +115,7 @@
 @push('custom_css')
     <style>
         h2 {
-            font-size: 2.3rem !important;
+            font-size: 2rem !important;
         }
         h3 {
             font-size: 1.8rem !important;
