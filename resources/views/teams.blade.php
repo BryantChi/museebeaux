@@ -31,7 +31,7 @@
                                         <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $team->headshots }}" class="img-fluid w-d-75"
                                             alt="{{ $team->headshots_alt }}">
                                     </div>
-                                    <div class="position-absolute w-100 h-100 bg-brown z-1" style="top: -30px;left: -30px;opacity: 0.35;"></div>
+                                    <div class="position-absolute bg-brown z-1 teams-mask"></div>
                                 </div>
                             </div>
                             <div class="col-xl-8 col-md-6 col-lg-8 team_content mb-5 px-md-0 mx-md-0">
@@ -131,6 +131,24 @@
             padding: .5rem 1rem;
             color: #8e6f65;
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+        }
+        .teams-mask {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: -30px;
+            left: -30px;
+            opacity: 0.35;
+        }
+
+        @media (max-width: 768px) {
+            .teams-mask {
+                width: 75% !important;
+                height: 100%;
+                top: -25px;
+                left: -15px;
+                margin-left: 25px;
+            }
         }
     </style>
 @endpush
