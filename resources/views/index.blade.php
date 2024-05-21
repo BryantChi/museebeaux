@@ -21,7 +21,8 @@
                 @foreach ($services as $service)
                 <a href="{{ route('services.items', DB::table('post_type_infos')->whereNull('deleted_at')->where('type_name', 'like', '%' . $service->service_name . '%')->value('type_slug')) }}" class="d-block service-item rounded">
                     <div class="">
-                        <img data-src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $service->service_icon }}" class="img-fluid service-img-icon mx-auto lazy"
+                        <img data-src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $service->service_icon }}"
+                        src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $service->service_icon }}" class="img-fluid service-img-icon mx-auto lazy"
                             alt="{{ $service->service_icon_alt ?? '尚水美博 - ' . $service->service_name }}">
                     </div>
                     <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
@@ -98,7 +99,7 @@
                 @for ($i = 2; $i <= 9; $i++)
                 <div class="swiper-slide">
                     <a href="{{ asset('images/ev/img_'.$i.'.jpg') }}" class="w-100 h-100" data-fancybox="_ev">
-                        <img data-src="{{ asset('images/ev/img_'.$i.'.jpg') }}" class="img-fluid hero-img lazy" style="background-color: #cecece;" alt="{{ $pageSettings->title ?? '' }}">
+                        <img data-src="{{ asset('images/ev/img_'.$i.'.jpg') }}" src="{{ asset('images/ev/img_'.$i.'.jpg') }}" class="img-fluid hero-img lazy" style="background-color: #cecece;" alt="{{ $pageSettings->title ?? '' }}">
                     </a>
                 </div>
                 @endfor

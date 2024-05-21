@@ -8,7 +8,7 @@
         <div class="row g-5">
             <div class="col-lg-3 col-md-6 align-self-center">
                 <a href="{{ route('index') }}">
-                    <img data-src="{{ asset('images/logo_full_white.png') }}" class="lazy" alt="">
+                    <img data-src="{{ asset('images/logo_full_white.png') }}" src="{{ asset('images/logo_full_white.png') }}" class="lazy" alt="">
                 </a>
             </div>
             <div class="col-lg-3 col-md-6">

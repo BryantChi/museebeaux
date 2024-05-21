@@ -28,7 +28,8 @@
                                 <div class="single_team text-center position-relative">
                                     <div class="team_thumb position-relative z-2"
                                         style="background-color: #9b745700;box-shadow: 0px 0px 30px rgba(0, 0, 0, 0);opacity: 1;border-radius: 10rem;">
-                                        <img data-src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $team->headshots }}" class="img-fluid w-d-75 lazy"
+                                        <img data-src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $team->headshots }}"
+                                        src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $team->headshots }}" class="img-fluid w-d-75 lazy"
                                             alt="{{ $team->headshots_alt }}">
                                     </div>
                                     <div class="position-absolute bg-brown z-1 teams-mask"></div>

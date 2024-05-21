@@ -6,15 +6,15 @@
                 <div class="row g-3">
                     <div class="col-6 text-end">
                         <img class="img-fluid about-img bg-white w-100 mb-3 wow fadeIn lazy" data-wow-delay="0.1s"
-                            data-src="{{ asset('images/about/brand1.jpg') }}" alt="">
+                            data-src="{{ asset('images/about/brand1.jpg') }}" src="{{ asset('images/about/brand1.jpg') }}" alt="">
                         <img class="img-fluid about-img2 bg-white w-50 wow fadeIn lazy" data-wow-delay="0.2s"
-                            data-src="{{ asset('images/about/brand3.jpg') }}" alt="">
+                            data-src="{{ asset('images/about/brand3.jpg') }}" src="{{ asset('images/about/brand3.jpg') }}" alt="">
                     </div>
                     <div class="col-6">
                         <img class="img-fluid about-img2 bg-white w-50 mb-3 wow fadeIn lazy" data-wow-delay="0.3s"
-                            data-src="{{ asset('images/about/brand4.jpg') }}" alt="">
+                            data-src="{{ asset('images/about/brand4.jpg') }}" src="{{ asset('images/about/brand4.jpg') }}" alt="">
                         <img class="img-fluid about-img bg-white w-100 wow fadeIn lazy" data-wow-delay="0.4s"
-                            data-src="{{ asset('images/about/brand2.jpg') }}" alt="">
+                            data-src="{{ asset('images/about/brand2.jpg') }}" src="{{ asset('images/about/brand2.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                 </div>
                 <div class="row g-3 mb-4">
                     <div class="col-sm-4 align-self-center">
-                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/about/brand5.jpg') }}"
+                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/about/brand5.jpg') }}" src="{{ asset('images/about/brand5.jpg') }}"
                             alt="">
                     </div>
                     <div class="col-sm-8">
@@ -44,14 +44,14 @@
                         </p>
                     </div>
                     <div class="col-sm-4 align-self-center">
-                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/about/brand6.jpg') }}"
+                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/about/brand6.jpg') }}" src="{{ asset('images/about/brand6.jpg') }}"
                             alt="">
                     </div>
                 </div>
                 <div class="border-top mb-4"></div>
                 <div class="row g-3">
                     <div class="col-sm-4 align-self-center">
-                        <img class="img-fluid bg-white w-100 about-img3 lazy" data-src="{{ asset('images/ev/img_1.jpg') }}"
+                        <img class="img-fluid bg-white w-100 about-img3 lazy" data-src="{{ asset('images/ev/img_1.jpg') }}" src="{{ asset('images/ev/img_1.jpg') }}"
                             alt="">
                     </div>
                     <div class="col-sm-8">

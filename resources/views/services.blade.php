@@ -34,6 +34,7 @@
                                 <div class="single_dream text-center">
                                     <div class="thumb position-relative px-2">
                                         <img data-src="{{ $service->service_cover_front ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $service->service_cover_front : asset('images/services/services-01.webp') }}"
+                                        src="{{ $service->service_cover_front ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $service->service_cover_front : asset('images/services/services-01.webp') }}"
                                             class="img-fluid w-75 mx-auto img-services rounded-top-circle lazy"
                                             alt="{{ $service->service_cover_front_alt ?? '尚水美博 - ' . $service->service_name }}">
                                         <div class="imgbg"></div>

@@ -29,6 +29,7 @@
                                     <a class=""
                                         href="{{ route('services.items.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $post->post_type)->value('type_slug'), 'slug' => $post->post_slug]) }}">
                                         <img class="card-img rounded-0 img-fluid img-post lazy" data-src="{{ $post->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $post->post_front_cover : asset('images/about/about-05.jpg') }}"
+                                        src="{{ $post->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $post->post_front_cover : asset('images/about/about-05.jpg') }}"
                                             alt="{{ $post->post_front_cover_alt ?? $post->post_title }}">
                                     </a>
                                     {{-- <a href="javascript:void(0)" class="blog_item_date">
