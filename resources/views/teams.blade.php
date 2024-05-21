@@ -22,7 +22,7 @@
                 <div class="tab-content" id="pills-tabContent">
                     @foreach ($teamsInfo as $i => $team)
                     <div class="tab-pane fade {{ $i == 0 ? 'show active' : '' }}" id="pills-{{ $team->id }}" role="tabpanel" aria-labelledby="pills-{{ $team->id }}-tab">
-                        <div class="row justify-content-between p-0 m-0">
+                        <div class="row justify-content-center p-0 m-0">
                             <div class="col-xl-3 col-md-6 col-lg-3  mb-5">
                                 {{-- {{ ($i % 2) == 0 ? '' : 'order-md-2 order-1' }} --}}
                                 <div class="single_team text-center">
