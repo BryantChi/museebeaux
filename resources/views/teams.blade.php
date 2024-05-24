@@ -1,7 +1,7 @@
 @extends('layouts_main.master')
 
 @section('content')
-    @include('layouts_main.sub_hero', ['bradcam_title' => '醫師團隊 / Teams', 'bradcam' => 'Teams'])
+    @include('layouts_main.sub_hero', ['bradcam_title' => '醫療團隊 / Teams', 'bradcam' => 'Teams'])
 
     <div class="team_area py-5">
 
