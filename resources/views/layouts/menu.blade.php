@@ -21,7 +21,7 @@
     </a>
 </li>
 
-<li class="nav-item">
+<li class="nav-item d-none">
     @php
     $about = DB::table('about_us_infos')->get();
     if (count($about) == 0) {

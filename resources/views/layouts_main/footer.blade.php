@@ -29,12 +29,12 @@
                 {{-- <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p> --}}
 
 
-                <h5 class="text-white mb-2 mt-3">營業時間</h5>
-                <p class="mb-1">每週二至每週六 中午12:00至傍晚18:00</p>
+                <h2 class="text-white mb-2 mt-3">營業時間</h2>
+                <p class="mb-1">週二至週六 11:00-19:00</p>
 
-                <p class="mb-1">每週五加長營業時間 早上09:00至晚上09:00</p>
+                <p class="mb-1">週五營業時間 09:00-21:00</p>
 
-                <p class="mb-1">每周日、一 休息</p>
+                <p class="mb-1">周日一 公休</p>
 
             </div>
             <div class="col-lg-3 col-md-6">
@@ -43,7 +43,7 @@
                 <a class="btn btn-link" href="{{ route('teams') }}">醫療團隊</a>
                 <a class="btn btn-link" href="{{ route('services') }}">療程介紹</a>
                 <a class="btn btn-link" href="{{ route('case') }}">美麗見證</a>
-                <a class="btn btn-link" href="{{ route('blog') }}">醫師專欄</a>
+                <a class="btn btn-link" href="{{ route('blog') }} d-none">醫師專欄</a>
             </div>
         </div>
     </div>

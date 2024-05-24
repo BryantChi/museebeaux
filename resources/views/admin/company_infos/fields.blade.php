@@ -22,6 +22,12 @@
     {!! Form::text('company_map_url', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Company Transportation Field -->
+<div class="form-group col-sm-8">
+    {!! Form::label('company_transportation', '公司交通方式:') !!}
+    {!! Form::textarea('company_transportation', null, ['class' => 'form-control', 'placeholder' => '請輸入公司交通方式', 'id' => 'contents', 'rows' => "10"]) !!}
+</div>
+
 <!-- Company Map Iframe Field -->
 <div class="form-group col-sm-8">
     {!! Form::label('company_map_iframe', '公司 Map Iframe 內嵌:') !!}

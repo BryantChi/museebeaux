@@ -23,7 +23,7 @@
                     </div> --}}
                     <a href="{{ route('services') }}" class="nav-item nav-link {{ Request::is('services*') ? 'active' : '' }}">療程介紹</a>
                     <a href="{{ route('case') }}" class="nav-item nav-link {{ Request::is('case*') ? 'active' : '' }}">美麗見證</a>
-                    <a href="{{ route('blog') }}" class="nav-item nav-link {{ Request::is('blog*') ? 'active' : '' }}">醫師專欄</a>
+                    <a href="{{ route('blog') }}" class="nav-item nav-link {{ Request::is('blog*') ? 'active' : '' }} d-none">醫師專欄</a>
                     <a href="{{ route('contact') }}"
                         class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">聯絡資訊</a>
                     {{-- <div class="nav-item dropdown">

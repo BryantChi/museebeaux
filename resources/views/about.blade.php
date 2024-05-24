@@ -25,7 +25,7 @@
                 </div>
                 <div class="row g-3 mb-4">
                     <div class="col-sm-4 align-self-center">
-                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/about/brand5.jpg') }}" src="{{ asset('images/about/brand5.jpg') }}"
+                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/ev/911_0054.jpg') }}" src="{{ asset('images/about/911_0054.jpg') }}"
                             alt="">
                     </div>
                     <div class="col-sm-8">
@@ -44,7 +44,7 @@
                         </p>
                     </div>
                     <div class="col-sm-4 align-self-center">
-                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/about/brand6.jpg') }}" src="{{ asset('images/about/brand6.jpg') }}"
+                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/about/brand5.jpg') }}" src="{{ asset('images/about/brand5.jpg') }}"
                             alt="">
                     </div>
                 </div>

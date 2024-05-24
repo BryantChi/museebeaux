@@ -1,7 +1,7 @@
 @extends('layouts_main.master')
 
 @section('content')
-    @include('layouts_main.sub_hero', ['bradcam_title' => '療程項目 / Services', 'bradcam' => 'Services'])
+    @include('layouts_main.sub_hero', ['bradcam_title' => '療程介紹 / Services', 'bradcam' => 'Services'])
 
     <!-- dream_service_start -->
     <div class="dream_service extra_padding2 py-5">

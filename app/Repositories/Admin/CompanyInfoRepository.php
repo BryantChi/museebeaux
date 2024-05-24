@@ -20,6 +20,7 @@ class CompanyInfoRepository extends BaseRepository
         'company_name',
         'company_mail',
         'company_address',
+        'company_transportation',
         'company_map_url',
         'company_map_iframe',
         'company_phone',
