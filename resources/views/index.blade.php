@@ -26,7 +26,7 @@
                             alt="{{ $service->service_icon_alt ?? '尚水美博 - ' . $service->service_name }}">
                     </div>
                     <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
-                        <h4 class="text-white">{{ $service->service_name }}</h4>
+                        <h3 class="text-white" style="font-size: 1.4rem !important;">{{ $service->service_name }}</h3>
                         <span class="text-light mt-3">{{ $service->service_description }}</span>
                     </div>
                 </a>

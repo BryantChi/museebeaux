@@ -39,7 +39,7 @@
                                 {{-- {{ ($i % 2) == 0 ? '' : 'order-md-1 order-2' }} --}}
                                 <div class="mb-4">
                                     <div class="team_title d-flex align-items-end">
-                                        <h3 class="mb-0 text-primary">{{ $team->name }}</h3>
+                                        <h2 class="mb-0 text-primary h3">{{ $team->name }}</h2>
                                         <p class="mb-0 ms-3">{{ $team->role }}</p>
                                     </div>
 
@@ -50,7 +50,7 @@
 
                                 <div class="row g-2">
                                     <div class="col-lg-4 mb-3 {{ count($team->degree ?? []) == 0 || count($team->degree ?? []) == null ? 'd-none' : '' }}">
-                                        <h4 class="mb-3 text-primary">學歷</h4>
+                                        <h3 class="mb-3 text-primary h4">學歷</h3>
                                         <ul class="list-unstyled">
                                             @foreach ($team->degree ?? [] as $key => $value)
                                                 <li><span class="mx-2 text-primary"><i class="fas fa-chevron-right"></i></span> {{ $value }}</li>
@@ -59,7 +59,7 @@
                                     </div>
 
                                     <div class="col-lg-4 mb-3 {{ count($team->expertise ?? []) == 0 || count($team->expertise ?? []) == null ? 'd-none' : '' }}">
-                                        <h4 class="mb-3 text-primary">專長</h4>
+                                        <h3 class="mb-3 text-primary h4">專長</h3>
                                         <ul class="list-unstyled">
                                             @foreach ($team->expertise ?? [] as $key => $value)
                                                 <li><span class="mx-2 text-primary"><i class="fas fa-chevron-right"></i></span> {{ $value }}</li>
@@ -68,7 +68,7 @@
                                     </div>
 
                                     <div class="col-lg-4 mb-3 {{ count($team->experience ?? []) == 0 || count($team->experience ?? []) == null ? 'd-none' : '' }}">
-                                        <h4 class="mb-3 text-primary">經歷/資格</h4>
+                                        <h3 class="mb-3 text-primary h4">經歷/資格</h3>
                                         <ul class="list-unstyled">
                                             @foreach ($team->experience ?? [] as $key => $value)
                                                 <li><span class="mx-2 text-primary"><i class="fas fa-chevron-right"></i></span> {{ $value }}</li>

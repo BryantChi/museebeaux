@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <h4>交通方式</h4>
+                    <h2 class="h4">交通方式</h2>
                     <div class="contents">
                         {!! $companyInfo->company_transportation !!}
                     </div>
