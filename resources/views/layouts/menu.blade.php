@@ -74,7 +74,7 @@
     ?>
     <a href="{{ $route_company }}" class="nav-link {{ Request::is('admin/companyInfos*') ? 'active' : '' }}">
         <span class="mr-2 brand-image"><i class="fas fa-building"></i></span>
-        <p> 公司資訊</p>
+        <p> 聯絡資訊</p>
     </a>
 </li>
 

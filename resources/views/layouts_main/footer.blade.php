@@ -43,7 +43,7 @@
                 <a class="btn btn-link" href="{{ route('teams') }}">醫療團隊</a>
                 <a class="btn btn-link" href="{{ route('services') }}">療程介紹</a>
                 <a class="btn btn-link" href="{{ route('case') }}">美麗見證</a>
-                <a class="btn btn-link" href="{{ route('blog') }} d-none">醫師專欄</a>
+                <a class="btn btn-link d-none" href="{{ route('blog') }}">醫師專欄</a>
             </div>
         </div>
     </div>

@@ -76,7 +76,7 @@
             <a href="{{ $route_company }}">
                 <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-building"></i></p>
-                    <h3>公司資訊</h3>
+                    <h3>聯絡資訊</h3>
                 </div>
             </a>
         </div>

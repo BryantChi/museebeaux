@@ -1226,3 +1226,94 @@ a:hover {
 .footer h2 {
     font-size: 1.5rem !important;
 }
+
+.hFixFabFlex {
+    position: fixed;
+    top: 50%;
+    right: 0px;
+    transform: translate(0, -50%);
+    z-index: 5566;
+    /**/display: flex;
+    flex-flow: column-reverse;
+    justify-content: center;
+    align-items: center;
+    -webkit-transform: translate();
+    -moz-transform: translate();
+    -ms-transform: translate();
+    -o-transform: translate();
+}
+
+  .hFixFabFlex > a {
+    display: block;
+    text-align: center;
+  }
+
+  .hFab {
+    width: 48px;
+    height: 48px;
+    font-size: 32px;
+    line-height: 48px;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 2px 30px 0px #66666666;
+    overflow: hidden;
+    transition: 0.2s all;
+    margin-top: 6px;
+    /* margin-right: 6px; */
+    margin-left: 16px;
+}
+
+  .hFab:hover {
+    box-shadow: 1px 3px 4px 0px #bfa197cc;
+  }
+
+  .hFabHome {
+    background-color: #666;
+  }
+
+  .hFabPhone {
+    background-color: #ad9a88;
+  }
+
+  .hFabIg {
+    /* background-color: #c0ab96; */
+    background: linear-gradient(to top left, #8e6f65, #efefe9);
+  }
+
+  .hFabLine {
+    /* background-color: #d6bfa8; */
+    background: linear-gradient(to top left, #8e6f65, #efefe9);
+  }
+
+  .hFabFacebook {
+    /* background-color: #ebd2b9; */
+    background: linear-gradient(to top left, #8e6f65, #efefe9);
+  }
+
+  .scroll-to-top {
+    /* position: fixed;
+      right: 15px;
+      bottom: 15px; */
+    display: none;
+    /* width: 50px;
+      height: 50px; */
+    /* text-align: center;
+      color: #fff; */
+    background: linear-gradient(to top left, #714288, #efefe9);
+    /* line-height: 45px; */
+  }
+
+  /* .scroll-to-top:focus,
+  .scroll-to-top:hover {
+      color: #fff;
+  } */
+
+  .scroll-to-top:hover {
+    /* background: #6f42c1cc; */
+    box-shadow: 1px 3px 4px 0px #6f42c1cc;
+  }
+
+  .scroll-to-top i {
+    font-weight: 800;
+  }

@@ -10,13 +10,13 @@
         @else
         <h2 class="display-62 h3 text-primary mb-4 animated slideInDown">{!! $bradcam_title !!}</h2>
         @endif
-        <nav aria-label="breadcrumb animated slideInDown">
+        {{-- <nav aria-label="breadcrumb animated slideInDown">
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a href="{{ route('index') }}">Home</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Pages</a></li>
                 <li class="breadcrumb-item text-primary" aria-current="page">{!! $bradcam !!}</li>
             </ol>
-        </nav>
+        </nav> --}}
     </div>
 </div>
 <!-- Page Header End -->
