@@ -33,7 +33,7 @@
     @endphp
     <a href="{{ $route_about }}" class="nav-link {{ Request::is('admin/aboutUsInfos*') ? 'active' : '' }}">
         <span class="mr-2 brand-image"><i class="fas fa-hospital-alt"></i></span>
-        <p> 關於我們</p>
+        <p> 診所介紹</p>
     </a>
 </li>
 

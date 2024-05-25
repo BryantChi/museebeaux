@@ -22,7 +22,7 @@
                 </div>
             </a>
         </div>
-        <div class="col-md-4 text-center" >
+        <div class="col-md-4 text-center d-none" >
             <?php
             $about = DB::table('about_us_infos')->get();
             if (count($about) == 0) {
@@ -35,7 +35,7 @@
             <a href="{{ $route_about }}">
                 <div class="card py-5 text-brown">
                     <p class="h2 mb-3"><i class="fas fa-hospital-alt"></i></p>
-                    <h3>診所資訊</h3>
+                    <h3>診所介紹</h3>
                 </div>
             </a>
         </div>
