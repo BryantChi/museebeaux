@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>公司資訊 - 顯示</h1>
+                    <h1>聯絡資訊 - 顯示</h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"

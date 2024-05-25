@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-12">
-                    <h1>公司資訊 - 新增</h1>
+                    <h1>聯絡資訊 - 新增</h1>
                 </div>
             </div>
         </div>
