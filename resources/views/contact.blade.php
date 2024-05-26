@@ -57,8 +57,8 @@
                     </div>
                 </div>
                 <div class="col-lg-5">
-                    <h2 class="h4">交通方式</h2>
-                    <div class="contents">
+                    <h2 class="h4 wow fadeInUp" data-wow-delay="0.3s">交通方式</h2>
+                    <div class="contents wow fadeInUp" data-wow-delay="0.5s">
                         {!! $companyInfo->company_transportation !!}
                     </div>
                 </div>
