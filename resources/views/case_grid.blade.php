@@ -33,7 +33,7 @@
                                         <h2>{{ $post->post_title }}</h2>
                                     </a>
                                     <p class="multiline-ellipsis">
-                                        {{ str_replace(["\r\n", "\r", "\n"], '', strip_tags($post->post_content)) }}</p>
+                                        {!! str_replace(["\r\n", "\r", "\n"], '', strip_tags($post->post_content)) !!}</p>
                                     <ul class="blog-info-link mt-3 mb-4 ml-auto list-unstyled">
                                         <li><a href="javascript:void(0)"><i class="fas fa-flag"></i>
                                                 {{ DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $post->post_type)->value('type_name') }}</a>

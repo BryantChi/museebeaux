@@ -100,9 +100,14 @@
             max-width: 100% !important;
         }
 
-        .blog_details iframe {
+        .blog_details .contents iframe {
+            padding: 0;
+            margin: 0;
             max-width: 100% !important;
+            width: 95% !important;
             height: 25rem;
+            object-fit: contain;
+            object-position: center;
         }
 
         /* .blog_details .contents ul {
