@@ -16,10 +16,10 @@
                             <h1>
                                 {{ $postInfo->post_title }}
                             </h1>
-                            <ul class="blog-info-link mt-3 mb-4 ml-auto list-unstyled">
+                            {{-- <ul class="blog-info-link mt-3 mb-4 ml-auto list-unstyled">
                                 <li><a href="#"><i class="fas fa-flag"></i> {{ DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $postInfo->post_type)->value('type_name') }}</a></li>
                                 <li><a href="javascript:void(0)"><i class="fas fa-calendar-alt"></i> {{ \Carbon\Carbon::parse($postInfo->created_at)->format('d M, Y') }}</a></li>
-                            </ul>
+                            </ul> --}}
 
                             <div class="contents">
                                 {!! $postInfo->post_content !!}

@@ -22,10 +22,10 @@
                                             src="{{ $post->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $post->post_front_cover : asset('images/about/about-05.jpg') }}"
                                             alt="{{ $post->post_front_cover_alt ?? $post->post_title }}">
                                     </a>
-                                    <a href="javascript:void(0)" class="blog_item_date">
+                                    {{-- <a href="javascript:void(0)" class="blog_item_date">
                                         <p class="h3">{{ \Carbon\Carbon::parse($post->created_at)->format('d') }}</p>
                                         <p>{{ \Carbon\Carbon::parse($post->created_at)->format('M') }}</p>
-                                    </a>
+                                    </a> --}}
                                 </div>
 
                                 <div class="blog_details"style="height: 305px;">
@@ -34,14 +34,14 @@
                                     </a>
                                     <p class="multiline-ellipsis">
                                         {!! str_replace(["\r\n", "\r", "\n"], '', strip_tags($post->post_content)) !!}</p>
-                                    <ul class="blog-info-link mt-3 mb-4 ml-auto list-unstyled">
+                                    {{-- <ul class="blog-info-link mt-3 mb-4 ml-auto list-unstyled">
                                         <li><a href="javascript:void(0)"><i class="fas fa-flag"></i>
                                                 {{ DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $post->post_type)->value('type_name') }}</a>
                                         </li>
                                         <li><a href="#"><i class="fas fa-calendar-alt"></i>
                                             {{ \Carbon\Carbon::parse($post->created_at)->format('Y-m-d H:m') }}</a>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
 
                                     <div class="w-100 text-end">
                                         <a class="btn text-primary" href="{{ route('case.show', $post->post_slug) }}">繼續閱讀
