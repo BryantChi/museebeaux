@@ -75,7 +75,7 @@
                             <ul class="list cat-list">
                                 @foreach ($typeInfo as $type)
                                 @php
-                                    if ($type->id == 13) {
+                                    if ($type->id == 4) {
                                         continue;
                                     }
                                 @endphp

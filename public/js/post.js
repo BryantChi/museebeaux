@@ -24,9 +24,14 @@ tinymce.init({
         { title: 'Rwd class', value: 'img-fluid' }
     ],
     table_class_list: [
-        { title: '無', value: 'table' },
+        { title: 'Rwd class', value: 'table table-bordered' },
         // { title: 'Rwd class', value: 'table table-responsive' }
     ],
+    table_default_styles: {
+        'border-collapse': 'collapse',
+        'border': '1px solid black'
+    },
+    content_style: "table, th, td { border: 1px solid black; }",
     /* 配置圖片和視頻上傳的URL */
     image_title: true,
     // images_upload_url: '{{ route('editor-image-upload') }}',

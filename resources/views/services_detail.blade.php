@@ -43,7 +43,7 @@
                             <ul class="list cat-list">
                                 @foreach ($typeInfo as $type)
                                     @php
-                                        if ($type->id == 13) {
+                                        if ($type->id == 4) {
                                             continue;
                                         }
                                     @endphp
@@ -118,6 +118,14 @@
             height: 25rem;
             object-fit: contain;
             object-position: center;
+        }
+
+        .blog_details .contents table,
+        .blog_details .contents table th,
+        .blog_details .contents table tr,
+        .blog_details .contents table td {
+            border: 1px solid #000;
+            padding: 5px;
         }
 
         /* .blog_details .contents ul {
