@@ -46,6 +46,11 @@ Route::any('/clear-cache', function () {
     return redirect()->route('index');
 });
 
+Route::any('/sitemap-generate', function () {
+    \Artisan::call('sitemap:generate');
+    return redirect()->route('index');
+});
+
 Auth::routes();
 
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
