@@ -25,7 +25,7 @@
     <div class="img-preview mt-2">
         <p for="">預覽</p>
         @if ($postsInfo->post_front_cover ?? null)
-            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $postsInfo->post_front_cover }}"
+            <img src="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $postsInfo->post_front_cover }}"
                 style="max-width: 200px; max-height: 200px;">
         @endif
     </div>

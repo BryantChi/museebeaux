@@ -20,7 +20,7 @@
     <div class="img-preview-icon mt-2">
         <p for="">預覽</p>
         @if ($servicesInfo->service_icon ?? null)
-            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $servicesInfo->service_icon }}"
+            <img src="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $servicesInfo->service_icon }}"
                 style="max-width: 200px; max-height: 200px;">
         @endif
     </div>
@@ -48,7 +48,7 @@
     <div class="img-preview-cover mt-2">
         <p for="">預覽</p>
         @if ($servicesInfo->service_icon ?? null)
-            <img src="{{ env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $servicesInfo->service_icon }}"
+            <img src="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $servicesInfo->service_icon }}"
                 style="max-width: 200px; max-height: 200px;">
         @endif
     </div>

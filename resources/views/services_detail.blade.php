@@ -14,8 +14,8 @@
                     <div class="single-post">
                         <div class="feature-img">
                             <img class="img-fluid lazy"
-                                data-src="{{ $postInfo->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $postInfo->post_front_cover : asset('images/about/about-05.jpg') }}"
-                                src="{{ $postInfo->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.powerchi.com.tw') . '/uploads/' . $postInfo->post_front_cover : asset('images/about/about-05.jpg') }}"
+                                data-src="{{ $postInfo->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $postInfo->post_front_cover : asset('images/about/about-05.jpg') }}"
+                                src="{{ $postInfo->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $postInfo->post_front_cover : asset('images/about/about-05.jpg') }}"
                                 alt="{{ $postInfo->post_front_cover_alt ?? $postInfo->post_title }}" />
                         </div>
                         <div class="blog_details table-responsive">
