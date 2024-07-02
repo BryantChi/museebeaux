@@ -39,7 +39,7 @@ class GenerateSitemap extends Command
     public function handle()
     {
         // return 0;
-        SitemapGenerator::create('https://beauty4u-clinic.com/')
+        SitemapGenerator::create('https://museebeaux.com/')
             ->writeToFile(public_path('sitemap.xml'));
     }
 }
