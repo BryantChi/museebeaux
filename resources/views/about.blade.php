@@ -25,7 +25,7 @@
                 </div>
                 <div class="row g-3 mb-4">
                     <div class="col-sm-4 align-self-center">
-                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/ev/5_911_005.jpg') }}" src="{{ asset('images/about/5_911_005.jpg') }}"
+                        <img class="img-fluid bg-white w-100 lazy" data-src="{{ asset('images/about/5_911_005.jpg') }}" src="{{ asset('images/about/5_911_005.jpg') }}"
                             alt="">
                     </div>
                     <div class="col-sm-8">
