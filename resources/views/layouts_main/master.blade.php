@@ -49,6 +49,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 
+    {!! $pageSettings->header_anlytics_code ?? '' !!}
+
     @stack('third_party_css')
 
     @stack('custom_css')
@@ -57,6 +59,7 @@
 </head>
 
 <body>
+    {!! $pageSettings->body_anlytics_code ?? '' !!}
     <!-- Spinner Start -->
     <div id="spinner"
         class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
