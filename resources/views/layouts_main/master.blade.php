@@ -19,7 +19,7 @@
     <title>{{ $pageSettings->title }}</title>
     <meta name="title" content="{{ $pageSettings->meta_title }}" />
     <meta name="google-site-verification" content="{{ $pageSettings->meta_google_site_verification }}" />
-    <link rel="canonical" href="{{ env('APP_URL') }}" />
+    <link rel="canonical" href="{{ url()->current() }}" />
 
     <!-- Favicon -->
     <link href="{{ asset('images/favicon.png') }}" rel="icon">
