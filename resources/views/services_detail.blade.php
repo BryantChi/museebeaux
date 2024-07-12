@@ -126,6 +126,7 @@
         .blog_details .contents table td {
             border: 1px solid #000;
             padding: 5px;
+            border-collapse: collapse;
         }
 
         /* .blog_details .contents ul {
