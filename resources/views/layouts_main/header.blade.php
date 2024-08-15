@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto" id="navigation">
                     <a href="{{ route('index') }}#about"
-                        class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }} scrollto">品牌理念</a>
+                        class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }} scrollto">診所理念</a>
                     <a href="{{ route('teams') }}" class="nav-item nav-link {{ Request::is('teams*') ? 'active' : '' }}">醫療團隊</a>
                     {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">醫療團隊</a>

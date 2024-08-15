@@ -21,7 +21,7 @@
             <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                 <div class="section-title">
                     <p class="fs-5 fw-medium fst-italic text-primary">About Us</p>
-                    <h2 class="display-62">品牌理念</h2>
+                    <h2 class="display-62">診所理念</h2>
                 </div>
                 <div class="row g-3 mb-4">
                     <div class="col-sm-4 align-self-center">
