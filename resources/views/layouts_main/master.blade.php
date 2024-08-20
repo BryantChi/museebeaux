@@ -74,7 +74,7 @@
     @include('layouts_main.footer')
 
 
-    <div class="hFixFabFlex ">
+    <div class="hFixFabFlex d-none">
         {{-- <a href="#page-top">
             <div class="hFab scroll-to-top ">
                 <i class="fas fa-angle-up "></i>
