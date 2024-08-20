@@ -105,7 +105,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top d-none"><i
             class="bi bi-arrow-up"></i></a>
 
 
