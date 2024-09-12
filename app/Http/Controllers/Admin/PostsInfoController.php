@@ -36,6 +36,16 @@ class PostsInfoController extends AppBaseController
     {
         $postsInfos = $this->postsInfoRepository->all();
 
+        $input = $request->all();
+        if ($request->method() == 'GET' && $request->has('post_type')) {
+            if ($input['post_type'] == "") {
+                return redirect(route('admin.postsInfos.index'));
+            }
+            $type = PostTypeInfo::whereNotNull('type_parent_id')
+            ->where('type_parent_id', $input['post_type'])->orWhere('id', $input['post_type'])->get('id')->toArray();
+            $postsInfos = PostsInfo::whereIn('post_type', $type)->get();
+        }
+
         return view('admin.posts_infos.index')
             ->with('postsInfos', $postsInfos);
     }
