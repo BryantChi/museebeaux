@@ -1,7 +1,7 @@
 @extends('layouts_main.master')
 
 @section('content')
-    @include('layouts_main.sub_hero', ['bradcam_title' => '醫生專欄 / Blogs', 'bradcam' => 'Blogs'])
+    @include('layouts_main.sub_hero', ['bradcam_title' => '醫師專欄 / Blogs', 'bradcam' => 'Blogs', 'seoBradcamTitleType' => 'h2'])
 
     <!-- blog_area_start -->
 
