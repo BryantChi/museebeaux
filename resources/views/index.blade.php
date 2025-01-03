@@ -85,6 +85,63 @@
     </div> --}}
     <!-- Video Modal End -->
 
+    <div class="container-fluid blog position-relative p-0">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                        <p class="fs-5 fw-medium fst-italic text-primary">Blog</p>
+                        <h2 class="display-62">醫師專欄</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row wow fadeInUp" data-wow-delay="0.1s">
+                @php
+                    $postTypes = \App\Models\Admin\PostTypeInfo::where(function($query) {
+                        $query->whereNotNull('type_parent_id')
+                            ->whereNotIn('type_parent_id',
+                            \App\Models\Admin\PostTypeInfo::whereNull('type_parent_id')->where(function($query) {
+                                $query->whereNotIn('id', [1, 3]);
+                            })->get('id')->toArray());
+                    })->orWhere(function($query) {
+                        $query->whereIn('id', [1, 3]);
+                    })->pluck('id')->toArray();
+                    $index_blogs = \App\Models\Admin\PostsInfo::whereIn('post_type', $postTypes)->orderBy('created_at', 'desc')->limit(4)->get();
+                @endphp
+
+                @foreach ($index_blogs ?? [] as $index_blog)
+                <div class="col-xl-3 col-6">
+                    <div class="single_blog_item">
+                        <div class="thumb">
+                            <a class=""
+                                href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'), 'slug' => $index_blog->post_slug]) }}">
+                                <img class="card-img img-blog-index img-fluid rounded" src="{{ $index_blog->post_front_cover ?? null ? env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $index_blog->post_front_cover : asset('images/about/about-05.jpg') }}"
+                                    alt="{{ $index_blog->post_front_cover_alt ?? $index_blog->post_title }}">
+                            </a>
+                        </div>
+                        <span class="mt-2 text-secondary">{{  \Carbon\Carbon::parse($index_blog->created_at)->format('Y-m-d') }}</span>
+                        <h3 class="mt-3 font-weight-bolder title-blog-index multiline-ellipsis">
+                            <a class=""
+                                href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'), 'slug' => $index_blog->post_slug]) }}">
+                                {{ $index_blog->post_title }}
+                            </a>
+                        </h3>
+                        <p class="multiline-ellipsis mt-2">
+                            {!! str_replace(["\r\n", "\r", "\n"], '', strip_tags($index_blog->post_content)) !!}</p>
+                    </div>
+                </div>
+                @endforeach
+
+                <div class="col-xl-12 mt-3">
+                    <div class="w-100 text-center">
+                        <a class="boxed-btn btn btn-primary px-4 py-3" href="{{ route('blog') }}">查看更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <div class="container-fluid ev position-relative p-0">
         <div class="ev-title">
             <div class="section-title2 text-start mr-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
@@ -146,6 +203,35 @@
             z-index: 2;
         }
     </style>
+@endpush
+@push('custom_css')
+<link rel="stylesheet" href="css/index.css?v={{ time() }}">
+<style>
+    .img-blog-index {
+        width: 100%;
+        height: 15rem;
+        object-fit: cover;
+        object-position: center;
+    }
+    .title-blog-index {
+        font-size: 1.25rem !important;
+    }
+    @media (max-width: 768px) {
+        #compare .section_title h2 {
+            font-size: 1.5rem !important;
+        }
+        .img-blog-index {
+            width: 100%;
+            height: 10rem;
+            object-fit: cover;
+            object-position: center;
+        }
+        .title-blog-index {
+            font-size: 1rem !important;
+        }
+    }
+
+</style>
 @endpush
 @push('custom_scripts')
     <script>
