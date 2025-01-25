@@ -19,17 +19,19 @@
             </div>
             <div class="owl-carousel product-carousel wow fadeInUp" data-wow-delay="0.5s">
                 @foreach ($services as $service)
-                <a href="{{ route('services.items', DB::table('post_type_infos')->whereNull('deleted_at')->where('type_name', 'like', '%' . $service->service_name . '%')->value('type_slug')) }}" class="d-block service-item rounded">
-                    <div class="">
-                        <img data-src="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $service->service_icon }}"
-                        src="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $service->service_icon }}" class="img-fluid service-img-icon mx-auto lazy"
-                            alt="{{ $service->service_icon_alt ?? '尚水美博 - ' . $service->service_name }}">
-                    </div>
-                    <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
-                        <h3 class="text-white" style="font-size: 1.4rem !important;">{{ $service->service_name }}</h3>
-                        <span class="text-light mt-3">{{ $service->service_description }}</span>
-                    </div>
-                </a>
+                    <a href="{{ route('services.items',DB::table('post_type_infos')->whereNull('deleted_at')->where('type_name', 'like', '%' . $service->service_name . '%')->value('type_slug')) }}"
+                        class="d-block service-item rounded">
+                        <div class="">
+                            <img data-src="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $service->service_icon }}"
+                                src="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $service->service_icon }}"
+                                class="img-fluid service-img-icon mx-auto lazy"
+                                alt="{{ $service->service_icon_alt ?? '尚水美博 - ' . $service->service_name }}">
+                        </div>
+                        <div class="bg-white2 shadow-sm text-center p-4 position-relative mt-n52 mx-4">
+                            <h3 class="text-white" style="font-size: 1.4rem !important;">{{ $service->service_name }}</h3>
+                            <span class="text-light mt-3">{{ $service->service_description }}</span>
+                        </div>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -89,7 +91,8 @@
         <div class="container py-5">
             <div class="row">
                 <div class="col-xl-12">
-                    <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
+                        style="max-width: 500px;">
                         <p class="fs-5 fw-medium fst-italic text-primary">Blog</p>
                         <h2 class="display-62">醫師專欄</h2>
                     </div>
@@ -97,39 +100,51 @@
             </div>
             <div class="row wow fadeInUp" data-wow-delay="0.1s">
                 @php
-                    $postTypes = \App\Models\Admin\PostTypeInfo::where(function($query) {
-                        $query->whereNotNull('type_parent_id')
-                            ->whereNotIn('type_parent_id',
-                            \App\Models\Admin\PostTypeInfo::whereNull('type_parent_id')->where(function($query) {
-                                $query->whereNotIn('id', [1, 3]);
-                            })->get('id')->toArray());
-                    })->orWhere(function($query) {
-                        $query->whereIn('id', [1, 3]);
-                    })->pluck('id')->toArray();
-                    $index_blogs = \App\Models\Admin\PostsInfo::whereIn('post_type', $postTypes)->orderBy('created_at', 'desc')->limit(4)->get();
+                    $postTypes = \App\Models\Admin\PostTypeInfo::where(function ($query) {
+                        $query->whereNotNull('type_parent_id')->whereNotIn(
+                            'type_parent_id',
+                            \App\Models\Admin\PostTypeInfo::whereNull('type_parent_id')
+                                ->where(function ($query) {
+                                    $query->whereNotIn('id', [1, 3]);
+                                })
+                                ->get('id')
+                                ->toArray(),
+                        );
+                    })
+                        ->orWhere(function ($query) {
+                            $query->whereIn('id', [1, 3]);
+                        })
+                        ->pluck('id')
+                        ->toArray();
+                    $index_blogs = \App\Models\Admin\PostsInfo::whereIn('post_type', $postTypes)
+                        ->orderBy('created_at', 'desc')
+                        ->limit(4)
+                        ->get();
                 @endphp
 
                 @foreach ($index_blogs ?? [] as $index_blog)
-                <div class="col-xl-3 col-6">
-                    <div class="single_blog_item">
-                        <div class="thumb">
-                            <a class=""
-                                href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'), 'slug' => $index_blog->post_slug]) }}">
-                                <img class="card-img img-blog-index img-fluid rounded" src="{{ $index_blog->post_front_cover ?? null ? env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $index_blog->post_front_cover : asset('images/about/about-05.jpg') }}"
-                                    alt="{{ $index_blog->post_front_cover_alt ?? $index_blog->post_title }}">
-                            </a>
+                    <div class="col-xl-3 col-6">
+                        <div class="single_blog_item">
+                            <div class="thumb">
+                                <a class=""
+                                    href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'),'slug' => $index_blog->post_slug]) }}">
+                                    <img class="card-img img-blog-index img-fluid rounded"
+                                        src="{{ $index_blog->post_front_cover ?? null ? env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $index_blog->post_front_cover : asset('images/about/about-05.jpg') }}"
+                                        alt="{{ $index_blog->post_front_cover_alt ?? $index_blog->post_title }}">
+                                </a>
+                            </div>
+                            <span
+                                class="mt-2 text-secondary">{{ \Carbon\Carbon::parse($index_blog->created_at)->format('Y-m-d') }}</span>
+                            <h3 class="mt-3 font-weight-bolder title-blog-index multiline-ellipsis">
+                                <a class=""
+                                    href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'),'slug' => $index_blog->post_slug]) }}">
+                                    {{ $index_blog->post_title }}
+                                </a>
+                            </h3>
+                            <p class="multiline-ellipsis mt-2">
+                                {!! str_replace(["\r\n", "\r", "\n"], '', strip_tags($index_blog->post_content)) !!}</p>
                         </div>
-                        <span class="mt-2 text-secondary">{{  \Carbon\Carbon::parse($index_blog->created_at)->format('Y-m-d') }}</span>
-                        <h3 class="mt-3 font-weight-bolder title-blog-index multiline-ellipsis">
-                            <a class=""
-                                href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'), 'slug' => $index_blog->post_slug]) }}">
-                                {{ $index_blog->post_title }}
-                            </a>
-                        </h3>
-                        <p class="multiline-ellipsis mt-2">
-                            {!! str_replace(["\r\n", "\r", "\n"], '', strip_tags($index_blog->post_content)) !!}</p>
                     </div>
-                </div>
                 @endforeach
 
                 <div class="col-xl-12 mt-3">
@@ -152,11 +167,13 @@
         <div class="swiper evSwiper wow fadeIn" data-wow-delay="0.5s">
             <div class="swiper-wrapper">
                 @for ($i = 1; $i <= 11; $i++)
-                <div class="swiper-slide">
-                    <a href="{{ asset('images/ev/new/img_'.$i.'.jpg') }}" class="w-100 h-100" data-fancybox="_ev">
-                        <img data-src="{{ asset('images/ev/new/img_'.$i.'.jpg') }}" src="{{ asset('images/ev/new/img_'.$i.'.jpg') }}" class="img-fluid hero-img lazy" style="background-color: #cecece;" alt="{{ $pageSettings->title ?? '' }}">
-                    </a>
-                </div>
+                    <div class="swiper-slide">
+                        <a href="{{ asset('images/ev/new/img_' . $i . '.jpg') }}" class="w-100 h-100" data-fancybox="_ev">
+                            <img data-src="{{ asset('images/ev/new/img_' . $i . '.jpg') }}"
+                                src="{{ asset('images/ev/new/img_' . $i . '.jpg') }}" class="img-fluid hero-img lazy"
+                                style="background-color: #cecece;" alt="{{ $pageSettings->title ?? '' }}">
+                        </a>
+                    </div>
                 @endfor
             </div>
             {{-- <div class="swiper-button-next"></div>
@@ -165,8 +182,13 @@
         </div>
     </div>
 
-
-
+    <div class="container-fluid px-0 mx-0">
+        <div class="map" style="">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1505.5807844776723!2d121.46160673855!3d25.01592259925798!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9efc216ff6b%3A0xd0020ca776b7ac6d!2z5bCa5rC0576O5Y2aIE11c8OpZUJlYXV4Q2xpbmlj!5e0!3m2!1szh-TW!2stw!4v1716532240520!5m2!1szh-TW!2stw"
+                style="border:0;width: 100%; height: 25rem;margin-bottom: -5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
 @endsection
 
 @push('custom_css')
@@ -174,18 +196,23 @@
         h2 {
             font-size: 2rem !important;
         }
+
         h3 {
             font-size: 1.8rem !important;
         }
-        span, p {
+
+        span,
+        p {
             font-size: 0.9rem !important;
         }
+
         .ev {
             height: 56vh;
         }
+
         .evSwiper {
             /* width: 100%;
-            height: 100%; */
+                    height: 100%; */
         }
 
         .evSwiper img {
@@ -205,33 +232,36 @@
     </style>
 @endpush
 @push('custom_css')
-<link rel="stylesheet" href="css/index.css?v={{ time() }}">
-<style>
-    .img-blog-index {
-        width: 100%;
-        height: 15rem;
-        object-fit: cover;
-        object-position: center;
-    }
-    .title-blog-index {
-        font-size: 1.25rem !important;
-    }
-    @media (max-width: 768px) {
-        #compare .section_title h2 {
-            font-size: 1.5rem !important;
-        }
+    <link rel="stylesheet" href="css/index.css?v={{ time() }}">
+    <style>
         .img-blog-index {
             width: 100%;
-            height: 10rem;
+            height: 15rem;
             object-fit: cover;
             object-position: center;
         }
-        .title-blog-index {
-            font-size: 1rem !important;
-        }
-    }
 
-</style>
+        .title-blog-index {
+            font-size: 1.25rem !important;
+        }
+
+        @media (max-width: 768px) {
+            #compare .section_title h2 {
+                font-size: 1.5rem !important;
+            }
+
+            .img-blog-index {
+                width: 100%;
+                height: 10rem;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .title-blog-index {
+                font-size: 1rem !important;
+            }
+        }
+    </style>
 @endpush
 @push('custom_scripts')
     <script>
