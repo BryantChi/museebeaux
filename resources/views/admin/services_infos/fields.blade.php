@@ -141,48 +141,93 @@
 
             var count = {{ count($servicesInfo->service_sub_list ?? []) }};
             $('#addBtn').click(function() {
-                var formIndex = $('#dynamic_form').children().length;
+                const currentIndex = $('#dynamicField .field-group').length; // 使用目前的項目數量作為索引
+
                 var groupParent = $('<div class="mt-2 field-group card p-4 bg-light-subtle"></div>');
                 var group = $(
-                    '<div class="input-group2 d-flex"><input type="text" class="form-control item" name="service_sub_list[' +
-                    count + '][item]" placeholder="Item" required ></div>'
+                    `<div class="input-group2 d-flex">
+                        <input type="text" class="form-control item" name="service_sub_list[${currentIndex}][item]" placeholder="Item" required>
+                    </div>`
                 );
+
                 var selectType = $(
-                    '<select name="service_sub_list[' + count +
-                    '][type]" class="form-control type"></select>');
+                    `<select name="service_sub_list[${currentIndex}][type]" class="form-control type"></select>`
+                );
                 selectType.append('<option value="">請選擇</option>');
                 Object.entries(postType).forEach(([key, value]) => {
-                    selectType.append('<option value="' + key + '">' + value + '</option>');
+                    selectType.append(`<option value="${key}">${value}</option>`);
                 });
+
                 var selectArticle = $(
-                    '<select name="service_sub_list[' + count +
-                    '][article]" class="form-control article"></select>');
+                    `<select name="service_sub_list[${currentIndex}][article]" class="form-control article"></select>`
+                );
                 var remove = $(
-                    '<span class="btn btn-danger mt-2 removeButton d-flex ml-auto" style="width: max-content;"><i class="fas fa-minus"></i></span>'
-                )
+                    `<span class="btn btn-danger mt-2 removeButton d-flex ml-auto" style="width: max-content;"><i class="fas fa-minus"></i></span>`
+                );
+
                 group.append(selectType).append(selectArticle);
                 groupParent.append(group).append(remove);
                 $('#dynamicField').append(groupParent);
-                count++;
 
                 selectType.change(function() {
-                    var typeId = $(this).val();
-                    // var post = posts.find(p => p.post_type == typeId);
-                    selectArticle.empty();
-                    selectArticle.append('<option value="">請選擇</option>');
+                    const typeId = $(this).val();
+                    const articleDropdown = $(this).parent().find('.article');
+                    articleDropdown.empty();
                     if (typeId) {
-                        selectArticle.prop('required', true);
+                        articleDropdown.prop('required', true);
+                        articleDropdown.append('<option value="">請選擇</option>');
                         posts.forEach(function(p) {
                             if (p.post_type == typeId) {
-                                selectArticle.append('<option value="' + p.id + '">' + p
-                                    .post_title + '</option>');
+                                articleDropdown.append(`<option value="${p.id}">${p.post_title}</option>`);
                             }
                         });
                     } else {
-                        selectArticle.prop('required', false);
+                        articleDropdown.prop('required', false);
                     }
-
                 });
+
+                // var formIndex = $('#dynamic_form').children().length;
+                // var groupParent = $('<div class="mt-2 field-group card p-4 bg-light-subtle"></div>');
+                // var group = $(
+                //     '<div class="input-group2 d-flex"><input type="text" class="form-control item" name="service_sub_list[' +
+                //     count + '][item]" placeholder="Item" required ></div>'
+                // );
+                // var selectType = $(
+                //     '<select name="service_sub_list[' + count +
+                //     '][type]" class="form-control type"></select>');
+                // selectType.append('<option value="">請選擇</option>');
+                // Object.entries(postType).forEach(([key, value]) => {
+                //     selectType.append('<option value="' + key + '">' + value + '</option>');
+                // });
+                // var selectArticle = $(
+                //     '<select name="service_sub_list[' + count +
+                //     '][article]" class="form-control article"></select>');
+                // var remove = $(
+                //     '<span class="btn btn-danger mt-2 removeButton d-flex ml-auto" style="width: max-content;"><i class="fas fa-minus"></i></span>'
+                // )
+                // group.append(selectType).append(selectArticle);
+                // groupParent.append(group).append(remove);
+                // $('#dynamicField').append(groupParent);
+                // count++;
+
+                // selectType.change(function() {
+                //     var typeId = $(this).val();
+                //     // var post = posts.find(p => p.post_type == typeId);
+                //     selectArticle.empty();
+                //     selectArticle.append('<option value="">請選擇</option>');
+                //     if (typeId) {
+                //         selectArticle.prop('required', true);
+                //         posts.forEach(function(p) {
+                //             if (p.post_type == typeId) {
+                //                 selectArticle.append('<option value="' + p.id + '">' + p
+                //                     .post_title + '</option>');
+                //             }
+                //         });
+                //     } else {
+                //         selectArticle.prop('required', false);
+                //     }
+
+                // });
 
                 $('select').select2({
                     language: 'zh-TW',
@@ -197,8 +242,16 @@
 
 
             $('#dynamicField').on('click', '.removeButton', function() {
-                count--;
-                $(this).parent('div.field-group').remove();
+                $(this).closest('.field-group').remove(); // 刪除該項目
+
+                // 更新索引
+                $('#dynamicField .field-group').each(function(index) {
+                    $(this).find('.item').attr('name', `service_sub_list[${index}][item]`);
+                    $(this).find('.type').attr('name', `service_sub_list[${index}][type]`);
+                    $(this).find('.article').attr('name', `service_sub_list[${index}][article]`);
+                });
+
+                count--; // 更新全域計數器
             });
 
 
