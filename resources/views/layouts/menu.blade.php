@@ -85,3 +85,12 @@
         <p> 團隊資訊</p>
     </a>
 </li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.redirectsInfos.index') }}"
+       class="nav-link {{ Request::is('admin/redirectsInfos*') ? 'active' : '' }}">
+        <p>301 轉址</p>
+    </a>
+</li>
+
+
