@@ -89,6 +89,7 @@
 <li class="nav-item">
     <a href="{{ route('admin.redirectsInfos.index') }}"
        class="nav-link {{ Request::is('admin/redirectsInfos*') ? 'active' : '' }}">
+       <span class="mr-2 brand-image"><i class="fas fa-link"></i></span>
         <p>301 轉址</p>
     </a>
 </li>
