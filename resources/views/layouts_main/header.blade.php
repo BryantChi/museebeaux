@@ -24,8 +24,10 @@
                     <a href="{{ route('services') }}" class="nav-item nav-link {{ Request::is('services*') ? 'active' : '' }}">療程介紹</a>
                     <a href="{{ route('case') }}" class="nav-item nav-link {{ Request::is('case*') ? 'active' : '' }}">美麗見證</a>
                     <a href="{{ route('blog') }}" class="nav-item nav-link {{ Request::is('blog*') ? 'active' : '' }}">醫師專欄</a>
-                    <a href="{{ route('contact') }}"
-                        class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">聯絡資訊</a>
+                    {{-- <a href="{{ route('contact') }}"
+                        class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">聯絡資訊</a> --}}
+                    <a href="#transportation"
+                        class="nav-item nav-link">交通方式</a>
                     {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu bg-light rounded-0 m-0">

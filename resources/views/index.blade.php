@@ -127,7 +127,7 @@
                         <div class="single_blog_item">
                             <div class="thumb">
                                 <a class=""
-                                    href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'),'slug' => $index_blog->post_slug]) }}">
+                                    href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'), 'slug' => $index_blog->post_slug]) }}">
                                     <img class="card-img img-blog-index img-fluid rounded"
                                         src="{{ $index_blog->post_front_cover ?? null ? env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $index_blog->post_front_cover : asset('images/about/about-05.jpg') }}"
                                         alt="{{ $index_blog->post_front_cover_alt ?? $index_blog->post_title }}">
@@ -137,7 +137,7 @@
                                 class="mt-2 text-secondary">{{ \Carbon\Carbon::parse($index_blog->created_at)->format('Y-m-d') }}</span>
                             <h3 class="mt-3 font-weight-bolder title-blog-index multiline-ellipsis">
                                 <a class=""
-                                    href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'),'slug' => $index_blog->post_slug]) }}">
+                                    href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'), 'slug' => $index_blog->post_slug]) }}">
                                     {{ $index_blog->post_title }}
                                 </a>
                             </h3>
@@ -182,12 +182,34 @@
         </div>
     </div>
 
-    <div class="container-fluid px-0 mx-0">
-        <div class="map" style="">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1505.5807844776723!2d121.46160673855!3d25.01592259925798!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9efc216ff6b%3A0xd0020ca776b7ac6d!2z5bCa5rC0576O5Y2aIE11c8OpZUJlYXV4Q2xpbmlj!5e0!3m2!1szh-TW!2stw!4v1716532240520!5m2!1szh-TW!2stw"
-                style="border:0;width: 100%; height: 25rem;margin-bottom: -5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <div class="container-fluid px-0 mx-0 pt-lg-2" id="transportation">
+        <div class="row g-0 pt-5">
+            <div class="col-12 mt-3 pt-3">
+                <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                    <p class="fs-5 fw-medium fst-italic text-primary">Transportation</p>
+                    <h2 class="display-62">交通方式</h2>
+                </div>
+            </div>
         </div>
+        <div class="row g-0" style="background: #8e6f65;">
+            <div class="col-lg-4">
+                <div class="map" style="">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1505.5807844776723!2d121.46160673855!3d25.01592259925798!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a9efc216ff6b%3A0xd0020ca776b7ac6d!2z5bCa5rC0576O5Y2aIE11c8OpZUJlYXV4Q2xpbmlj!5e0!3m2!1szh-TW!2stw!4v1716532240520!5m2!1szh-TW!2stw"
+                        style="border:0;width: 100%; height: 25rem;margin-bottom: -5px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="col-lg-8  align-self-center h-100">
+                @php
+                    $companyInfo = \App\Models\Admin\CompanyInfo::first();
+                @endphp
+                <div class="contents py-lg-auto py-5 px-lg-5 px-3 text-white wow fadeInUp" data-wow-delay="0.5s">
+                    {!! $companyInfo->company_transportation !!}
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection
 
@@ -212,7 +234,7 @@
 
         .evSwiper {
             /* width: 100%;
-                    height: 100%; */
+                        height: 100%; */
         }
 
         .evSwiper img {
