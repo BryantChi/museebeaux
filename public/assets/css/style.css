@@ -1221,6 +1221,9 @@ a:hover {
         object-fit: cover;
         object-position: center;
     }
+    .section-padding {
+        padding: 3rem 0;
+    }
 }
 
 .footer h2 {

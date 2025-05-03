@@ -4,7 +4,7 @@
     @include('layouts_main.sub_hero', ['bradcam_title' => '療程介紹 / Services', 'bradcam' => 'Services'])
 
     <!-- dream_service_start -->
-    <div class="dream_service extra_padding2 py-5">
+    <div class="dream_service extra_padding2 py-lg-5 py-3">
         <div class="container">
             {{-- <div class="row">
                 <div class="col-xl-12">
