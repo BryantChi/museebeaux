@@ -1,2 +1,6 @@
 User-agent: *
 Disallow: /admin*
+Disallow: /public/
+
+# 網站地圖
+Sitemap: https://museebeaux.com/sitemap.xml
