@@ -1322,3 +1322,14 @@ a:hover {
   .scroll-to-top i {
     font-weight: 800;
   }
+
+  .img-fluid-editor {
+    max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .img-fluid-editor {
+        max-width: 100%;
+        height: auto;
+    }
+  }

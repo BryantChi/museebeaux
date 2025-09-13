@@ -21,7 +21,7 @@ tinymce.init({
     // media_live_embeds: true,
     image_class_list: [
         // { title: '無', value: '' },
-        { title: 'Rwd class', value: 'img-fluid' }
+        { title: 'Rwd class', value: 'img-fluid-editor' }
     ],
     table_class_list: [
         { title: 'Rwd class', value: 'table table-bordered' },
