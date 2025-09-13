@@ -92,7 +92,7 @@
 @endsection
 @push('third_party_css')
     <style>
-        .blog_details .contents * {
+        .blog_details .contents *:not(img) {
             all: unset;
             all: revert;
         }
