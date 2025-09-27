@@ -33,8 +33,8 @@
                         @foreach ($servicesInfo->service_sub_list ?? [] as $key => $value)
                         <div class="mb-3">
                             <h5>項目{{ $key+1 }}：{{ $value['item'] }}</h5>
-                            <p class="mb-0">文章類型：{{ \App\Models\Admin\PostTypeInfo::find($value['type'] ?? null)->type_name ?? '無' }}</p>
-                            <p class="mb-0">文章名稱：{{ \App\Models\Admin\PostsInfo::find($value['article'] ?? null)->post_title ?? '無' }}</p>
+                            <p class="mb-0">文章類型：{{ $postTypes[$value['type'] ?? null] ?? '無' }}</p>
+                            <p class="mb-0">文章名稱：{{ $posts[$value['article'] ?? null] ?? '無' }}</p>
                         </div>
                         @endforeach
                     </td>

@@ -36,8 +36,30 @@ class ServicesInfoController extends AppBaseController
     {
         $servicesInfos = $this->servicesInfoRepository->paginate(10);
 
+        // 預載入所有需要的文章類型和文章資料，避免 N+1 查詢
+        $postTypeIds = [];
+        $postIds = [];
+
+        foreach ($servicesInfos as $service) {
+            if ($service->service_sub_list) {
+                foreach ($service->service_sub_list as $subItem) {
+                    if (!empty($subItem['type'])) {
+                        $postTypeIds[] = $subItem['type'];
+                    }
+                    if (!empty($subItem['article'])) {
+                        $postIds[] = $subItem['article'];
+                    }
+                }
+            }
+        }
+
+        $postTypes = PostTypeInfo::whereIn('id', array_unique($postTypeIds))->pluck('type_name', 'id');
+        $posts = PostsInfo::whereIn('id', array_unique($postIds))->pluck('post_title', 'id');
+
         return view('admin.services_infos.index')
-            ->with('servicesInfos', $servicesInfos);
+            ->with('servicesInfos', $servicesInfos)
+            ->with('postTypes', $postTypes)
+            ->with('posts', $posts);
     }
 
     /**
@@ -48,7 +70,7 @@ class ServicesInfoController extends AppBaseController
     public function create()
     {
         $postsTypes = PostTypeInfo::getCategoriesDropdown();
-        $posts = PostsInfo::all();
+        $posts = PostsInfo::select('id', 'post_title', 'post_type')->get();
 
         return view('admin.services_infos.create')
             ->with('postsTypes', $postsTypes)
@@ -153,7 +175,7 @@ class ServicesInfoController extends AppBaseController
         }
 
         $postsTypes = PostTypeInfo::getCategoriesDropdown();
-        $posts = PostsInfo::all();
+        $posts = PostsInfo::select('id', 'post_title', 'post_type')->get();
 
         return view('admin.services_infos.edit')
             ->with('postsTypes', $postsTypes)

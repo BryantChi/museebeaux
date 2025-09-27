@@ -122,6 +122,7 @@
             var postType = @json($postsTypes ?? []);
             var posts = @json($posts ?? []);
 
+            // 初始化現有的 select 元素
             $('select.type').change(function() {
                 var typeId = $(this).val();
                 var at = $(this).parent().find('select.article');
@@ -137,21 +138,21 @@
                 } else {
                     at.prop('required', false);
                 }
-            })
+            });
 
-            var count = {{ count($servicesInfo->service_sub_list ?? []) }};
+            // 重新設計的新增邏輯 - 使用時間戳確保唯一性
             $('#addBtn').click(function() {
-                const currentIndex = $('#dynamicField .field-group').length; // 使用目前的項目數量作為索引
+                const uniqueId = Date.now(); // 使用時間戳確保唯一性
 
-                var groupParent = $('<div class="mt-2 field-group card p-4 bg-light-subtle"></div>');
+                var groupParent = $('<div class="mt-2 field-group card p-4 bg-light-subtle" data-index="' + uniqueId + '"></div>');
                 var group = $(
                     `<div class="input-group2 d-flex">
-                        <input type="text" class="form-control item" name="service_sub_list[${currentIndex}][item]" placeholder="Item" required>
+                        <input type="text" class="form-control item" name="service_sub_list[${uniqueId}][item]" placeholder="Item" required>
                     </div>`
                 );
 
                 var selectType = $(
-                    `<select name="service_sub_list[${currentIndex}][type]" class="form-control type"></select>`
+                    `<select name="service_sub_list[${uniqueId}][type]" class="form-control type"></select>`
                 );
                 selectType.append('<option value="">請選擇</option>');
                 Object.entries(postType).forEach(([key, value]) => {
@@ -159,8 +160,9 @@
                 });
 
                 var selectArticle = $(
-                    `<select name="service_sub_list[${currentIndex}][article]" class="form-control article"></select>`
+                    `<select name="service_sub_list[${uniqueId}][article]" class="form-control article"></select>`
                 );
+
                 var remove = $(
                     `<span class="btn btn-danger mt-2 removeButton d-flex ml-auto" style="width: max-content;"><i class="fas fa-minus"></i></span>`
                 );
@@ -169,6 +171,7 @@
                 groupParent.append(group).append(remove);
                 $('#dynamicField').append(groupParent);
 
+                // 綁定新增元素的事件
                 selectType.change(function() {
                     const typeId = $(this).val();
                     const articleDropdown = $(this).parent().find('.article');
@@ -186,52 +189,9 @@
                     }
                 });
 
-                // var formIndex = $('#dynamic_form').children().length;
-                // var groupParent = $('<div class="mt-2 field-group card p-4 bg-light-subtle"></div>');
-                // var group = $(
-                //     '<div class="input-group2 d-flex"><input type="text" class="form-control item" name="service_sub_list[' +
-                //     count + '][item]" placeholder="Item" required ></div>'
-                // );
-                // var selectType = $(
-                //     '<select name="service_sub_list[' + count +
-                //     '][type]" class="form-control type"></select>');
-                // selectType.append('<option value="">請選擇</option>');
-                // Object.entries(postType).forEach(([key, value]) => {
-                //     selectType.append('<option value="' + key + '">' + value + '</option>');
-                // });
-                // var selectArticle = $(
-                //     '<select name="service_sub_list[' + count +
-                //     '][article]" class="form-control article"></select>');
-                // var remove = $(
-                //     '<span class="btn btn-danger mt-2 removeButton d-flex ml-auto" style="width: max-content;"><i class="fas fa-minus"></i></span>'
-                // )
-                // group.append(selectType).append(selectArticle);
-                // groupParent.append(group).append(remove);
-                // $('#dynamicField').append(groupParent);
-                // count++;
-
-                // selectType.change(function() {
-                //     var typeId = $(this).val();
-                //     // var post = posts.find(p => p.post_type == typeId);
-                //     selectArticle.empty();
-                //     selectArticle.append('<option value="">請選擇</option>');
-                //     if (typeId) {
-                //         selectArticle.prop('required', true);
-                //         posts.forEach(function(p) {
-                //             if (p.post_type == typeId) {
-                //                 selectArticle.append('<option value="' + p.id + '">' + p
-                //                     .post_title + '</option>');
-                //             }
-                //         });
-                //     } else {
-                //         selectArticle.prop('required', false);
-                //     }
-
-                // });
-
-                $('select').select2({
+                // 重新初始化 select2
+                groupParent.find('select').select2({
                     language: 'zh-TW',
-                    // width: '100%',
                     maximumInputLength: 100,
                     minimumInputLength: 0,
                     tags: false,
@@ -240,22 +200,21 @@
                 });
             });
 
-
+            // 重新設計的刪除邏輯 - 提交前重新整理索引
             $('#dynamicField').on('click', '.removeButton', function() {
-                $(this).closest('.field-group').remove(); // 刪除該項目
+                $(this).closest('.field-group').remove();
+            });
 
-                // 更新索引
+            // 表單提交前重新整理所有索引，確保順序正確
+            $('form').on('submit', function() {
                 $('#dynamicField .field-group').each(function(index) {
                     $(this).find('.item').attr('name', `service_sub_list[${index}][item]`);
                     $(this).find('.type').attr('name', `service_sub_list[${index}][type]`);
                     $(this).find('.article').attr('name', `service_sub_list[${index}][article]`);
                 });
-
-                count--; // 更新全域計數器
             });
 
-
-
+            // 圖片預覽功能
             $(document).on('change', '#service_icon', function () {
                 let fileInput = this;
                 let fileReader = new FileReader();
