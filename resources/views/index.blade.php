@@ -125,7 +125,7 @@
                 @foreach ($index_blogs ?? [] as $index_blog)
                     <div class="col-xl-3 col-6">
                         <div class="single_blog_item">
-                            <div class="thumb">
+                            <div class="thumb ratio ratio-16x9">
                                 <a class=""
                                     href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'), 'slug' => $index_blog->post_slug]) }}">
                                     <img class="card-img img-blog-index img-fluid rounded"
@@ -256,9 +256,13 @@
 @push('custom_css')
     <link rel="stylesheet" href="css/index.css?v={{ time() }}">
     <style>
+        .single_blog_item .thumb {
+            overflow: hidden;
+        }
+
         .img-blog-index {
             width: 100%;
-            height: 15rem;
+            height: 100%;
             object-fit: cover;
             object-position: center;
         }
@@ -270,13 +274,6 @@
         @media (max-width: 768px) {
             #compare .section_title h2 {
                 font-size: 1.5rem !important;
-            }
-
-            .img-blog-index {
-                width: 100%;
-                height: 10rem;
-                object-fit: cover;
-                object-position: center;
             }
 
             .title-blog-index {
