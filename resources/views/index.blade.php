@@ -142,7 +142,7 @@
                                 </a>
                             </h3>
                             <p class="multiline-ellipsis mt-2">
-                                {!! str_replace(["\r\n", "\r", "\n"], '', strip_tags($index_blog->post_content)) !!}</p>
+                                {!! Str::limit(str_replace(["\r\n", "\r", "\n"], '', strip_tags($index_blog->post_content)), 100) !!}</p>
                         </div>
                     </div>
                 @endforeach
