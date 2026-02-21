@@ -94,6 +94,6 @@ class PostsInfo extends EloquentModel
      **/
     public function postTypeInfo(): BelongsTo
     {
-        return $this->belongsTo(\App\Models\Admin\PostTypeInfo::class, 'id', 'id');
+        return $this->belongsTo(\App\Models\Admin\PostTypeInfo::class, 'post_type', 'id');
     }
 }
