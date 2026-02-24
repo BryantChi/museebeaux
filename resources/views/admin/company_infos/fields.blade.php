@@ -6,8 +6,8 @@
 
 <!-- Company Email Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('company_email', '公司 Email:') !!}
-    {!! Form::email('company_email', null, ['class' => 'form-control']) !!}
+    {!! Form::label('company_mail', '公司 Email:') !!}
+    {!! Form::email('company_mail', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Company Address Field -->

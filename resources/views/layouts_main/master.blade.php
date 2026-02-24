@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 
 <head>
     <meta charset="utf-8">
@@ -81,13 +81,15 @@
             </div>
         </a> --}}
 
-        <a href="{{ \App\Models\Admin\CompanyInfo::first()->company_facebook ?? 'javascript:void(0)' }}" target="_blank ">
+        <a href="{{ \App\Models\Admin\CompanyInfo::first()->company_facebook ?? 'javascript:void(0)' }}"
+            target="_blank ">
             <div class="hFab hFabFacebook ">
                 <i class="fab fa-facebook-f "></i>
             </div>
         </a>
 
-        <a href="{{ \App\Models\Admin\CompanyInfo::first()->company_instagram ?? 'javascript:void(0)' }}" target="_blank ">
+        <a href="{{ \App\Models\Admin\CompanyInfo::first()->company_instagram ?? 'javascript:void(0)' }}"
+            target="_blank ">
 
             <div class="hFab hFabIg ">
                 <i class="fab fa-instagram "></i>
@@ -119,8 +121,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"
-    integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js "></script>
 
@@ -134,12 +136,12 @@
     @stack('custom_scripts')
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy"));
 
             if ("IntersectionObserver" in window) {
-                var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
-                    entries.forEach(function(video) {
+                var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (video) {
                         if (video.isIntersecting) {
                             for (var source in video.target.children) {
                                 var videoSource = video.target.children[source];
@@ -156,29 +158,29 @@
                     });
                 });
 
-                lazyVideos.forEach(function(lazyVideo) {
+                lazyVideos.forEach(function (lazyVideo) {
                     lazyVideoObserver.observe(lazyVideo);
                 });
             }
         });
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             var lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
 
             if ("IntersectionObserver" in window) {
-                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                    let lazyImage = entry.target;
-                    lazyImage.src = lazyImage.dataset.src;
-                    // lazyImage.srcset = lazyImage.dataset.srcset;
-                    lazyImage.classList.remove("lazy");
-                    lazyImageObserver.unobserve(lazyImage);
-                    }
-                });
+                let lazyImageObserver = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            // lazyImage.srcset = lazyImage.dataset.srcset;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
                 });
 
-                lazyImages.forEach(function(lazyImage) {
-                lazyImageObserver.observe(lazyImage);
+                lazyImages.forEach(function (lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
                 });
             } else {
                 // Possibly fall back to event handlers here
