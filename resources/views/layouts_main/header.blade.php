@@ -32,7 +32,7 @@
                         class="nav-item nav-link {{ Request::is('international*') ? 'active' : '' }}">海外專區</a>
                     {{-- <a href="{{ route('contact') }}"
                         class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">聯絡資訊</a> --}}
-                    <a href="#transportation" class="nav-item nav-link scrollto">交通方式</a>
+                    <a href="{{ url('/#transportation') }}" class="nav-item nav-link scrollto">交通方式</a>
                     {{-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu bg-light rounded-0 m-0">
