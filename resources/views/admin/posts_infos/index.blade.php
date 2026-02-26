@@ -27,11 +27,11 @@
             <div class="card-body p-0">
                 @include('admin.posts_infos.table')
 
-                <div class="card-footer clearfix">
+                {{-- <div class="card-footer clearfix">
                     <div class="float-right">
                         @include('adminlte-templates::common.paginate', ['records' => $postsInfos])
                     </div>
-                </div>
+                </div> --}}
             </div>
 
         </div>
@@ -53,56 +53,34 @@
     </script>
     <script>
         $(function () {
-            let scrollX_enable = "{{ count($postsInfos) > 0 ? 1 : 0 }}" == true;
-            if ($(window).width() > 1200) { scrollX_enable = false }
-            else { scrollX_enable = "{{ count($postsInfos) > 0 ? 1 : 0 }}" == true; }
+            let scrollX_enable = $(window).width() <= 1200;
 
             var table = $('#postsInfos-table').DataTable({
-                lengthChange: true, // 呈現選單
-                lengthMenu: [10, 15, 20, 30, 50], // 選單值設定
-                pageLength: 10, // 不用選單設定也可改用固定每頁列數
-
-                searching: true, // 搜索功能
+                processing: true,
+                serverSide: true,
+                ajax: "{{ route('admin.postsInfos.datatable') }}" + (window.location.search || ''),
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'post_front_cover_html', name: 'post_front_cover', orderable: false, searchable: false },
+                    { data: 'post_title', name: 'post_title' },
+                    { data: 'post_slug', name: 'post_slug' },
+                    { data: 'type_name', name: 'type_name', orderable: false },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false },
+                ],
+                order: [[5, 'desc']],
+                lengthChange: true,
+                lengthMenu: [10, 15, 20, 30, 50],
+                pageLength: 10,
+                searching: true,
                 ordering: true,
-                // stateSave: true, // 保留狀態
                 scrollCollapse: true,
                 scrollX: scrollX_enable,
                 language: {
                     url: "https://cdn.datatables.net/plug-ins/1.11.3/i18n/zh_Hant.json"
                 },
-                // columnDefs: [{
-                //     'targets': 0,
-                //     'searchable': false,
-                //     'orderable': false,
-                //     'className': 'dt-body-center',
-                //     'render': function (data, type, full, meta) {
-                //         var d = JSON.parse(data);
-                //         return '<input type="checkbox" name="reports[]"  style="width: 20px;height: 20px;" value="' + $('<div/>').text(d.id).html() + '" data-letter="' + $('<div/>').text(d.letter_id).html() + '" data-status="' + $('<div/>').text(d.reports_authorize_status).html() + '">';
-                //     }
-                // }],
-                // dom: 'Bfrtip',  // 這行代碼是必須的，用於告訴 DataTables 插入哪些按鈕
-                // buttons: [
-                //     {
-                //         extend: 'excel',
-                //         // text: '導出已篩選的數據到 Excel',
-                //         exportOptions: {
-                //             modifier: {
-                //                 search: 'applied',  // 這裡確保只有已篩選的數據會被導出
-                //                 order: 'applied'   // 這裡確保導出的數據與目前的排序方式一致
-                //             },
-                //             rows: function (idx, data, node) {
-                //                 return $(node).find('input[name="reports[]"]').prop('checked');
-                //             },
-                //             columns: [1,2,3,4,5,6,7,8,9,10,11,14,15,17],
-                //         }
-                //     }
-                // ],
             });
-        })
-
-        setTimeout(() => {
-            table.draw();
-        }, 600);
+        });
 
     </script>
 @endpush

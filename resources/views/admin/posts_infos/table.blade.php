@@ -31,58 +31,14 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($postsInfos as $postsInfo)
-                        <tr>
-                            <td>{{ $postsInfo->id }}</td>
-                            <td>
-                                @if ($postsInfo->post_front_cover)
-                                    <a href="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $postsInfo->post_front_cover }}"
-                                        data-fancybox>
-                                        <img src="{{ env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $postsInfo->post_front_cover }}"
-                                            class="img-fluid" style="max-width: 200px;" alt="">
-                                    </a>
-                                @endif
-                            </td>
-                            <td>{{ $postsInfo->post_title }}</td>
-                            <td>{{ $postsInfo->post_slug }}</td>
-                            {{-- <td>
-                                <div class="multiline-ellipsis">{!! $postsInfo->post_content !!}</div>
-                            </td> --}}
-                            <td>{{ $postsInfo->postTypeInfo->type_name ?? '' }}</td>
-                            {{-- <td>{{ $postsInfo->post_seo_setting_customize ? '是' : '否' }}</td> --}}
-                            {{-- <td>{{ $postsInfo->post_seo_title }}</td>
-                            <td>{{ $postsInfo->post_meta_title }}</td>
-                            <td>
-                                <div class="multiline-ellipsis">{!! $postsInfo->post_meta_description !!}</div>
-                            </td>
-                            <td>{{ $postsInfo->post_meta_keywords }}</td> --}}
-                            <td>{{ \Carbon\Carbon::parse($postsInfo->created_at)->format('Y-m-d H:i:s') }}</td>
-                            <td width="120">
-                                {!! Form::open(['route' => ['admin.postsInfos.destroy', $postsInfo->id], 'method' => 'delete']) !!}
-                                <div class='btn-group'>
-                                    <a href="{{ route('admin.postsInfos.show', [$postsInfo->id]) }}" class='btn btn-default btn-xs'>
-                                        <i class="far fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('admin.postsInfos.edit', [$postsInfo->id]) }}" class='btn btn-default btn-xs'>
-                                        <i class="far fa-edit"></i>
-                                    </a>
-                                    {!! Form::button('<i class="far fa-trash-alt"></i>', [
-                    'type' => 'button',
-                    'class' => 'btn btn-danger btn-xs',
-                    'onclick' => "return check(this)",
-                ]) !!}
-                                </div>
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
-            @endforeach
         </tbody>
     </table>
 </div>
 @push('page_scripts')
     <script>
         function fetchPostsInfos(value) {
-            window.location.href = "{{ route('admin.postsInfos.index') }}?post_type=" + value
+            var table = $('#postsInfos-table').DataTable();
+            table.ajax.url("{{ route('admin.postsInfos.datatable') }}?post_type=" + value).load();
         }
     </script>
 @endpush

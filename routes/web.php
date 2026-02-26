@@ -79,6 +79,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('pageSettingInfos', App\Http\Controllers\Admin\PageSettingInfoController::class, ["as" => 'admin']);
         Route::resource('postTypeInfos', App\Http\Controllers\Admin\PostTypeInfoController::class, ["as" => 'admin']);
         Route::resource('servicesInfos', App\Http\Controllers\Admin\ServicesInfoController::class, ["as" => 'admin']);
+        Route::get('postsInfos/datatable', [App\Http\Controllers\Admin\PostsInfoController::class, 'datatable'])->name('admin.postsInfos.datatable');
         Route::resource('postsInfos', App\Http\Controllers\Admin\PostsInfoController::class, ["as" => 'admin']);
         Route::resource('companyInfos', App\Http\Controllers\Admin\CompanyInfoController::class, ["as" => 'admin']);
         Route::resource('teamInfos', App\Http\Controllers\Admin\TeamInfoController::class, ["as" => 'admin']);

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
+use Yajra\DataTables\Facades\DataTables;
 use Flash;
 use Response;
 
@@ -34,22 +35,56 @@ class PostsInfoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $query = $this->postsInfoRepository->model()::with('postTypeInfo');
+        return view('admin.posts_infos.index');
+    }
+
+    public function datatable(Request $request)
+    {
+        $query = $this->postsInfoRepository->model()::select(
+            'id', 'post_title', 'post_slug', 'post_front_cover', 'post_type', 'created_at'
+        )->with('postTypeInfo');
 
         $input = $request->all();
-        if ($request->method() == 'GET' && $request->has('post_type') && $input['post_type'] != "") {
-             $type = PostTypeInfo::where('type_parent_id', $input['post_type'])
+        if ($request->has('post_type') && $input['post_type'] != "") {
+            $type = PostTypeInfo::where('type_parent_id', $input['post_type'])
                 ->orWhere('id', $input['post_type'])
                 ->pluck('id')
                 ->toArray();
-            
+
             $query->whereIn('post_type', $type);
         }
 
-        $postsInfos = $query->orderBy('created_at', 'desc')->paginate(15);
+        $query->orderBy('created_at', 'desc');
 
-        return view('admin.posts_infos.index')
-            ->with('postsInfos', $postsInfos);
+        return DataTables::eloquent($query)
+            ->addColumn('post_front_cover_html', function ($row) {
+                if ($row->post_front_cover) {
+                    $url = env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $row->post_front_cover;
+                    return '<a href="' . $url . '" data-fancybox><img src="' . $url . '" class="img-fluid" style="max-width:200px;" alt=""></a>';
+                }
+                return '';
+            })
+            ->addColumn('type_name', function ($row) {
+                return $row->postTypeInfo->type_name ?? '';
+            })
+            ->editColumn('created_at', function ($row) {
+                return $row->created_at->format('Y-m-d H:i');
+            })
+            ->addColumn('action', function ($row) {
+                $showUrl = route('admin.postsInfos.show', [$row->id]);
+                $editUrl = route('admin.postsInfos.edit', [$row->id]);
+                $deleteUrl = route('admin.postsInfos.destroy', [$row->id]);
+                $csrf = csrf_field();
+                $method = method_field('DELETE');
+                return '<form action="' . $deleteUrl . '" method="POST">' . $csrf . $method .
+                    '<div class="btn-group">' .
+                    '<a href="' . $showUrl . '" class="btn btn-default btn-xs"><i class="far fa-eye"></i></a>' .
+                    '<a href="' . $editUrl . '" class="btn btn-default btn-xs"><i class="far fa-edit"></i></a>' .
+                    '<button type="button" class="btn btn-danger btn-xs" onclick="return check(this)"><i class="far fa-trash-alt"></i></button>' .
+                    '</div></form>';
+            })
+            ->rawColumns(['post_front_cover_html', 'action'])
+            ->make(true);
     }
 
     /**
