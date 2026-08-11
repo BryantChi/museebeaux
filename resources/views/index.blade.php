@@ -129,7 +129,7 @@
                                 <a class=""
                                     href="{{ route('blog.show', ['type' => DB::table('post_type_infos')->whereNull('deleted_at')->where('id', $index_blog->post_type)->value('type_slug'), 'slug' => $index_blog->post_slug]) }}">
                                     <img class="card-img img-blog-index img-fluid rounded"
-                                        src="{{ $index_blog->post_front_cover ?? null ? env('APP_URL', 'https://beauty4u-clinic.com') . '/uploads/' . $index_blog->post_front_cover : asset('images/about/about-05.jpg') }}"
+                                        src="{{ $index_blog->post_front_cover ?? null ? env('APP_URL', 'https://museebeaux.com') . '/uploads/' . $index_blog->post_front_cover : asset('images/about/about-05.jpg') }}"
                                         alt="{{ $index_blog->post_front_cover_alt ?? $index_blog->post_title }}">
                                 </a>
                             </div>
