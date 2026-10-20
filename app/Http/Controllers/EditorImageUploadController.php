@@ -42,10 +42,23 @@ class EditorImageUploadController extends Controller
 
     public function deleteUpload(Request $request)
     {
-        $fileName = $request->fileName;
-        if (File::exists(public_path('uploads/' . $fileName))) {
-            File::delete(public_path('uploads/' . $fileName));
+        $fileName = (string) $request->input('fileName', '');
+
+        $uploadsBase = realpath(public_path('uploads'));
+        $target = realpath(public_path('uploads/' . $fileName));
+
+        // 僅允許刪除 uploads 目錄底下、且無 ../ 路徑跳脫的既有檔案
+        if (
+            $fileName === '' ||
+            strpos($fileName, '..') !== false ||
+            $uploadsBase === false ||
+            $target === false ||
+            strpos($target, $uploadsBase . DIRECTORY_SEPARATOR) !== 0
+        ) {
+            return response()->json(['error' => '無效的檔名'], 422);
         }
+
+        File::delete($target);
         return response()->json(['success' => '刪除成功']);
     }
 

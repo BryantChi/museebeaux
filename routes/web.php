@@ -96,6 +96,9 @@ Route::prefix('admin')->group(function () {
 });
 
 
-Route::any('/editor-image-upload', [App\Http\Controllers\EditorImageUploadController::class, 'upload'])->name('editor-image-upload');
-Route::any('/delete-editor-image', [App\Http\Controllers\EditorImageUploadController::class, 'deleteUpload'])->name('delete-editor-image');
+// 後台編輯器圖片端點：須登入才可呼叫，並限定 POST，避免對外公開造成檔案被刪
+Route::middleware(['auth'])->group(function () {
+    Route::post('/editor-image-upload', [App\Http\Controllers\EditorImageUploadController::class, 'upload'])->name('editor-image-upload');
+    Route::post('/delete-editor-image', [App\Http\Controllers\EditorImageUploadController::class, 'deleteUpload'])->name('delete-editor-image');
+});
 
