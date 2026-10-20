@@ -33,11 +33,11 @@
 
 
                 <h2 class="text-white mb-2 mt-3">營業時間</h2>
-                <p class="mb-1">週二至週六 11:00-19:00</p>
+                <p class="mb-1">週一至週六 11:00-19:00</p>
 
                 <p class="mb-1">週五營業時間 11:00-21:00</p>
 
-                <p class="mb-1">周日一 公休</p>
+                <p class="mb-1">周日 公休</p>
 
             </div>
             <div class="col-lg-3 col-md-6">
