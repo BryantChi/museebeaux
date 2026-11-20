@@ -9,7 +9,6 @@
     <meta name="description" content="{{ $pageSettings->meta_description }}" />
     <meta name="keywords" content="{{ $pageSettings->meta_keywords }}" />
     <meta property="og:locale" content="zh_TW" />
-    <meta name="author" content="紀孟勳 Bryantchi.work@gmail.com" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ $pageSettings->meta_title }}" />
     <meta property="og:description" content="{{ $pageSettings->meta_description }}" />
